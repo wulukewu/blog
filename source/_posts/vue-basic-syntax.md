@@ -9,14 +9,23 @@ tags:
     - guide
 ---
 
-# Vue Syntax
+# Vue Basic Syntax
 
-`v-on`: `@click`
-`v-bind`: `:input`, `:input.enter`, `:key`
-`v-model`:
-`v-if`, `v-else-if`, `v-else`
-`v-show`
-`v-for`: `v-for="goal in goals"`
+## Directives
 
-`props`: parent to child
-`emits`: child to parent
+- **Event Binding**: `v-on` or shorthand `@click`
+- **Attribute Binding**: `v-bind` or shorthand `:attribute`
+    - Examples: `:input`, `:input.enter`, `:key`
+- **Two-Way Binding**: `v-model`
+- **Conditional Rendering**:
+    - `v-if`
+    - `v-else-if`
+    - `v-else`
+    - `v-show`
+- **List Rendering**: `v-for`
+    - Example: `v-for="goal in goals"`
+
+## Communication Between Components
+
+- **Props**: Pass data from parent to child
+- **Emits**: Send events from child to parent
