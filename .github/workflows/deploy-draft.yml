@@ -25,8 +25,8 @@ jobs:
 
     - name: Build site with draft base URL
       run: |
-        echo "url: https://wulukewu.github.io/blog-draft/" >> _config.yml
-        hexo generate
+        echo "url: https://wulukewu.github.io/blog-draft/" > _config.draft.yml
+        hexo generate --config _config.yml,_config.draft.yml
 
     - name: Deploy to blog-draft
       uses: peaceiris/actions-gh-pages@v3
