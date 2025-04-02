@@ -4,6 +4,7 @@ date: 2024-11-08 15:42:05
 tags:
 ---
 
+## Setup
 1. 根據email創建一個新的SSH金鑰
 ```ssh-keygen -t rsa -b 4096 -C "your_email@example.com"```
 

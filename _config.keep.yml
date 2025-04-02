@@ -72,3 +72,10 @@ code_block:
     enable: true              # Option values: true | false
     style: mac                # Option values: default | mac
   highlight_theme: default    # Option values: default | obsidian
+
+toc:
+  enable: true      # Option values: true | false
+  number: false      # Option values: true | false
+  expand_all: false  # Option values: true | false
+  init_open: false    # Option values: true | false
+  layout: right      # Option values: left | right
