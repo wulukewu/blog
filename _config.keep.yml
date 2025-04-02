@@ -24,3 +24,21 @@ first_screen:
   # background_img_dark: /images/bg.svg
   description: Hi, I'm Luke!
   hitokoto: false      # Option values: true | false
+
+social_contact:
+  enable: true        # Option values: true | false
+  links:
+    github: https://github.com/wulukewu # GitHub
+
+scroll:
+  enable: true        # Option values: true | false
+  progress_bar: true  # Option values: true | false
+  percent: false      # Option values: true | false
+  hide_header: true   # Option values: true | false
+
+home:
+  announcement:
+  category: true            # Option values: true | false
+  tag: true                 # Option values: true | false
+  post_datetime: created    # Option values: updated | created
+  post_datetime_format: ago # Option values: ago | YYYY-MM-DD HH:mm:ss
