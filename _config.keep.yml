@@ -42,3 +42,27 @@ home:
   tag: true                 # Option values: true | false
   post_datetime: created    # Option values: updated | created
   post_datetime_format: ago # Option values: ago | YYYY-MM-DD HH:mm:ss
+
+post:
+  author_badge:
+    enable: true          # Option values: true | false
+    level_badge: false    # Option values: true | false
+    custom_badge: "我什麼都不會"
+
+  word_count:
+    wordcount: true     # Word count, one article. Option values: true | false
+    min2read: true      # Time to read, one article. Option values: true | false
+
+  datetime_format: "YYYY-MM-DD"  # Datetime format. e.g. "YYYY-MM-DD HH:mm:ss"
+
+  copyright_info: true  # Option values: true | false
+
+  share: false           # Option values: true | false
+
+  reward:
+    enable: false        # Option values: true | false
+    img_link:            # Image link for the payment QR code
+    text:                # Custom reward text, Can be null
+  
+  created_datetime_icon: fa-solid fa-calendar-alt
+  updated_datetime_icon: fa-solid fa-arrows-rotate
