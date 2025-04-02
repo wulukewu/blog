@@ -89,3 +89,6 @@ website_count:
 local_search:
   enable: true      # Option values: true | false
   preload: true     # Preload the search data when the page loads
+
+lazyload:
+  enable: true  # Option values: true | false
