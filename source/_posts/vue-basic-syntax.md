@@ -2,6 +2,11 @@
 title: Vue Basic Syntax
 date: 2025-01-12 11:27:19
 tags:
+    - vue
+    - syntax
+    - basics
+    - tutorial
+    - guide
 ---
 
 # Vue Syntax
