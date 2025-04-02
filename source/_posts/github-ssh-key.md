@@ -2,11 +2,11 @@
 title: 設定GitHub SSH金鑰
 date: 2024-11-08 15:42:05
 tags:
-    - GitHub
-    - SSH
-    - Git
-    - Tutorial
-    - Setup
+    - github
+    - ssh
+    - git
+    - tutorial
+    - setup
 ---
 
 ## Setup
