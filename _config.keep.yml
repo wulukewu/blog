@@ -11,7 +11,7 @@ base_info:
 menu:
   home: / || fa-solid fa-home # Home page link
   archives: /archives || fa-solid fa-box-archive # Archive page link
-  # tags: /tags || fa-solid fa-tags # Tags page link
+  tags: /tags || fa-solid fa-tags # Tags page link
   # categories: /categories || fa-solid fa-layer-group # Categories page link
   # links: /links || fa-solid fa-link # Links page link
   about: /about || fa-solid fa-user-graduate # About page link
@@ -38,7 +38,7 @@ scroll:
 home:
   announcement:
   category: true            # Option values: true | false
-  tag: true                 # Option values: true | false
+  tag: false                # Option values: true | false
   post_datetime: created    # Option values: updated | created
   post_datetime_format: ago # Option values: ago | YYYY-MM-DD HH:mm:ss
 
