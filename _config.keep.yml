@@ -79,3 +79,10 @@ toc:
   expand_all: false  # Option values: true | false
   init_open: false    # Option values: true | false
   layout: right      # Option values: left | right
+
+website_count:
+  busuanzi_count:
+    enable: false     # Option values: true | false
+    site_uv: false    # Option values: true | false
+    site_pv: false    # Option values: true | false
+    page_pv: false    # Option values: true | false
