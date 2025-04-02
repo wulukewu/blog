@@ -95,3 +95,18 @@ lazyload:
 
 pjax:
   enable: true   # Option values: true | false
+
+footer:
+  since: 2024            # The starting year of your website, Can be null
+  word_count: false      # Option values: true | false
+
+  site_deploy:
+    enable: false        # Option values: true | false
+    provider: github     # Option values: github | vercel | netlify | cloudflare | gitee | aliyun | tencent_cloud | upyun
+    url:                 # Your deployment provider url, Can be null
+
+  record:
+    enable: false        # Option values: true | false
+    list:
+      - code:            # record code of your website
+        link:            # record link of your website, Can be null
