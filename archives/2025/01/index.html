@@ -9,7 +9,7 @@
     
     <title>
         
-            設定GitHub SSH金鑰 |
+            Archive: 2025/1 |
         
         Luke&#39;s Blog
     </title>
@@ -96,7 +96,7 @@
                         </li>
                     
                         
-                        <li class="menu-item flex-start border-box">
+                        <li class="menu-item flex-start border-box active">
                             <a class="menu-text-color border-box" href="/blog/archives">
                                 
                                     <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
@@ -169,7 +169,7 @@
                 </li>
             
                 
-                <li class="drawer-menu-item border-box not-sub-menu">
+                <li class="drawer-menu-item border-box not-sub-menu active">
                     <label class="drawer-menu-label border-box">
                         <a class="drawer-menu-text-color left-side flex-start border-box" href="/blog/archives">
                             
@@ -231,272 +231,37 @@
             <div class="main-content border-box">
                 
 
-                    
-<div class="fade-in-down-animation">
-    <div class="post-page-container border-box">
-        <div class="post-content-container border-box">
+                    <div class="fade-in-down-animation">
+    <div class="archives-container">
+        <div class="archives-timeline border-box">
             
-
-            <div class="post-content-bottom border-box">
+<div class="archive-list-container border-box">
+    
+        <section class="archive-item border-box">
+            <div class="archive-item-header border-box">
+                <span class="archive-year">2025</span>
+            </div>
+            <ul class="archive-item-body border-box">
                 
-                    <div class="post-title">
-                        設定GitHub SSH金鑰
-                    </div>
+                    <li class="post-item border-box">
+                        <span class="starting-point border-box flex-center"></span>
+                        <span class="post-date border-box">01-12</span>
+                        <a class="post-title border-box text-ellipsis"
+                           href="/blog/2025/01/vue-basic-syntax/"
+                        >Vue Basic Syntax</a>
+                    </li>
                 
-
-                
-                    <div class="post-header border-box">
-                        
-                            <div class="avatar-box border-box">
-                                <img src="/blog/images/avatar.jpg">
-                            </div>
-                        
-                        <div class="info-box">
-                            <div class="author border-box">
-                                <span class="name">Luke</span>
-                                
-                                    <span class="author-badge">我什麼都不會</span>
-                                
-                            </div>
-                            <div class="meta-info border-box">
-                                
-
-<div class="post-meta-info-container border-box post">
-    <div class="post-meta-info border-box">
-        
-
-        
-            <span class="meta-info-item post-create-date">
-                <i class="icon fa-solid fa-calendar-alt"></i>&nbsp;
-                <span class="datetime">2024-11-08</span>
-            </span>
-
-            
-                <span class="meta-info-item post-update-date">
-                    <i class="icon fa-solid fa-arrows-rotate"></i>&nbsp;
-                    <span class="datetime" data-updated="Wed Apr 02 2025 17:26:56 GMT+0000">2025-04-02</span>
-                </span>
-            
-        
-
-        
-
-        
-            <span class="post-tag meta-info-item border-box">
-                <ul class="post-tag-ul">
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/GitHub/">GitHub</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/SSH/">SSH</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/Git/">Git</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/Tutorial/">Tutorial</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/Setup/">Setup</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-            <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>99 Words</span>
-            </span>
-        
-        
-            <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>1 Mins</span>
-            </span>
-        
-        
-    </div>
-
+            </ul>
+        </section>
     
 </div>
 
-                            </div>
-                        </div>
-                    </div>
-                
-
-                <div class="post-content keep-markdown-body ">
-                    
-
-                    
-                         <h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><ol>
-<li>根據email創建一個新的SSH金鑰</li>
-</ol>
-<p><code>ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</code></p>
-<ol start="2">
-<li>開啟ssh-agent，將私鑰加入到ssh-agent\</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">eval &quot;$(ssh-agent -s)&quot;</span><br><span class="line">ssh-add -K ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>上傳公鑰，並到GitHub上上傳SSH key</li>
-</ol>
-<p><code>cat ~/.ssh/id_rsa.pub </code><br><a class="link"   target="_blank" rel="noopener" href="https://github.com/settings/keys" >GitHub Keys Settings<i class="fas fa-external-link-alt"></i></a><br><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://hackmd.io/_uploads/HyiZfBiZkl.png"
-                        alt="image"
-                 ></p>
-<ol start="4">
-<li>ssh連接GitHub SSH</li>
-</ol>
-<p><code>ssh -T git@github.com</code></p>
-<h2 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h2><ul>
-<li><a class="link"   target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10205988" >設定 Github SSH 金鑰 feat. Github SSH、HTTPS 的差異<i class="fas fa-external-link-alt"></i></a></li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://youtu.be/yxvqLBHZfXk" >How to clone, push, and pull with git (beginners GitHub tutorial)<i class="fas fa-external-link-alt"></i></a></li>
-</ul>
-
-                    
-                </div>
-
-                
-                        
-<div class="post-copyright-info-container border-box">
-    <div class="copyright-info-content border-box">
-        <div class="copyright-info-top border-box">
-            <div class="copyright-post-title border-box text-ellipsis">
-                設定GitHub SSH金鑰
-            </div>
-
-            <div class="copyright-post-link border-box text-ellipsis">
-                2024/11/github-ssh-key/
-            </div>
         </div>
-
-        <div class="copyright-info-bottom border-box">
-            <div class="copyright-post-author bottom-item">
-                <div class="type">
-                    Author
-                </div>
-                <div class="content">Luke</div>
-            </div>
-
-            <div class="post-time bottom-item">
-                <div class="type">
-                    Published
-                </div>
-                <div class="content">2024-11-08 15:42</div>
-            </div>
-
-
-            <div class="post-license bottom-item">
-                <div class="type">
-                    License
-                </div>
-                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
-                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed" target="_blank">
-                        
-                            <i class="fa-brands fa-creative-commons"></i>
-                            <i class="fa-brands fa-creative-commons-by"></i>
-                            <i class="fa-brands fa-creative-commons-nc"></i>
-                            <i class="fa-brands fa-creative-commons-sa"></i>
-                        
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <i class="copyright-bg fa-solid fa-copyright"></i>
     </div>
-    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="Copy copyright info" data-tooltip-offset-y="-2px">
-        <i class="fa-solid fa-copy"></i>
-    </div>
-</div>
-
-                
-
-                <div class="post-bottom-tags-and-share border-box">
-                    <div>
-                        
-                            <ul class="post-tags-box border-box">
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/GitHub/">GitHub</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/SSH/">SSH</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/Git/">Git</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/Tutorial/">Tutorial</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/Setup/">Setup</a>
-                                    </li>
-                                
-                            </ul>
-                        
-                    </div>
-                    <div>
-                        
-                    </div>
-                </div>
-
-                
-
-                
-                    <div class="post-nav border-box">
-                        
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/blog/2025/01/vue-basic-syntax/"
-                                   title="Vue Basic Syntax"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Vue Basic Syntax</span>
-                                        <span class="post-nav-item">Prev posts</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
-                        
-                    </div>
-                
-
-                
-                    
+    
 
 
 
-
-
-
-                
-            </div>
-        </div>
-
-        
-            <div class="pc-post-toc right-toc">
-                <div class="post-toc-wrap border-box">
-    <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Setup"><span class="nav-text">Setup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Resources"><span class="nav-text">Resources</span></a></li></ol>
-    </div>
-</div>
-
-            </div>
-        
-    </div>
 </div>
 
 
@@ -530,31 +295,6 @@
 
     <!-- post tools -->
     
-        <div class="post-tools right-toc">
-            <div class="post-tools-container border-box">
-    <ul class="post-tools-list border-box">
-        <!-- PC encrypt again -->
-        
-
-        <!-- PC TOC show toggle -->
-        
-            <li class="tools-item flex-center toggle-show-toc">
-                <i class="fas fa-list"></i>
-            </li>
-        
-
-        <!-- PC go comment -->
-        
-
-        <!-- PC full screen -->
-        <li class="tools-item flex-center full-screen">
-            <i class="fa-solid fa-expand"></i>
-        </li>
-    </ul>
-</div>
-
-        </div>
-    
 
     <!-- side tools -->
     <div class="side-tools">
@@ -585,10 +325,6 @@
     </ul>
 
     <ul class="exposed-tools-list border-box">
-        
-            <li class="tools-item toggle-show-toc-tablet flex-center">
-                <i class="fas fa-list"></i>
-            </li>
         
 
         
@@ -646,18 +382,8 @@
 
     <!-- tablet toc -->
     
-        <div class="tablet-post-toc-mask">
-            <div class="tablet-post-toc">
-                <div class="post-toc-wrap border-box">
-    <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Setup"><span class="nav-text">Setup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Resources"><span class="nav-text">Resources</span></a></li></ol>
-    </div>
-</div>
-
-            </div>
-        </div>
-    
 </main>
+
 
 
 
@@ -699,28 +425,6 @@
     
 
     <!-- post page -->
-    
-        <!-- post-helper -->
-        
-<script src="/blog/js/post/post-helper.js"></script>
-
-
-        <!-- toc -->
-        
-            
-<script src="/blog/js/post/toc.js"></script>
-
-        
-
-        <!-- copyright-info -->
-        
-            
-<script src="/blog/js/post/copyright-info.js"></script>
-
-        
-
-        <!-- share -->
-        
     
 
     <!-- categories page -->

@@ -9,7 +9,7 @@
     
     <title>
         
-            設定GitHub SSH金鑰 |
+            Vue Basic Syntax |
         
         Luke&#39;s Blog
     </title>
@@ -240,7 +240,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        設定GitHub SSH金鑰
+                        Vue Basic Syntax
                     </div>
                 
 
@@ -268,7 +268,7 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-alt"></i>&nbsp;
-                <span class="datetime">2024-11-08</span>
+                <span class="datetime">2025-01-12</span>
             </span>
 
             
@@ -282,32 +282,11 @@
         
 
         
-            <span class="post-tag meta-info-item border-box">
-                <ul class="post-tag-ul">
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/GitHub/">GitHub</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/SSH/">SSH</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/Git/">Git</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/Tutorial/">Tutorial</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/Setup/">Setup</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
 
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>99 Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>33 Words</span>
             </span>
         
         
@@ -330,32 +309,8 @@
                     
 
                     
-                         <h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><ol>
-<li>根據email創建一個新的SSH金鑰</li>
-</ol>
-<p><code>ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</code></p>
-<ol start="2">
-<li>開啟ssh-agent，將私鑰加入到ssh-agent\</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">eval &quot;$(ssh-agent -s)&quot;</span><br><span class="line">ssh-add -K ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>上傳公鑰，並到GitHub上上傳SSH key</li>
-</ol>
-<p><code>cat ~/.ssh/id_rsa.pub </code><br><a class="link"   target="_blank" rel="noopener" href="https://github.com/settings/keys" >GitHub Keys Settings<i class="fas fa-external-link-alt"></i></a><br><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://hackmd.io/_uploads/HyiZfBiZkl.png"
-                        alt="image"
-                 ></p>
-<ol start="4">
-<li>ssh連接GitHub SSH</li>
-</ol>
-<p><code>ssh -T git@github.com</code></p>
-<h2 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h2><ul>
-<li><a class="link"   target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10205988" >設定 Github SSH 金鑰 feat. Github SSH、HTTPS 的差異<i class="fas fa-external-link-alt"></i></a></li>
-<li><a class="link"   target="_blank" rel="noopener" href="https://youtu.be/yxvqLBHZfXk" >How to clone, push, and pull with git (beginners GitHub tutorial)<i class="fas fa-external-link-alt"></i></a></li>
-</ul>
+                         <h1 id="Vue-Syntax"><a href="#Vue-Syntax" class="headerlink" title="Vue Syntax"></a>Vue Syntax</h1><p><code>v-on</code>: <code>@click</code><br><code>v-bind</code>: <code>:input</code>, <code>:input.enter</code>, <code>:key</code><br><code>v-model</code>:<br><code>v-if</code>, <code>v-else-if</code>, <code>v-else</code><br><code>v-show</code><br><code>v-for</code>: <code>v-for=&quot;goal in goals&quot;</code></p>
+<p><code>props</code>: parent to child<br><code>emits</code>: child to parent</p>
 
                     
                 </div>
@@ -366,11 +321,11 @@
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                設定GitHub SSH金鑰
+                Vue Basic Syntax
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
-                2024/11/github-ssh-key/
+                2025/01/vue-basic-syntax/
             </div>
         </div>
 
@@ -386,7 +341,7 @@
                 <div class="type">
                     Published
                 </div>
-                <div class="content">2024-11-08 15:42</div>
+                <div class="content">2025-01-12 11:27</div>
             </div>
 
 
@@ -419,30 +374,6 @@
                 <div class="post-bottom-tags-and-share border-box">
                     <div>
                         
-                            <ul class="post-tags-box border-box">
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/GitHub/">GitHub</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/SSH/">SSH</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/Git/">Git</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/Tutorial/">Tutorial</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/Setup/">Setup</a>
-                                    </li>
-                                
-                            </ul>
-                        
                     </div>
                     <div>
                         
@@ -454,22 +385,22 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/blog/2025/01/vue-basic-syntax/"
-                                   title="Vue Basic Syntax"
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/blog/2024/11/github-ssh-key/"
+                                   title="設定GitHub SSH金鑰"
                                 >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Vue Basic Syntax</span>
-                                        <span class="post-nav-item">Prev posts</span>
+                                        <span class="post-nav-title-item text-ellipsis">設定GitHub SSH金鑰</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
                                     </span>
                                 </a>
                             </div>
-                        
                         
                     </div>
                 
@@ -490,7 +421,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Setup"><span class="nav-text">Setup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Resources"><span class="nav-text">Resources</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue-Syntax"><span class="nav-text">Vue Syntax</span></a></li></ol>
     </div>
 </div>
 
@@ -650,7 +581,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Setup"><span class="nav-text">Setup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Resources"><span class="nav-text">Resources</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue-Syntax"><span class="nav-text">Vue Syntax</span></a></li></ol>
     </div>
 </div>
 
