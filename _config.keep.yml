@@ -6,14 +6,7 @@ base_info:
   avatar: /images/avatar.jpg    # Author avatar image path
   logo: /images/logo.jpg        # Website logo path
   favicon: /images/favicon.jpg  # Favicon path
-  # mode: light                   # Theme mode: light or dark
-
-# menu:
-#   home: / || fa-solid fa-home # Home page link
-#   archives: /archives/ # Archive page link
-#   about: /about/ # About page link
-#   # tags: /tags/ # Tags page link
-#   # categories: /categories/ # Categories page link
+  mode: auto                   # Theme mode: auto (light/dark based on system preference)
 
 menu:
   home: / || fa-solid fa-home # Home page link
@@ -24,3 +17,10 @@ menu:
   about: /about || fa-solid fa-user-graduate # About page link
   # photos: /photos || fa-solid fa-image # Photos page link
   # search: /search || fa-solid fa-magnifying-glass # Search page link
+
+first_screen:
+  enable: true        # Option values: true | false
+  # background_img: /images/bg.svg
+  # background_img_dark: /images/bg.svg
+  description: Hi, I'm Luke!
+  hitokoto: false      # Option values: true | false
