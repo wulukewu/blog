@@ -16,7 +16,6 @@ menu:
   # links: /links || fa-solid fa-link # Links page link
   about: /about || fa-solid fa-user-graduate # About page link
   # photos: /photos || fa-solid fa-image # Photos page link
-  # search: /search || fa-solid fa-magnifying-glass # Search page link
 
 first_screen:
   enable: true        # Option values: true | false
@@ -86,3 +85,7 @@ website_count:
     site_uv: false    # Option values: true | false
     site_pv: false    # Option values: true | false
     page_pv: false    # Option values: true | false
+
+local_search:
+  enable: true      # Option values: true | false
+  preload: true     # Preload the search data when the page loads
