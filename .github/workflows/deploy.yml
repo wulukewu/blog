@@ -3,7 +3,7 @@ name: Deploy Hexo to GitHub Pages
 on:
   push:
     branches:
-      - main # Change to your default branch name if different
+      - main
 
 jobs:
   build-and-deploy:

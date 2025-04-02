@@ -1,0 +1,9 @@
+# Keep Theme Configuration
+base_info:
+  primary_color: "#f1c40f"      # Theme color in hex, rgb, or rgba
+  title: Luke's Blog            # Website title
+  author: Luke                  # Author name
+  avatar: /images/avatar.jpg    # Author avatar image path
+  logo: /images/logo.jpg        # Website logo path
+  favicon: /images/favicon.jpg  # Favicon path
+  # mode: light                   # Theme mode: light or dark
