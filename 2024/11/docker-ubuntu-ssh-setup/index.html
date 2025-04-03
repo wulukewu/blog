@@ -9,7 +9,7 @@
     
     <title>
         
-            Vue Basic Syntax |
+            Docker - Ubuntu SSH Setup |
         
         Luke&#39;s Blog
     </title>
@@ -240,7 +240,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        Vue Basic Syntax
+                        Docker - Ubuntu SSH Setup
                     </div>
                 
 
@@ -268,7 +268,7 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-alt"></i>&nbsp;
-                <span class="datetime">2025-01-12</span>
+                <span class="datetime">2024-11-20</span>
             </span>
 
             
@@ -285,19 +285,25 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/docker/">docker</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/ubuntu/">ubuntu</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/ssh/">ssh</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/devops/">devops</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/containerization/">containerization</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/linux/">linux</a></li>
+                        
+                    
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/tutorial/">tutorial</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/vue/">vue</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/syntax/">syntax</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/basics/">basics</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/guide/">guide</a></li>
                         
                     
                 </ul>
@@ -307,12 +313,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>67 Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>361 Words</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>2 Mins</span>
             </span>
         
         
@@ -330,28 +336,59 @@
                     
 
                     
-                         <h1 id="Vue-Basic-Syntax"><a href="#Vue-Basic-Syntax" class="headerlink" title="Vue Basic Syntax"></a>Vue Basic Syntax</h1><h2 id="Directives"><a href="#Directives" class="headerlink" title="Directives"></a>Directives</h2><ul>
-<li><strong>Event Binding</strong>: <code>v-on</code> or shorthand <code>@click</code></li>
-<li><strong>Attribute Binding</strong>: <code>v-bind</code> or shorthand <code>:attribute</code><ul>
-<li>Examples: <code>:input</code>, <code>:input.enter</code>, <code>:key</code></li>
-</ul>
-</li>
-<li><strong>Two-Way Binding</strong>: <code>v-model</code></li>
-<li><strong>Conditional Rendering</strong>:<ul>
-<li><code>v-if</code></li>
-<li><code>v-else-if</code></li>
-<li><code>v-else</code></li>
-<li><code>v-show</code></li>
-</ul>
-</li>
-<li><strong>List Rendering</strong>: <code>v-for</code><ul>
-<li>Example: <code>v-for=&quot;goal in goals&quot;</code></li>
-</ul>
-</li>
-</ul>
-<h2 id="Communication-Between-Components"><a href="#Communication-Between-Components" class="headerlink" title="Communication Between Components"></a>Communication Between Components</h2><ul>
-<li><strong>Props</strong>: Pass data from parent to child</li>
-<li><strong>Emits</strong>: Send events from child to parent</li>
+                         <h1 id="Docker-Ubuntu-SSH-Setup"><a href="#Docker-Ubuntu-SSH-Setup" class="headerlink" title="Docker - Ubuntu SSH Setup"></a>Docker - Ubuntu SSH Setup</h1><p><strong>host</strong>: use the same port -&gt; just change to the ssh port that does not contract with nas</p>
+<h2 id="Environment-Settings-For-Ubuntu-Container"><a href="#Environment-Settings-For-Ubuntu-Container" class="headerlink" title="Environment Settings For Ubuntu Container"></a>Environment Settings For Ubuntu Container</h2><p>:::spoiler Dockerfile</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> ubuntu:latest</span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt-get update &amp;&amp; apt-get install -y openssh-server</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">mkdir</span> /var/run/sshd</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">echo</span> <span class="string">&#x27;root:your_password&#x27;</span> | chpasswd</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> sed -i <span class="string">&#x27;s/PermitRootLogin prohibit-password/PermitRootLogin yes/&#x27;</span> /etc/ssh/sshd_config</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> sed <span class="string">&#x27;s@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g&#x27;</span> -i /etc/pam.d/sshd</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Other installation</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt-get upgrade -y</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt-get install <span class="built_in">sudo</span></span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt-get install nano</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt-get install vim -y</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt-get install curl -y</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt-get install git -y</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">22</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;/usr/sbin/sshd&quot;</span>, <span class="string">&quot;-D&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+<p>:::</p>
+<p>:::spoiler Docker build and push to Docker Hub</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker build -t ubuntu_ssh .</span><br><span class="line">docker tag ubuntu_ssh wulukewu/ubuntu_ssh:latest</span><br><span class="line">docker push wulukewu/ubuntu_ssh:latest</span><br></pre></td></tr></table></figure>
+<p>:::</p>
+<p>:::spoiler Install OpenSSH-Server</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">apt-get update </span><br><span class="line">apt-get install -y openssh-server</span><br><span class="line">mkdir /var/run/sshd</span><br><span class="line">echo &#x27;root:your_password&#x27; | chpasswd</span><br><span class="line">sed -i &#x27;s/PermitRootLogin prohibit-password/PermitRootLogin yes/&#x27; /etc/ssh/sshd_config</span><br><span class="line">sed &#x27;s@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g&#x27; -i /etc/pam.d/sshd</span><br><span class="line">`/usr/sbin/sshd -D`</span><br></pre></td></tr></table></figure>
+<p>:::</p>
+<hr>
+<p>Pull <code>ubuntu_ssh</code> From Docker Hub</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker pull wulukewu/ubuntu_ssh:latest</span><br></pre></td></tr></table></figure>
+
+<p>Run <code>ubuntu_ssh</code> in Host</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -d --net=host --name ubuntu_ssh wulukewu/ubuntu_ssh:latest</span><br></pre></td></tr></table></figure>
+
+<p>Get Inside Ubuntu Container</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker exec -i -t ubuntu_ssh /bin/bash</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>Change Hostname</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/hostname</span><br><span class="line">sudo nano /etc/hosts</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+
+<p>Display The Current Ubuntu Hostname</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostname</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>Change SSH Port</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/ssh/sshd_config</span><br><span class="line">service ssh restart</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>Add New Sudo User to the System</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adduser user_name</span><br></pre></td></tr></table></figure>
+
+<p>Adding the User to the sudo Group</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">usermod -aG sudo user_name</span><br><span class="line">usermod -aG root user_name</span><br></pre></td></tr></table></figure>
+
+<p>Change user password</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd user_name</span><br></pre></td></tr></table></figure>
+
+<p>Testing sudo Access</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - user_name</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.cherryservers.com/blog/ssh-into-docker-container" >How to SSH into a Docker Container | Step-by-Step Tutorial<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://peihsinsu.gitbooks.io/docker-note-book/content/docker-save-image.html" >把image另外儲存成檔案<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.cyberciti.biz/faq/ubuntu-change-hostname-command/" >Ubuntu Linux Change Hostname (computer name)<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10193457" >Day 21：介紹 Docker 的 Network (二)<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://yingclin.github.io/2018/docker-basic.html" >[小抄] Docker 基本命令<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/how-to-create-a-new-sudo-enabled-user-on-ubuntu" >How To Create A New Sudo Enabled User on Ubuntu<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://askubuntu.com/questions/423942/change-password-on-root-user-and-user-account" >Change password on root user and user account<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://chatgpt.com/share/673dd661-36a0-8007-8442-b5d1cb04bebd" >Ask ChatGPT<i class="fas fa-external-link-alt"></i></a></li>
 </ul>
 
                     
@@ -363,11 +400,11 @@
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                Vue Basic Syntax
+                Docker - Ubuntu SSH Setup
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
-                2025/01/vue-basic-syntax/
+                2024/11/docker-ubuntu-ssh-setup/
             </div>
         </div>
 
@@ -383,7 +420,7 @@
                 <div class="type">
                     Published
                 </div>
-                <div class="content">2025-01-12 11:27</div>
+                <div class="content">2024-11-20 20:51</div>
             </div>
 
 
@@ -419,23 +456,31 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/docker/">docker</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/ubuntu/">ubuntu</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/ssh/">ssh</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/devops/">devops</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/containerization/">containerization</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/linux/">linux</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
                                         <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/tutorial/">tutorial</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/vue/">vue</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/syntax/">syntax</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/basics/">basics</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/guide/">guide</a>
                                     </li>
                                 
                             </ul>
@@ -451,15 +496,31 @@
                 
                     <div class="post-nav border-box">
                         
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/blog/2025/01/vue-basic-syntax/"
+                                   title="Vue Basic Syntax"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Vue Basic Syntax</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/blog/2024/11/docker-ubuntu-ssh-setup/"
-                                   title="Docker - Ubuntu SSH Setup"
+                                   href="/blog/2024/11/github-ssh-key/"
+                                   title="設定GitHub SSH金鑰"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Docker - Ubuntu SSH Setup</span>
+                                        <span class="post-nav-title-item text-ellipsis">設定GitHub SSH金鑰</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -487,7 +548,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue-Basic-Syntax"><span class="nav-text">Vue Basic Syntax</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Directives"><span class="nav-text">Directives</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Communication-Between-Components"><span class="nav-text">Communication Between Components</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-Ubuntu-SSH-Setup"><span class="nav-text">Docker - Ubuntu SSH Setup</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Environment-Settings-For-Ubuntu-Container"><span class="nav-text">Environment Settings For Ubuntu Container</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-text">References</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -647,7 +708,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue-Basic-Syntax"><span class="nav-text">Vue Basic Syntax</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Directives"><span class="nav-text">Directives</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Communication-Between-Components"><span class="nav-text">Communication Between Components</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-Ubuntu-SSH-Setup"><span class="nav-text">Docker - Ubuntu SSH Setup</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Environment-Settings-For-Ubuntu-Container"><span class="nav-text">Environment Settings For Ubuntu Container</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-text">References</span></a></li></ol></li></ol>
     </div>
 </div>
 
