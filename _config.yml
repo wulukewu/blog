@@ -15,7 +15,7 @@ timezone: ''
 math:
   engine: 'mathjax'
   mathjax:
-    src: /js/mathjax/tex-mml-chtml.js
+    src: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
