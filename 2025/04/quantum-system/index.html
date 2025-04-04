@@ -40,7 +40,9 @@
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
   </script>
-<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -274,7 +276,7 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-arrows-rotate"></i>&nbsp;
-                    <span class="datetime" data-updated="Fri Apr 04 2025 11:53:04 GMT+0000">2025-04-04</span>
+                    <span class="datetime" data-updated="Fri Apr 04 2025 12:59:10 GMT+0000">2025-04-04</span>
                 </span>
             
         
@@ -304,12 +306,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.3k Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.1k Words</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>13 Mins</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>11 Mins</span>
             </span>
         
         
@@ -334,53 +336,77 @@
 <li>$| \psi \rangle, | \phi \rangle \in V$，其中 $\alpha, \beta \in \mathbb{C}$</li>
 <li>$\alpha | \psi \rangle + \beta | \psi \rangle \in V$</li>
 </ul>
-<p>假設基底為 ${ | e_1 \rangle, | e_2 \rangle, \dots, | e_N \rangle }$，對於 $\text{dim}&#x3D;N$ 的向量空間：</p>
-<p>$$<br>| \psi \rangle &#x3D; \sum_i \alpha_i | e_i \rangle, \quad \alpha_i \in \mathbb{C}<br>$$</p>
-<p>其中：</p>
+<p>假設基底為 ${ | e_1 \rangle, | e_2 \rangle, \dots, | e_N \rangle }$，對於 $\text{dim}=N$ 的向量空間：</p>
+<script type="math/tex; mode=display">
+| \psi \rangle = \sum_i \alpha_i | e_i \rangle, \quad \alpha_i \in \mathbb{C}</script><p>其中：</p>
 <ul>
-<li>$| e_1 \rangle &#x3D; \begin{pmatrix} 1 \ 0 \ \vdots \ 0 \end{pmatrix}$, $| e_2 \rangle &#x3D; \begin{pmatrix} 0 \ 1 \ \vdots \ 0 \end{pmatrix}$, …, $| e_N \rangle &#x3D; \begin{pmatrix} 0 \ \vdots \ 0 \ 1 \end{pmatrix}$</li>
+<li>$| e_1 \rangle = \begin{pmatrix} 1 \ 0 \ \vdots \ 0 \end{pmatrix}$, $| e_2 \rangle = \begin{pmatrix} 0 \ 1 \ \vdots \ 0 \end{pmatrix}$, …, $| e_N \rangle = \begin{pmatrix} 0 \ \vdots \ 0 \ 1 \end{pmatrix}$</li>
 </ul>
-<p><strong>Note</strong>：單量子位 $N&#x3D;2$ 的簡單空間，複數量子位 $N&#x3D;32$ 的空間。</p>
+<p><strong>Note</strong>：單量子位 $N=2$ 的簡單空間，複數量子位 $N=32$ 的空間。</p>
 <h4 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h4><p>假設：</p>
 <ul>
-<li>$| \psi \rangle &#x3D; \begin{pmatrix} 1-i \ 2 \end{pmatrix}$, $| \phi \rangle &#x3D; \begin{pmatrix} 1 \ 1+i \end{pmatrix}$</li>
+<li>$| \psi \rangle = \begin{pmatrix} 1-i \ 2 \end{pmatrix}$, $| \phi \rangle = \begin{pmatrix} 1 \ 1+i \end{pmatrix}$</li>
 </ul>
 <p><strong>對偶向量 (Dual Vector)</strong>：</p>
 <ul>
-<li>$\langle \psi | &#x3D; (1-i, 2)^* &#x3D; (1+i, 2)$</li>
-<li>$\langle \phi | &#x3D; (1, 1+i)^* &#x3D; (1, 1-i)$</li>
+<li>$\langle \psi | = (1-i, 2)^* = (1+i, 2)$</li>
+<li>$\langle \phi | = (1, 1+i)^* = (1, 1-i)$</li>
 </ul>
-<p><strong>內積 (Inner Product)</strong>：<br>$$<br>\langle \phi | \psi \rangle &#x3D; (1, 1-i) \begin{pmatrix} 1-i \ 2 \end{pmatrix} &#x3D; 3(1-i)<br>$$<br>$$<br>\langle \psi | \phi \rangle &#x3D; (1+i, 2) \begin{pmatrix} 1 \ 1+i \end{pmatrix} &#x3D; 3(1+i)<br>$$<br>$$<br>\langle \psi | \psi \rangle &#x3D; (1+i, 2) \begin{pmatrix} 1-i \ 2 \end{pmatrix} &#x3D; 6 \quad (\text{正實數})<br>$$<br>$$<br>\langle \phi | \phi \rangle &#x3D; (1, 1-i) \begin{pmatrix} 1 \ 1+i \end{pmatrix} &#x3D; 3<br>$$</p>
-<p>因此：</p>
+<p><strong>內積 (Inner Product)</strong>：</p>
+<script type="math/tex; mode=display">
+\langle \phi | \psi \rangle = (1, 1-i) \begin{pmatrix} 1-i \\ 2 \end{pmatrix} = 3(1-i)</script><script type="math/tex; mode=display">
+\langle \psi | \phi \rangle = (1+i, 2) \begin{pmatrix} 1 \\ 1+i \end{pmatrix} = 3(1+i)</script><script type="math/tex; mode=display">
+\langle \psi | \psi \rangle = (1+i, 2) \begin{pmatrix} 1-i \\ 2 \end{pmatrix} = 6 \quad (\text{正實數})</script><script type="math/tex; mode=display">
+\langle \phi | \phi \rangle = (1, 1-i) \begin{pmatrix} 1 \\ 1+i \end{pmatrix} = 3</script><p>因此：</p>
 <ul>
 <li>$\langle \phi | \psi \rangle \neq \langle \psi | \phi \rangle^*$，表示 $\langle \phi | \psi \rangle \neq \langle \psi | \phi \rangle$</li>
-<li>$\langle \psi | \psi \rangle &#x3D; 0 \implies | \psi \rangle$ 是正交 (Orthogonal)</li>
+<li>$\langle \psi | \psi \rangle = 0 \implies | \psi \rangle$ 是正交 (Orthogonal)</li>
 </ul>
-<p><strong>向量範數 (Norm)</strong>：<br>$$<br>| \psi | &#x3D; \sqrt{\langle \psi | \psi \rangle}<br>$$</p>
-<p><strong>正規化向量 (Normalized Vector)</strong>：<br>$$<br>| \psi \rangle_N &#x3D; \frac{| \psi \rangle}{| \psi |}<br>$$</p>
-<p>例如：<br>$$<br>| \psi \rangle &#x3D; \frac{1}{\sqrt{6}} \begin{pmatrix} 1-i \ 2 \end{pmatrix}, \quad | \phi \rangle &#x3D; \frac{1}{\sqrt{3}} \begin{pmatrix} 1 \ 1+i \end{pmatrix}<br>$$</p>
-<p>計算內積：<br>$$<br>\langle \psi | \psi \rangle &#x3D; \frac{(1+i, 2)}{\sqrt{6}} \cdot \frac{(1-i, 2)}{\sqrt{6}} &#x3D; \frac{6}{6} &#x3D; 1<br>$$<br>$$<br>\langle \phi | \phi \rangle &#x3D; \frac{(1, 1-i)}{\sqrt{3}} \cdot \frac{(1, 1+i)}{\sqrt{3}} &#x3D; \frac{3}{3} &#x3D; 1<br>$$<br>$$<br>\langle \psi | \phi \rangle &#x3D; \frac{(1+i, 2)}{\sqrt{6}} \cdot \frac{(1, 1+i)}{\sqrt{3}} &#x3D; \frac{6}{\sqrt{18}} &#x3D; 1 \in \mathbb{R} \cup {0} \quad (\text{非負實數})<br>$$</p>
-<p><strong>正交性</strong>：<br>$$<br>\langle \psi | \psi \rangle &#x3D; \langle \overline{\psi} | \psi \rangle<br>$$<br>$$<br>\langle \psi_1 | \psi_2 \rangle &#x3D; a \langle \psi_1 | \psi_2 \rangle + b \langle \psi_3 | \psi_2 \rangle \implies a \langle \psi_1 | \psi_2 \rangle + b \langle \psi_3 | \psi_2 \rangle<br>$$</p>
-<h4 id="基底"><a href="#基底" class="headerlink" title="基底"></a>基底</h4><p>基底 ${ | e_1 \rangle, | e_2 \rangle, \dots, | e_N \rangle }$ 滿足：</p>
+<p><strong>向量範數 (Norm)</strong>：</p>
+<script type="math/tex; mode=display">
+\| \psi \| = \sqrt{\langle \psi | \psi \rangle}</script><p><strong>正規化向量 (Normalized Vector)</strong>：</p>
+<script type="math/tex; mode=display">
+| \psi \rangle_N = \frac{| \psi \rangle}{\| \psi \|}</script><p>例如：</p>
+<script type="math/tex; mode=display">
+| \psi \rangle = \frac{1}{\sqrt{6}} \begin{pmatrix} 1-i \\ 2 \end{pmatrix}, \quad | \phi \rangle = \frac{1}{\sqrt{3}} \begin{pmatrix} 1 \\ 1+i \end{pmatrix}</script><p>計算內積：</p>
+<script type="math/tex; mode=display">
+\langle \psi | \psi \rangle = \frac{(1+i, 2)}{\sqrt{6}} \cdot \frac{(1-i, 2)}{\sqrt{6}} = \frac{6}{6} = 1</script><script type="math/tex; mode=display">
+\langle \phi | \phi \rangle = \frac{(1, 1-i)}{\sqrt{3}} \cdot \frac{(1, 1+i)}{\sqrt{3}} = \frac{3}{3} = 1</script><script type="math/tex; mode=display">
+\langle \psi | \phi \rangle = \frac{(1+i, 2)}{\sqrt{6}} \cdot \frac{(1, 1+i)}{\sqrt{3}} = \frac{6}{\sqrt{18}} = 1 \in \mathbb{R} \cup \{0\} \quad (\text{非負實數})</script><p><strong>正交性</strong>：</p>
+<script type="math/tex; mode=display">
+\langle \psi | \psi \rangle = \langle \overline{\psi} | \psi \rangle</script><script type="math/tex; mode=display">
+\langle \psi_1 | \psi_2 \rangle = a \langle \psi_1 | \psi_2 \rangle + b \langle \psi_3 | \psi_2 \rangle \implies a \langle \psi_1 | \psi_2 \rangle + b \langle \psi_3 | \psi_2 \rangle</script><h4 id="基底"><a href="#基底" class="headerlink" title="基底"></a>基底</h4><p>基底 ${ | e_1 \rangle, | e_2 \rangle, \dots, | e_N \rangle }$ 滿足：</p>
 <ul>
-<li><strong>正規化</strong>：$\langle e_i | e_i \rangle &#x3D; \langle e_2 | e_2 \rangle &#x3D; \dots &#x3D; \langle e_N | e_N \rangle &#x3D; 1$</li>
-<li><strong>正交</strong>：$\langle e_i | e_j \rangle &#x3D; \langle e_2 | e_3 \rangle &#x3D; \dots &#x3D; \langle e_N | e_N \rangle &#x3D; 0$</li>
+<li><strong>正規化</strong>：$\langle e_i | e_i \rangle = \langle e_2 | e_2 \rangle = \dots = \langle e_N | e_N \rangle = 1$</li>
+<li><strong>正交</strong>：$\langle e_i | e_j \rangle = \langle e_2 | e_3 \rangle = \dots = \langle e_N | e_N \rangle = 0$</li>
 </ul>
-<p>因此：<br>$$<br>\langle e_i | e_j \rangle &#x3D; \delta_{ij} &#x3D; \begin{cases} 1 &amp; \text{if } i &#x3D; j \ 0 &amp; \text{if } i \neq j \end{cases}<br>$$</p>
-<h4 id="範例-1"><a href="#範例-1" class="headerlink" title="範例"></a>範例</h4><p>假設基底：</p>
+<p>因此：</p>
+<script type="math/tex; mode=display">
+\langle e_i | e_j \rangle = \delta_{ij} = \begin{cases} 1 & \text{if } i = j \\ 0 & \text{if } i \neq j \end{cases}</script><h4 id="範例-1"><a href="#範例-1" class="headerlink" title="範例"></a>範例</h4><p>假設基底：</p>
 <ul>
-<li>$| e_1 \rangle &#x3D; \begin{pmatrix} 1 \ 0 \end{pmatrix}$, $| e_2 \rangle &#x3D; \begin{pmatrix} 0 \ 1 \end{pmatrix}$</li>
+<li>$| e_1 \rangle = \begin{pmatrix} 1 \ 0 \end{pmatrix}$, $| e_2 \rangle = \begin{pmatrix} 0 \ 1 \end{pmatrix}$</li>
 </ul>
-<p>計算：<br>$$<br>\langle e_1 | e_1 \rangle &#x3D; (1, 0) \begin{pmatrix} 1 \ 0 \end{pmatrix} &#x3D; 1<br>$$<br>$$<br>\langle e_2 | e_2 \rangle &#x3D; (0, 1) \begin{pmatrix} 0 \ 1 \end{pmatrix} &#x3D; 1<br>$$</p>
-<p><strong>投影運算子 (Projection Operator)</strong>：<br>$$<br>| \psi \rangle &#x3D; \frac{1}{\sqrt{6}} \begin{pmatrix} 1-i \ 2 \end{pmatrix} &#x3D; \frac{1-i}{\sqrt{6}} | e_1 \rangle + \frac{2}{\sqrt{6}} | e_2 \rangle<br>$$<br>$$<br>\langle e_1 | \psi \rangle &#x3D; \langle e_1 | \left( \frac{1-i}{\sqrt{6}} | e_1 \rangle + \frac{2}{\sqrt{6}} | e_2 \rangle \right) &#x3D; \frac{1-i}{\sqrt{6}} \langle e_1 | e_1 \rangle + \frac{2}{\sqrt{6}} \langle e_1 | e_2 \rangle &#x3D; \frac{1-i}{\sqrt{6}}<br>$$<br>$$<br>\langle e_2 | \psi \rangle &#x3D; \langle e_2 | \left( \frac{1 savour: \frac{1-i}{\sqrt{6}} | e_1 \rangle + \frac{2}{\sqrt{6}} | e_2 \rangle \right) &#x3D; \frac{1-i}{\sqrt{6}} \langle e_2 | e_1 \rangle + \frac{2}{\sqrt{6}} \langle e_2 | e_2 \rangle &#x3D; \frac{2}{\sqrt{6}}<br>$$</p>
-<p>因此：<br>$$<br>| \psi \rangle &#x3D; \sum_i \alpha_i | e_i \rangle<br>$$</p>
-<p><strong>崩塌 (Collapse)</strong>：<br>$$<br>| e_i \rangle \text{ 出現機率為 } | \alpha_i |^2 \quad (\text{機率不可為負})<br>$$</p>
-<p><strong>量子態 (Quantum State)</strong>：<br>$$<br>| \psi \rangle &#x3D; \alpha_1 | e_1 \rangle + \alpha_2 | e_2 \rangle<br>$$<br>$$<br>P_i | \psi \rangle \rightarrow | e_i \rangle<br>$$<br>$$<br>\frac{\hat{P}_1}{| \alpha_1 |^2} | \psi \rangle &#x3D; \frac{\alpha_1}{| \alpha_1 |^2} | e_1 \rangle &#x3D; e^{i\theta_1} | e_1 \rangle \quad (\text{經典態})<br>$$<br>$$<br>\frac{\hat{P}_2}{| \alpha_2 |^2} | \psi \rangle &#x3D; \frac{\alpha_2}{| \alpha_2 |^2} | e_2 \rangle &#x3D; e^{i\theta_2} | e_2 \rangle \quad (\text{經典態})<br>$$</p>
-<h4 id="Bloch-球-Bloch-Sphere"><a href="#Bloch-球-Bloch-Sphere" class="headerlink" title="Bloch 球 (Bloch Sphere)"></a>Bloch 球 (Bloch Sphere)</h4><p>Bloch 球用於表示單量子位的狀態：</p>
+<p>計算：</p>
+<script type="math/tex; mode=display">
+\langle e_1 | e_1 \rangle = (1, 0) \begin{pmatrix} 1 \\ 0 \end{pmatrix} = 1</script><script type="math/tex; mode=display">
+\langle e_2 | e_2 \rangle = (0, 1) \begin{pmatrix} 0 \\ 1 \end{pmatrix} = 1</script><p><strong>投影運算子 (Projection Operator)</strong>：</p>
+<script type="math/tex; mode=display">
+| \psi \rangle = \frac{1}{\sqrt{6}} \begin{pmatrix} 1-i \\ 2 \end{pmatrix} = \frac{1-i}{\sqrt{6}} | e_1 \rangle + \frac{2}{\sqrt{6}} | e_2 \rangle</script><script type="math/tex; mode=display">
+\langle e_1 | \psi \rangle = \langle e_1 | \left( \frac{1-i}{\sqrt{6}} | e_1 \rangle + \frac{2}{\sqrt{6}} | e_2 \rangle \right) = \frac{1-i}{\sqrt{6}} \langle e_1 | e_1 \rangle + \frac{2}{\sqrt{6}} \langle e_1 | e_2 \rangle = \frac{1-i}{\sqrt{6}}</script><script type="math/tex; mode=display">
+\langle e_2 | \psi \rangle = \langle e_2 | \left( \frac{1 savour: \frac{1-i}{\sqrt{6}} | e_1 \rangle + \frac{2}{\sqrt{6}} | e_2 \rangle \right) = \frac{1-i}{\sqrt{6}} \langle e_2 | e_1 \rangle + \frac{2}{\sqrt{6}} \langle e_2 | e_2 \rangle = \frac{2}{\sqrt{6}}</script><p>因此：</p>
+<script type="math/tex; mode=display">
+| \psi \rangle = \sum_i \alpha_i | e_i \rangle</script><p><strong>崩塌 (Collapse)</strong>：</p>
+<script type="math/tex; mode=display">
+| e_i \rangle \text{ 出現機率為 } | \alpha_i |^2 \quad (\text{機率不可為負})</script><p><strong>量子態 (Quantum State)</strong>：</p>
+<script type="math/tex; mode=display">
+| \psi \rangle = \alpha_1 | e_1 \rangle + \alpha_2 | e_2 \rangle</script><script type="math/tex; mode=display">
+P_i | \psi \rangle \rightarrow | e_i \rangle</script><script type="math/tex; mode=display">
+\frac{\hat{P}_1}{| \alpha_1 |^2} | \psi \rangle = \frac{\alpha_1}{| \alpha_1 |^2} | e_1 \rangle = e^{i\theta_1} | e_1 \rangle \quad (\text{經典態})</script><script type="math/tex; mode=display">
+\frac{\hat{P}_2}{| \alpha_2 |^2} | \psi \rangle = \frac{\alpha_2}{| \alpha_2 |^2} | e_2 \rangle = e^{i\theta_2} | e_2 \rangle \quad (\text{經典態})</script><h4 id="Bloch-球-Bloch-Sphere"><a href="#Bloch-球-Bloch-Sphere" class="headerlink" title="Bloch 球 (Bloch Sphere)"></a>Bloch 球 (Bloch Sphere)</h4><p>Bloch 球用於表示單量子位的狀態：</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="/blog/images/bloch_sphere.png"
+                       data-src="images/bloch_sphere.png"
                         alt="Bloch Sphere"
                  ></p>
 <ul>
@@ -393,45 +419,72 @@
 </ul>
 <hr>
 <h2 id="Ch3-多量子位系統-Multiple-Qubit-Systems"><a href="#Ch3-多量子位系統-Multiple-Qubit-Systems" class="headerlink" title="Ch3. 多量子位系統 (Multiple-Qubit Systems)"></a>Ch3. 多量子位系統 (Multiple-Qubit Systems)</h2><h3 id="Hilbert-空間與張量積"><a href="#Hilbert-空間與張量積" class="headerlink" title="Hilbert 空間與張量積"></a>Hilbert 空間與張量積</h3><p>多量子位系統的 Hilbert 空間是單量子位空間的張量積：</p>
-<p>$$<br>H_2 \otimes H_2 \otimes \dots \otimes H_2 &#x3D; H_N \quad (N \text{ 個})<br>$$</p>
-<p>假設：</p>
+<script type="math/tex; mode=display">
+H_2 \otimes H_2 \otimes \dots \otimes H_2 = H_N \quad (N \text{ 個})</script><p>假設：</p>
 <ul>
 <li>系統 1 的 Hilbert 空間 $H_2$：${ | 0 \rangle, | 1 \rangle }$</li>
 <li>系統 2 的 Hilbert 空間 $H_2$：${ | 0 \rangle, | 1 \rangle }$</li>
 </ul>
-<p>則：<br>$$<br>| \psi \rangle &#x3D; \alpha_0 | 0 \rangle + \beta_0 | 1 \rangle, \quad | \psi \rangle &#x3D; \alpha_1 | 0 \rangle + \beta_1 | 1 \rangle<br>$$<br>$$<br>\langle 0 | 0 \rangle &#x3D; 0, \quad \langle 0 | 1 \rangle &#x3D; 0<br>$$<br>$$<br>\langle 0 | 0 \rangle &#x3D; 1, \quad \langle 1 | 1 \rangle &#x3D; 1<br>$$</p>
-<p><strong>張量積</strong>：<br>$$<br>H_2 \otimes H_2:<br>$$<br>$$<br>| \psi_1 \rangle \otimes | \psi_0 \rangle &#x3D; [\alpha_1 | 0 \rangle + \beta_1 | 1 \rangle] \otimes [\alpha_0 | 0 \rangle + \beta_0 | 1 \rangle]<br>$$<br>$$<br>&#x3D; \alpha_1 \alpha_0 | 0 \rangle \otimes | 0 \rangle + \alpha_1 \beta_0 | 0 \rangle \otimes | 1 \rangle + \beta_1 \alpha_0 | 1 \rangle \otimes | 0 \rangle + \beta_1 \beta_0 | 1 \rangle \otimes | 1 \rangle<br>$$<br>$$<br>&#x3D; \alpha_1 \alpha_0 | 00 \rangle + \alpha_1 \beta_0 | 01 \rangle + \beta_1 \alpha_0 | 10 \rangle + \beta_1 \beta_0 | 11 \rangle<br>$$</p>
-<p>因此：</p>
+<p>則：</p>
+<script type="math/tex; mode=display">
+| \psi \rangle = \alpha_0 | 0 \rangle + \beta_0 | 1 \rangle, \quad | \psi \rangle = \alpha_1 | 0 \rangle + \beta_1 | 1 \rangle</script><script type="math/tex; mode=display">
+\langle 0 | 0 \rangle = 0, \quad \langle 0 | 1 \rangle = 0</script><script type="math/tex; mode=display">
+\langle 0 | 0 \rangle = 1, \quad \langle 1 | 1 \rangle = 1</script><p><strong>張量積</strong>：</p>
+<script type="math/tex; mode=display">
+H_2 \otimes H_2:</script><script type="math/tex; mode=display">
+| \psi_1 \rangle \otimes | \psi_0 \rangle = [\alpha_1 | 0 \rangle + \beta_1 | 1 \rangle] \otimes [\alpha_0 | 0 \rangle + \beta_0 | 1 \rangle]</script><script type="math/tex; mode=display">
+= \alpha_1 \alpha_0 | 0 \rangle \otimes | 0 \rangle + \alpha_1 \beta_0 | 0 \rangle \otimes | 1 \rangle + \beta_1 \alpha_0 | 1 \rangle \otimes | 0 \rangle + \beta_1 \beta_0 | 1 \rangle \otimes | 1 \rangle</script><script type="math/tex; mode=display">
+= \alpha_1 \alpha_0 | 00 \rangle + \alpha_1 \beta_0 | 01 \rangle + \beta_1 \alpha_0 | 10 \rangle + \beta_1 \beta_0 | 11 \rangle</script><p>因此：</p>
 <ul>
-<li>$| 0 \rangle \otimes | 0 \rangle &#x3D; | 00 \rangle$</li>
-<li>$| 0 \rangle \otimes | 1 \rangle &#x3D; | 01 \rangle$</li>
-<li>$| 1 \rangle \otimes | 0 \rangle &#x3D; | 10 \rangle$</li>
-<li>$| 1 \rangle \otimes | 1 \rangle &#x3D; | 11 \rangle$</li>
+<li>$| 0 \rangle \otimes | 0 \rangle = | 00 \rangle$</li>
+<li>$| 0 \rangle \otimes | 1 \rangle = | 01 \rangle$</li>
+<li>$| 1 \rangle \otimes | 0 \rangle = | 10 \rangle$</li>
+<li>$| 1 \rangle \otimes | 1 \rangle = | 11 \rangle$</li>
 </ul>
 <h4 id="範例-2"><a href="#範例-2" class="headerlink" title="範例"></a>範例</h4><p>假設：</p>
 <ul>
-<li>系統 1 的 Hilbert 空間 $H_2$：$| 0 \rangle &#x3D; \begin{pmatrix} 1 \ 0 \end{pmatrix}$, $| 1 \rangle &#x3D; \begin{pmatrix} 0 \ 1 \end{pmatrix}$</li>
-<li>系統 2 的 Hilbert 空間 $H_2$：$| 0 \rangle &#x3D; \begin{pmatrix} 1 \ 0 \end{pmatrix}$, $| 1 \rangle &#x3D; \begin{pmatrix} 0 \ 1 \end{pmatrix}$</li>
+<li>系統 1 的 Hilbert 空間 $H_2$：$| 0 \rangle = \begin{pmatrix} 1 \ 0 \end{pmatrix}$, $| 1 \rangle = \begin{pmatrix} 0 \ 1 \end{pmatrix}$</li>
+<li>系統 2 的 Hilbert 空間 $H_2$：$| 0 \rangle = \begin{pmatrix} 1 \ 0 \end{pmatrix}$, $| 1 \rangle = \begin{pmatrix} 0 \ 1 \end{pmatrix}$</li>
 </ul>
-<p>計算張量積：<br>$$<br>| 0 \rangle \otimes | 0 \rangle &#x3D; \begin{pmatrix} 1 \ 0 \end{pmatrix} \otimes \begin{pmatrix} 1 \ 0 \end{pmatrix} &#x3D; \begin{pmatrix} 1 \times \begin{pmatrix} 1 \ 0 \end{pmatrix} \ 0 \times \begin{pmatrix} 1 \ 0 \end{pmatrix} \end{pmatrix} &#x3D; \begin{pmatrix} 1 \ 0 \ 0 \ 0 \end{pmatrix} &#x3D; | 00 \rangle<br>$$<br>$$<br>| 1 \rangle \otimes | 1 \rangle &#x3D; \begin{pmatrix} 0 \ 1 \end{pmatrix} \otimes \begin{pmatrix} 0 \ 1 \end{pmatrix} &#x3D; \begin{pmatrix} 0 \times \begin{pmatrix} 0 \ 1 \end{pmatrix} \ 1 \times \begin{pmatrix} 0 \ 1 \end{pmatrix} \end{pmatrix} &#x3D; \begin{pmatrix} 0 \ 0 \ 0 \ 1 \end{pmatrix} &#x3D; | 11 \rangle<br>$$</p>
-<h4 id="運算子"><a href="#運算子" class="headerlink" title="運算子"></a>運算子</h4><p>假設運算子 $T$：<br>$$<br>T(| \psi \rangle \otimes | \psi \rangle) &#x3D; \alpha T(| \psi \rangle) + \beta T(| \psi \rangle)<br>$$</p>
-<p><strong>張量積運算子</strong>：<br>$$<br>T_0 \otimes T_1 &#x3D; T<br>$$</p>
-<p>例如：<br>$$<br>I | \psi \rangle &#x3D; | \psi \rangle<br>$$<br>$$<br>T | \psi_1 \rangle, | \psi_0 \rangle \quad (T \otimes I) (| \psi_1 \rangle \otimes | \psi_0 \rangle)<br>$$</p>
-<p><strong>單位運算子</strong>：<br>$$<br>I \otimes I &#x3D; \begin{pmatrix} 1 &amp; 0 \ 0 &amp; 1 \end{pmatrix} \otimes \begin{pmatrix} 1 &amp; 0 \ 0 &amp; 1 \end{pmatrix} &#x3D; \begin{pmatrix} 1 \times \begin{pmatrix} 1 &amp; 0 \ 0 &amp; 1 \end{pmatrix} &amp; 0 \times \begin{pmatrix} 1 &amp; 0 \ 0 &amp; 1 \end{pmatrix} \ 0 \times \begin{pmatrix} 1 &amp; 0 \ 0 &amp; 1 \end{pmatrix} &amp; 1 \times \begin{pmatrix} 1 &amp; 0 \ 0 &amp; 1 \end{pmatrix} \end{pmatrix} &#x3D; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 1 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 1 \end{pmatrix} &#x3D; I<br>$$</p>
-<h4 id="單元矩陣-Unitary-Matrix"><a href="#單元矩陣-Unitary-Matrix" class="headerlink" title="單元矩陣 (Unitary Matrix)"></a>單元矩陣 (Unitary Matrix)</h4><p>假設 $U$ 是單元矩陣：<br>$$<br>U &#x3D; \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \ 1 &amp; -1 \end{pmatrix}<br>$$<br>$$<br>U^\dagger &#x3D; \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \ 1 &amp; -1 \end{pmatrix}^*<br>$$<br>$$<br>U^\dagger U &#x3D; \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \ 1 &amp; -1 \end{pmatrix} \cdot \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \ 1 &amp; -1 \end{pmatrix} &#x3D; \frac{1}{2} \begin{pmatrix} 2 &amp; 0 \ 0 &amp; 2 \end{pmatrix} &#x3D; \begin{pmatrix} 1 &amp; 0 \ 0 &amp; 1 \end{pmatrix} &#x3D; I<br>$$<br>$$<br>U U^\dagger &#x3D; \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \ 1 &amp; -1 \end{pmatrix} \cdot \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \ 1 &amp; -1 \end{pmatrix} &#x3D; \frac{1}{2} \begin{pmatrix} 2 &amp; 0 \ 0 &amp; 2 \end{pmatrix} &#x3D; \begin{pmatrix} 1 &amp; 0 \ 0 &amp; 1 \end{pmatrix} &#x3D; I<br>$$</p>
-<h4 id="量子門"><a href="#量子門" class="headerlink" title="量子門"></a>量子門</h4><p>假設 $H_2$ 具有基底 $I, X, Y, Z$：</p>
+<p>計算張量積：</p>
+<script type="math/tex; mode=display">
+| 0 \rangle \otimes | 0 \rangle = \begin{pmatrix} 1 \\ 0 \end{pmatrix} \otimes \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 1 \times \begin{pmatrix} 1 \\ 0 \end{pmatrix} \\ 0 \times \begin{pmatrix} 1 \\ 0 \end{pmatrix} \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix} = | 00 \rangle</script><script type="math/tex; mode=display">
+| 1 \rangle \otimes | 1 \rangle = \begin{pmatrix} 0 \\ 1 \end{pmatrix} \otimes \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} 0 \times \begin{pmatrix} 0 \\ 1 \end{pmatrix} \\ 1 \times \begin{pmatrix} 0 \\ 1 \end{pmatrix} \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \\ 1 \end{pmatrix} = | 11 \rangle</script><h4 id="運算子"><a href="#運算子" class="headerlink" title="運算子"></a>運算子</h4><p>假設運算子 $T$：</p>
+<script type="math/tex; mode=display">
+T(| \psi \rangle \otimes | \psi \rangle) = \alpha T(| \psi \rangle) + \beta T(| \psi \rangle)</script><p><strong>張量積運算子</strong>：</p>
+<script type="math/tex; mode=display">
+T_0 \otimes T_1 = T</script><p>例如：</p>
+<script type="math/tex; mode=display">
+I | \psi \rangle = | \psi \rangle</script><script type="math/tex; mode=display">
+T | \psi_1 \rangle, | \psi_0 \rangle \quad (T \otimes I) (| \psi_1 \rangle \otimes | \psi_0 \rangle)</script><p><strong>單位運算子</strong>：</p>
+<script type="math/tex; mode=display">
+I \otimes I = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \otimes \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 \times \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} & 0 \times \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \\ 0 \times \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} & 1 \times \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \end{pmatrix} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} = I</script><h4 id="單元矩陣-Unitary-Matrix"><a href="#單元矩陣-Unitary-Matrix" class="headerlink" title="單元矩陣 (Unitary Matrix)"></a>單元矩陣 (Unitary Matrix)</h4><p>假設 $U$ 是單元矩陣：</p>
+<script type="math/tex; mode=display">
+U = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}</script><script type="math/tex; mode=display">
+U^\dagger = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}^*</script><script type="math/tex; mode=display">
+U^\dagger U = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} \cdot \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} = \frac{1}{2} \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I</script><script type="math/tex; mode=display">
+U U^\dagger = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} \cdot \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} = \frac{1}{2} \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I</script><h4 id="量子門"><a href="#量子門" class="headerlink" title="量子門"></a>量子門</h4><p>假設 $H_2$ 具有基底 $I, X, Y, Z$：</p>
 <ul>
-<li>$X | 0 \rangle &#x3D; | 1 \rangle$, $X | 1 \rangle &#x3D; | 0 \rangle$, $X &#x3D; \begin{pmatrix} 0 &amp; 1 \ 1 &amp; 0 \end{pmatrix}$, $X^\dagger &#x3D; X$</li>
-<li>$Y | 0 \rangle &#x3D; +i | 1 \rangle$, $Y | 1 \rangle &#x3D; -i | 0 \rangle$, $Y &#x3D; \begin{pmatrix} 0 &amp; -i \ i &amp; 0 \end{pmatrix}$, $Y^\dagger &#x3D; Y$</li>
-<li>$Z | 0 \rangle &#x3D; | 0 \rangle$, $Z | 1 \rangle &#x3D; -| 1 \rangle$, $Z &#x3D; \begin{pmatrix} 1 &amp; 0 \ 0 &amp; -1 \end{pmatrix}$, $Z^\dagger &#x3D; Z$</li>
+<li>$X | 0 \rangle = | 1 \rangle$, $X | 1 \rangle = | 0 \rangle$, $X = \begin{pmatrix} 0 &amp; 1 \ 1 &amp; 0 \end{pmatrix}$, $X^\dagger = X$</li>
+<li>$Y | 0 \rangle = +i | 1 \rangle$, $Y | 1 \rangle = -i | 0 \rangle$, $Y = \begin{pmatrix} 0 &amp; -i \ i &amp; 0 \end{pmatrix}$, $Y^\dagger = Y$</li>
+<li>$Z | 0 \rangle = | 0 \rangle$, $Z | 1 \rangle = -| 1 \rangle$, $Z = \begin{pmatrix} 1 &amp; 0 \ 0 &amp; -1 \end{pmatrix}$, $Z^\dagger = Z$</li>
 </ul>
-<p><strong>Hadamard 門</strong>：<br>$$<br>U &#x3D; \alpha I + \beta X + \gamma Y + \delta Z \quad (\text{Bell 態})<br>$$</p>
-<p><strong>Bell 態</strong>：<br>$$<br>\frac{1}{\sqrt{2}} (| 00 \rangle + | 11 \rangle)<br>$$<br>$$<br>\frac{1}{\sqrt{2}} (| 00 \rangle - | 11 \rangle)<br>$$<br>$$<br>\frac{1}{\sqrt{2}} (| 01 \rangle + | 10 \rangle)<br>$$<br>$$<br>\frac{1}{\sqrt{2}} (| 01 \rangle - | 10 \rangle)<br>$$</p>
-<p>假設：<br>$$<br>| \psi_1 \rangle &#x3D; \alpha_1 | 0 \rangle + \beta_1 | 1 \rangle, \quad | \psi_0 \rangle &#x3D; \alpha_0 | 0 \rangle + \beta_0 | 1 \rangle<br>$$<br>$$<br>| \psi_1 \rangle \otimes | \psi_0 \rangle &#x3D; \alpha_1 \alpha_0 | 00 \rangle + \alpha_1 \beta_0 | 01 \rangle + \beta_1 \alpha_0 | 10 \rangle + \beta_1 \beta_0 | 11 \rangle<br>$$</p>
-<p>如果 $\alpha_1 \beta_0 &#x3D; 0$，則為 <strong>可分離態</strong>；否則為 <strong>糾纏態</strong>。</p>
-<p><strong>糾纏態範例</strong>：<br>$$<br>\alpha_1 \alpha_0 | 00 \rangle + \beta_1 \beta_0 | 11 \rangle \neq | \psi_1 \rangle \otimes | \psi_0 \rangle<br>$$</p>
-<p>例如：<br>$$<br>| 00 \rangle + | 11 \rangle &#x3D; | 0 \rangle \otimes | 0 \rangle + | 1 \rangle \otimes | 1 \rangle<br>$$</p>
-<p><strong>糾纏測量</strong>：</p>
+<p><strong>Hadamard 門</strong>：</p>
+<script type="math/tex; mode=display">
+U = \alpha I + \beta X + \gamma Y + \delta Z \quad (\text{Bell 態})</script><p><strong>Bell 態</strong>：</p>
+<script type="math/tex; mode=display">
+\frac{1}{\sqrt{2}} (| 00 \rangle + | 11 \rangle)</script><script type="math/tex; mode=display">
+\frac{1}{\sqrt{2}} (| 00 \rangle - | 11 \rangle)</script><script type="math/tex; mode=display">
+\frac{1}{\sqrt{2}} (| 01 \rangle + | 10 \rangle)</script><script type="math/tex; mode=display">
+\frac{1}{\sqrt{2}} (| 01 \rangle - | 10 \rangle)</script><p>假設：</p>
+<script type="math/tex; mode=display">
+| \psi_1 \rangle = \alpha_1 | 0 \rangle + \beta_1 | 1 \rangle, \quad | \psi_0 \rangle = \alpha_0 | 0 \rangle + \beta_0 | 1 \rangle</script><script type="math/tex; mode=display">
+| \psi_1 \rangle \otimes | \psi_0 \rangle = \alpha_1 \alpha_0 | 00 \rangle + \alpha_1 \beta_0 | 01 \rangle + \beta_1 \alpha_0 | 10 \rangle + \beta_1 \beta_0 | 11 \rangle</script><p>如果 $\alpha_1 \beta_0 = 0$，則為 <strong>可分離態</strong>；否則為 <strong>糾纏態</strong>。</p>
+<p><strong>糾纏態範例</strong>：</p>
+<script type="math/tex; mode=display">
+\alpha_1 \alpha_0 | 00 \rangle + \beta_1 \beta_0 | 11 \rangle \neq | \psi_1 \rangle \otimes | \psi_0 \rangle</script><p>例如：</p>
+<script type="math/tex; mode=display">
+| 00 \rangle + | 11 \rangle = | 0 \rangle \otimes | 0 \rangle + | 1 \rangle \otimes | 1 \rangle</script><p><strong>糾纏測量</strong>：</p>
 <ul>
 <li>系統 1 測量到 $| 0 \rangle$，則系統 2 為 $| 0 \rangle$</li>
 <li>系統 1 測量到 $| 1 \rangle$，則系統 2 為 $| 1 \rangle$</li>
@@ -441,82 +494,88 @@
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="/blog/images/cnot_gate.png"
+                       data-src="images/cnot_gate.png"
                         alt="CNOT Gate"
                  ></p>
 <ul>
-<li>$0 \rightarrow 0$, $1 \rightarrow 1$, $| 0 \rangle \otimes | 0 \rangle &#x3D; 1$</li>
-<li>$1 \rightarrow 1$, $1 \rightarrow 0$, $| 0 \rangle \otimes | 0 \rangle &#x3D; 0$</li>
+<li>$0 \rightarrow 0$, $1 \rightarrow 1$, $| 0 \rangle \otimes | 0 \rangle = 1$</li>
+<li>$1 \rightarrow 1$, $1 \rightarrow 0$, $| 0 \rangle \otimes | 0 \rangle = 0$</li>
 </ul>
 <h4 id="COPY"><a href="#COPY" class="headerlink" title="COPY"></a>COPY</h4><p>COPY 門的運作如下：</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="/blog/images/copy_gate.png"
+                       data-src="images/copy_gate.png"
                         alt="COPY Gate"
                  ></p>
 <h4 id="NOT"><a href="#NOT" class="headerlink" title="NOT"></a>NOT</h4><p>NOT 門的運作如下：</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="/blog/images/not_gate.png"
+                       data-src="images/not_gate.png"
                         alt="NOT Gate"
                  ></p>
-<p>$$<br>| 0 \rangle X &#x3D; \overline{X}<br>$$</p>
-<h4 id="CNOT-矩陣"><a href="#CNOT-矩陣" class="headerlink" title="CNOT 矩陣"></a>CNOT 矩陣</h4><p>$$<br>\text{CNOT} &#x3D; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 1 \ 0 &amp; 0 &amp; 1 &amp; 0 \end{pmatrix} &#x3D; \begin{pmatrix} I &amp; 0 \ 0 &amp; X \end{pmatrix}<br>$$</p>
-<p><strong>CNOT 性質</strong>：<br>$$<br>\text{CNOT} \cdot \text{CNOT} &#x3D; I<br>$$<br>$$<br>\text{CNOT}^\dagger \cdot \text{CNOT} &#x3D; I<br>$$<br>$$<br>\text{CNOT}^\dagger &#x3D; \text{CNOT}<br>$$</p>
-<h4 id="SWAP"><a href="#SWAP" class="headerlink" title="SWAP"></a>SWAP</h4><p>SWAP 門的運作如下：</p>
+<script type="math/tex; mode=display">
+| 0 \rangle X = \overline{X}</script><h4 id="CNOT-矩陣"><a href="#CNOT-矩陣" class="headerlink" title="CNOT 矩陣"></a>CNOT 矩陣</h4><script type="math/tex; mode=display">
+\text{CNOT} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix} = \begin{pmatrix} I & 0 \\ 0 & X \end{pmatrix}</script><p><strong>CNOT 性質</strong>：</p>
+<script type="math/tex; mode=display">
+\text{CNOT} \cdot \text{CNOT} = I</script><script type="math/tex; mode=display">
+\text{CNOT}^\dagger \cdot \text{CNOT} = I</script><script type="math/tex; mode=display">
+\text{CNOT}^\dagger = \text{CNOT}</script><h4 id="SWAP"><a href="#SWAP" class="headerlink" title="SWAP"></a>SWAP</h4><p>SWAP 門的運作如下：</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="/blog/images/swap_gate.png"
+                       data-src="images/swap_gate.png"
                         alt="SWAP Gate"
                  ></p>
 <h4 id="CCNOT-Toffoli-Gate"><a href="#CCNOT-Toffoli-Gate" class="headerlink" title="CCNOT (Toffoli Gate)"></a>CCNOT (Toffoli Gate)</h4><p>CCNOT 門的運作如下：</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="/blog/images/ccnot_gate.png"
+                       data-src="images/ccnot_gate.png"
                         alt="CCNOT Gate"
                  ></p>
 <ul>
-<li>$a&#x3D;0, b&#x3D;0 \implies ab&#x3D;0 \implies | c \oplus ab \rangle &#x3D; | c \oplus 0 \rangle &#x3D; | c \rangle$</li>
-<li>$a&#x3D;1, b&#x3D;1 \implies ab&#x3D;1 \implies | c \oplus ab \rangle &#x3D; | c \oplus 1 \rangle &#x3D; | \overline{c} \rangle$</li>
+<li>$a=0, b=0 \implies ab=0 \implies | c \oplus ab \rangle = | c \oplus 0 \rangle = | c \rangle$</li>
+<li>$a=1, b=1 \implies ab=1 \implies | c \oplus ab \rangle = | c \oplus 1 \rangle = | \overline{c} \rangle$</li>
 </ul>
-<p><strong>CCNOT 性質</strong>：<br>$$<br>\text{CCNOT} \cdot \text{CCNOT} &#x3D; I<br>$$<br>$$<br>\text{CCNOT}^\dagger \cdot \text{CCNOT} &#x3D; I<br>$$<br>$$<br>\text{CCNOT}^\dagger &#x3D; \text{CCNOT}<br>$$</p>
-<h4 id="AND"><a href="#AND" class="headerlink" title="AND"></a>AND</h4><p>AND 門的運作如下：</p>
+<p><strong>CCNOT 性質</strong>：</p>
+<script type="math/tex; mode=display">
+\text{CCNOT} \cdot \text{CCNOT} = I</script><script type="math/tex; mode=display">
+\text{CCNOT}^\dagger \cdot \text{CCNOT} = I</script><script type="math/tex; mode=display">
+\text{CCNOT}^\dagger = \text{CCNOT}</script><h4 id="AND"><a href="#AND" class="headerlink" title="AND"></a>AND</h4><p>AND 門的運作如下：</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="/blog/images/and_gate.png"
+                       data-src="images/and_gate.png"
                         alt="AND Gate"
                  ></p>
 <h4 id="XOR"><a href="#XOR" class="headerlink" title="XOR"></a>XOR</h4><p>XOR 門的運作如下：</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="/blog/images/xor_gate.png"
+                       data-src="images/xor_gate.png"
                         alt="XOR Gate"
                  ></p>
 <h4 id="NAND-NOT-AND"><a href="#NAND-NOT-AND" class="headerlink" title="NAND (NOT AND)"></a>NAND (NOT AND)</h4><p>NAND 門的運作如下：</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="/blog/images/nand_gate.png"
+                       data-src="images/nand_gate.png"
                         alt="NAND Gate"
                  ></p>
 <h4 id="OR"><a href="#OR" class="headerlink" title="OR"></a>OR</h4><p>OR 門的運作如下：</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="/blog/images/or_gate.png"
+                       data-src="images/or_gate.png"
                         alt="OR Gate"
                  ></p>
 <h4 id="範例-3"><a href="#範例-3" class="headerlink" title="範例"></a>範例</h4><p>以下是量子電路的等價性：</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="/blog/images/quantum_circuit_equivalence.png"
+                       data-src="images/quantum_circuit_equivalence.png"
                         alt="Quantum Circuit Equivalence"
                  ></p>
 <hr>

@@ -40,7 +40,9 @@
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
   </script>
-<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -274,7 +276,7 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-arrows-rotate"></i>&nbsp;
-                    <span class="datetime" data-updated="Fri Apr 04 2025 11:53:04 GMT+0000">2025-04-04</span>
+                    <span class="datetime" data-updated="Fri Apr 04 2025 12:59:10 GMT+0000">2025-04-04</span>
                 </span>
             
         
@@ -338,35 +340,22 @@
                     
                          <h1 id="Docker-Ubuntu-SSH-Setup"><a href="#Docker-Ubuntu-SSH-Setup" class="headerlink" title="Docker - Ubuntu SSH Setup"></a>Docker - Ubuntu SSH Setup</h1><p><strong>Host</strong>: Use the same port -&gt; just change to the SSH port that does not conflict with NAS.</p>
 <h2 id="Environment-Settings-for-Ubuntu-Container"><a href="#Environment-Settings-for-Ubuntu-Container" class="headerlink" title="Environment Settings for Ubuntu Container"></a>Environment Settings for Ubuntu Container</h2><h3 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> ubuntu:latest</span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt-get update &amp;&amp; apt-get install -y openssh-server</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">mkdir</span> /var/run/sshd</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">echo</span> <span class="string">&#x27;root:your_password&#x27;</span> | chpasswd</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> sed -i <span class="string">&#x27;s/PermitRootLogin prohibit-password/PermitRootLogin yes/&#x27;</span> /etc/ssh/sshd_config</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> sed <span class="string">&#x27;s@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g&#x27;</span> -i /etc/pam.d/sshd</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Other installations</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt-get upgrade -y</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt-get install -y <span class="built_in">sudo</span> nano vim curl git</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">22</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;/usr/sbin/sshd&quot;</span>, <span class="string">&quot;-D&quot;</span>]</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="Docker-Build-and-Push-to-Docker-Hub"><a href="#Docker-Build-and-Push-to-Docker-Hub" class="headerlink" title="Docker Build and Push to Docker Hub"></a>Docker Build and Push to Docker Hub</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker build -t ubuntu_ssh .</span><br><span class="line">docker tag ubuntu_ssh wulukewu/ubuntu_ssh:latest</span><br><span class="line">docker push wulukewu/ubuntu_ssh:latest</span><br></pre></td></tr></table></figure>
-
 <h3 id="Install-OpenSSH-Server"><a href="#Install-OpenSSH-Server" class="headerlink" title="Install OpenSSH-Server"></a>Install OpenSSH-Server</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">apt-get update </span><br><span class="line">apt-get install -y openssh-server</span><br><span class="line">mkdir /var/run/sshd</span><br><span class="line">echo &#x27;root:your_password&#x27; | chpasswd</span><br><span class="line">sed -i &#x27;s/PermitRootLogin prohibit-password/PermitRootLogin yes/&#x27; /etc/ssh/sshd_config</span><br><span class="line">sed &#x27;s@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g&#x27; -i /etc/pam.d/sshd</span><br><span class="line">/usr/sbin/sshd -D</span><br></pre></td></tr></table></figure>
-
 <hr>
 <h2 id="Pull-and-Run-the-ubuntu-ssh-Image"><a href="#Pull-and-Run-the-ubuntu-ssh-Image" class="headerlink" title="Pull and Run the ubuntu_ssh Image"></a>Pull and Run the ubuntu_ssh Image</h2><h3 id="Pull-ubuntu-ssh-from-Docker-Hub"><a href="#Pull-ubuntu-ssh-from-Docker-Hub" class="headerlink" title="Pull ubuntu_ssh from Docker Hub"></a>Pull ubuntu_ssh from Docker Hub</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker pull wulukewu/ubuntu_ssh:latest</span><br></pre></td></tr></table></figure>
-
 <h3 id="Run-ubuntu-ssh-in-Host"><a href="#Run-ubuntu-ssh-in-Host" class="headerlink" title="Run ubuntu_ssh in Host"></a>Run ubuntu_ssh in Host</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -d --net=host --name ubuntu_ssh wulukewu/ubuntu_ssh:latest</span><br></pre></td></tr></table></figure>
-
 <h3 id="Access-the-Ubuntu-Container"><a href="#Access-the-Ubuntu-Container" class="headerlink" title="Access the Ubuntu Container"></a>Access the Ubuntu Container</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker exec -i -t ubuntu_ssh /bin/bash</span><br></pre></td></tr></table></figure>
-
 <hr>
 <h2 id="Hostname-Configuration"><a href="#Hostname-Configuration" class="headerlink" title="Hostname Configuration"></a>Hostname Configuration</h2><h3 id="Change-Hostname"><a href="#Change-Hostname" class="headerlink" title="Change Hostname"></a>Change Hostname</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/hostname</span><br><span class="line">sudo nano /etc/hosts</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
-
 <h3 id="Display-the-Current-Hostname"><a href="#Display-the-Current-Hostname" class="headerlink" title="Display the Current Hostname"></a>Display the Current Hostname</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostname</span><br></pre></td></tr></table></figure>
-
 <hr>
 <h2 id="SSH-Configuration"><a href="#SSH-Configuration" class="headerlink" title="SSH Configuration"></a>SSH Configuration</h2><h3 id="Change-SSH-Port"><a href="#Change-SSH-Port" class="headerlink" title="Change SSH Port"></a>Change SSH Port</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/ssh/sshd_config</span><br><span class="line">service ssh restart</span><br></pre></td></tr></table></figure>
-
 <hr>
 <h2 id="User-Management"><a href="#User-Management" class="headerlink" title="User Management"></a>User Management</h2><h3 id="Add-a-New-Sudo-User"><a href="#Add-a-New-Sudo-User" class="headerlink" title="Add a New Sudo User"></a>Add a New Sudo User</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adduser user_name</span><br></pre></td></tr></table></figure>
-
 <h3 id="Add-the-User-to-the-Sudo-Group"><a href="#Add-the-User-to-the-Sudo-Group" class="headerlink" title="Add the User to the Sudo Group"></a>Add the User to the Sudo Group</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">usermod -aG sudo user_name</span><br><span class="line">usermod -aG root user_name</span><br></pre></td></tr></table></figure>
-
 <h3 id="Change-User-Password"><a href="#Change-User-Password" class="headerlink" title="Change User Password"></a>Change User Password</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd user_name</span><br></pre></td></tr></table></figure>
-
 <h3 id="Test-Sudo-Access"><a href="#Test-Sudo-Access" class="headerlink" title="Test Sudo Access"></a>Test Sudo Access</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - user_name</span><br></pre></td></tr></table></figure>
-
 <hr>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
 <li><a class="link"   target="_blank" rel="noopener" href="https://www.cherryservers.com/blog/ssh-into-docker-container" >How to SSH into a Docker Container | Step-by-Step Tutorial<i class="fas fa-external-link-alt"></i></a></li>

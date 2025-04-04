@@ -40,7 +40,9 @@
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
     KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
   </script>
-<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -274,7 +276,7 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-arrows-rotate"></i>&nbsp;
-                    <span class="datetime" data-updated="Fri Apr 04 2025 11:53:04 GMT+0000">2025-04-04</span>
+                    <span class="datetime" data-updated="Fri Apr 04 2025 12:59:10 GMT+0000">2025-04-04</span>
                 </span>
             
         
@@ -307,7 +309,7 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>99 Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>95 Words</span>
             </span>
         
         
@@ -331,27 +333,21 @@
 
                     
                          <h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><ol>
-<li>根據email創建一個新的SSH金鑰</li>
-</ol>
-<p><code>ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</code></p>
-<ol start="2">
-<li>開啟ssh-agent，將私鑰加入到ssh-agent\</li>
-</ol>
+<li><p>根據email創建一個新的SSH金鑰<br><code>ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</code></p>
+</li>
+<li><p>開啟ssh-agent，將私鑰加入到ssh-agent\</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">eval &quot;$(ssh-agent -s)&quot;</span><br><span class="line">ssh-add -K ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>上傳公鑰，並到GitHub上上傳SSH key</li>
-</ol>
-<p><code>cat ~/.ssh/id_rsa.pub </code><br><a class="link"   target="_blank" rel="noopener" href="https://github.com/settings/keys" >GitHub Keys Settings<i class="fas fa-external-link-alt"></i></a><br><img  
+</li>
+<li><p>上傳公鑰，並到GitHub上上傳SSH key<br><code>cat ~/.ssh/id_rsa.pub</code><br><a class="link"   target="_blank" rel="noopener" href="https://github.com/settings/keys" >GitHub Keys Settings<i class="fas fa-external-link-alt"></i></a><br><img  
                        lazyload
                        alt="image"
                        data-src="https://hackmd.io/_uploads/HyiZfBiZkl.png"
                         alt="image"
                  ></p>
-<ol start="4">
-<li>ssh連接GitHub SSH</li>
+</li>
+<li><p>ssh連接GitHub SSH<br><code>ssh -T git@github.com</code></p>
+</li>
 </ol>
-<p><code>ssh -T git@github.com</code></p>
 <h2 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h2><ul>
 <li><a class="link"   target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10205988" >設定 Github SSH 金鑰 feat. Github SSH、HTTPS 的差異<i class="fas fa-external-link-alt"></i></a></li>
 <li><a class="link"   target="_blank" rel="noopener" href="https://youtu.be/yxvqLBHZfXk" >How to clone, push, and pull with git (beginners GitHub tutorial)<i class="fas fa-external-link-alt"></i></a></li>
