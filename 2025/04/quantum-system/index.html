@@ -276,7 +276,7 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-arrows-rotate"></i>&nbsp;
-                    <span class="datetime" data-updated="Fri Apr 04 2025 14:06:00 GMT+0000">2025-04-04</span>
+                    <span class="datetime" data-updated="Fri Apr 04 2025 14:29:16 GMT+0000">2025-04-04</span>
                 </span>
             
         
@@ -311,7 +311,7 @@
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>12 Mins</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>11 Mins</span>
             </span>
         
         
@@ -365,7 +365,7 @@
 | \psi \rangle = \frac{1}{\sqrt{6}} \begin{pmatrix} 1-i \\ 2 \end{pmatrix}, \quad | \phi \rangle = \frac{1}{\sqrt{3}} \begin{pmatrix} 1 \\ 1+i \end{pmatrix}</script><p>計算內積：</p>
 <script type="math/tex; mode=display">
 \langle \psi | \psi \rangle = \frac{\begin{pmatrix} 1+i & 2 \end{pmatrix}}{\sqrt{6}} \cdot \frac{\begin{pmatrix} 1-i \\ 2 \end{pmatrix}}{\sqrt{6}} = \frac{6}{6} = 1</script><script type="math/tex; mode=display">
-\langle \phi | \phi \rangle = \frac{\begin{pmatrix} 1 & 1-i \end{pmatrix}}{\sqrt{3}} \cdot \frac{\begin{pmatrix} 1 \\ 1+i \end{pmatrix}}{\sqrt{3}} = \frac{3}{3} = 1</script><h4 id="基底"><a href="#基底" class="headerlink" title="基底"></a>基底</h4><p>基底 ${ | e_1 \rangle, | e_2 \rangle, \dots, | e_N \rangle }$ 滿足：</p>
+\langle \phi | \phi \rangle = \frac{\begin{pmatrix} 1 & 1-i \end{pmatrix}}{\sqrt{3}} \cdot \frac{\begin{pmatrix} 1 \\ 1+i \end{pmatrix}}{\sqrt{3}} = \frac{3}{3} = 1</script><h3 id="基底與投影運算子"><a href="#基底與投影運算子" class="headerlink" title="基底與投影運算子"></a>基底與投影運算子</h3><h4 id="基底"><a href="#基底" class="headerlink" title="基底"></a>基底</h4><p>基底 ${ | e_1 \rangle, | e_2 \rangle, \dots, | e_N \rangle }$ 滿足：</p>
 <ul>
 <li><strong>正規化 (Normalized)</strong>：$\langle e_i | e_i \rangle = \langle e_2 | e_2 \rangle = \dots = \langle e_N | e_N \rangle = 1$</li>
 <li><strong>正交 (Orthogoral)</strong>：$\langle e_i | e_j \rangle = \langle e_2 | e_3 \rangle = \dots = \langle e_N | e_N \rangle = 0$</li>
@@ -377,8 +377,7 @@
 <p>計算：</p>
 <script type="math/tex; mode=display">
 \langle e_1 | e_1 \rangle = \begin{pmatrix} 1 & 0 \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = 1</script><script type="math/tex; mode=display">
-\langle e_2 | e_2 \rangle = \begin{pmatrix} 0 & 1 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = 1</script><p><strong>投影運算子 (Projection Operator)</strong>：</p>
-<script type="math/tex; mode=display">
+\langle e_2 | e_2 \rangle = \begin{pmatrix} 0 & 1 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = 1</script><h4 id="投影運算子-Projection-Operator"><a href="#投影運算子-Projection-Operator" class="headerlink" title="投影運算子 (Projection Operator)"></a>投影運算子 (Projection Operator)</h4><script type="math/tex; mode=display">
 | \psi \rangle = \frac{1}{\sqrt{6}} \begin{pmatrix} 1-i \\ 2 \end{pmatrix} = \frac{1-i}{\sqrt{6}} | e_1 \rangle + \frac{2}{\sqrt{6}} | e_2 \rangle</script><script type="math/tex; mode=display">
 \langle e_1 | \psi \rangle = \langle e_1 | \left( \frac{1-i}{\sqrt{6}} | e_1 \rangle + \frac{2}{\sqrt{6}} | e_2 \rangle \right) = \frac{1-i}{\sqrt{6}} \langle e_1 | e_1 \rangle + \frac{2}{\sqrt{6}} \langle e_1 | e_2 \rangle = \frac{1-i}{\sqrt{6}}</script><script type="math/tex; mode=display">
 \langle e_2 | \psi \rangle = \langle e_2 | \left( \frac{1-i}{\sqrt{6}} | e_1 \rangle + \frac{2}{\sqrt{6}} | e_2 \rangle \right) = \frac{1-i}{\sqrt{6}} \langle e_2 | e_1 \rangle + \frac{2}{\sqrt{6}} \langle e_2 | e_2 \rangle = \frac{2}{\sqrt{6}}</script><p><strong>崩塌 (Collapse)</strong>：</p>
@@ -388,7 +387,7 @@
 | \psi \rangle = \alpha_1 | e_1 \rangle + \alpha_2 | e_2 \rangle</script><script type="math/tex; mode=display">
 P_i | \psi \rangle \rightarrow | e_i \rangle</script><script type="math/tex; mode=display">
 \frac{\hat{P}_1}{| \alpha_1 |^2} | \psi \rangle = \frac{\alpha_1}{| \alpha_1 |^2} | e_1 \rangle = e^{i\theta_1} | e_1 \rangle \quad (\text{經典態})</script><script type="math/tex; mode=display">
-\frac{\hat{P}_2}{| \alpha_2 |^2} | \psi \rangle = \frac{\alpha_2}{| \alpha_2 |^2} | e_2 \rangle = e^{i\theta_2} | e_2 \rangle \quad (\text{經典態})</script><h4 id="Bloch-球-Bloch-Sphere"><a href="#Bloch-球-Bloch-Sphere" class="headerlink" title="Bloch 球 (Bloch Sphere)"></a>Bloch 球 (Bloch Sphere)</h4><p>Bloch 球用於表示單量子位的狀態：</p>
+\frac{\hat{P}_2}{| \alpha_2 |^2} | \psi \rangle = \frac{\alpha_2}{| \alpha_2 |^2} | e_2 \rangle = e^{i\theta_2} | e_2 \rangle \quad (\text{經典態})</script><h3 id="Bloch-球-Bloch-Sphere"><a href="#Bloch-球-Bloch-Sphere" class="headerlink" title="Bloch 球 (Bloch Sphere)"></a>Bloch 球 (Bloch Sphere)</h3><p>Bloch 球用於表示單量子位的狀態：</p>
 <p><img  
                        lazyload
                        alt="image"
@@ -404,7 +403,7 @@ P_i | \psi \rangle \rightarrow | e_i \rangle</script><script type="math/tex; mod
 <li>$| -i \rangle \rightarrow (0, -1, 0)$</li>
 </ul>
 <hr>
-<h2 id="Ch3-多量子位系統-Multiple-Qubit-Systems"><a href="#Ch3-多量子位系統-Multiple-Qubit-Systems" class="headerlink" title="Ch3. 多量子位系統 (Multiple-Qubit Systems)"></a>Ch3. 多量子位系統 (Multiple-Qubit Systems)</h2><h3 id="Hilbert-空間與張量積"><a href="#Hilbert-空間與張量積" class="headerlink" title="Hilbert 空間與張量積"></a>Hilbert 空間與張量積</h3><p>多量子位系統的 Hilbert 空間是單量子位空間的張量積：</p>
+<h2 id="多量子位系統-Multiple-Qubit-Systems"><a href="#多量子位系統-Multiple-Qubit-Systems" class="headerlink" title="多量子位系統 (Multiple-Qubit Systems)"></a>多量子位系統 (Multiple-Qubit Systems)</h2><h3 id="Hilbert-空間與張量積"><a href="#Hilbert-空間與張量積" class="headerlink" title="Hilbert 空間與張量積"></a>Hilbert 空間與張量積</h3><p>多量子位系統的 Hilbert 空間是單量子位空間的張量積：</p>
 <script type="math/tex; mode=display">
 H_2 \otimes H_2 \otimes \dots \otimes H_2 = H_N \quad (N \text{ 個})</script><p>假設：</p>
 <ul>
@@ -435,7 +434,7 @@ H_2 \otimes H_2:</script><script type="math/tex; mode=display">
 <p>計算張量積：</p>
 <script type="math/tex; mode=display">
 | 0 \rangle \otimes | 0 \rangle = \begin{pmatrix} 1 \\ 0 \end{pmatrix} \otimes \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 1 \times \begin{pmatrix} 1 \\ 0 \end{pmatrix} \\ 0 \times \begin{pmatrix} 1 \\ 0 \end{pmatrix} \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix} = | 00 \rangle</script><script type="math/tex; mode=display">
-| 1 \rangle \otimes | 1 \rangle = \begin{pmatrix} 0 \\ 1 \end{pmatrix} \otimes \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} 0 \times \begin{pmatrix} 0 \\ 1 \end{pmatrix} \\ 1 \times \begin{pmatrix} 0 \\ 1 \end{pmatrix} \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \\ 1 \end{pmatrix} = | 11 \rangle</script><h4 id="運算子"><a href="#運算子" class="headerlink" title="運算子"></a>運算子</h4><p>假設運算子 $T$：</p>
+| 1 \rangle \otimes | 1 \rangle = \begin{pmatrix} 0 \\ 1 \end{pmatrix} \otimes \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} 0 \times \begin{pmatrix} 0 \\ 1 \end{pmatrix} \\ 1 \times \begin{pmatrix} 0 \\ 1 \end{pmatrix} \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \\ 1 \end{pmatrix} = | 11 \rangle</script><h3 id="運算子與單元矩陣"><a href="#運算子與單元矩陣" class="headerlink" title="運算子與單元矩陣"></a>運算子與單元矩陣</h3><h4 id="運算子"><a href="#運算子" class="headerlink" title="運算子"></a>運算子</h4><p>假設運算子 $T$：</p>
 <script type="math/tex; mode=display">
 T(| \psi \rangle \otimes | \psi \rangle) = \alpha T(| \psi \rangle) + \beta T(| \psi \rangle)</script><p><strong>張量積運算子</strong>：</p>
 <script type="math/tex; mode=display">
@@ -449,7 +448,8 @@ I \otimes I = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \otimes \begin{pmatri
 U = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}</script><script type="math/tex; mode=display">
 U^\dagger = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}^*</script><script type="math/tex; mode=display">
 U^\dagger U = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} \cdot \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} = \frac{1}{2} \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I</script><script type="math/tex; mode=display">
-U U^\dagger = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} \cdot \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} = \frac{1}{2} \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I</script><h4 id="量子門"><a href="#量子門" class="headerlink" title="量子門"></a>量子門</h4><p>假設 $H_2$ 具有基底 $I, X, Y, Z$：</p>
+U U^\dagger = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} \cdot \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} = \frac{1}{2} \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I</script><hr>
+<h2 id="量子門與狀態轉換-Quantum-Gates-and-State-Transformations"><a href="#量子門與狀態轉換-Quantum-Gates-and-State-Transformations" class="headerlink" title="量子門與狀態轉換 (Quantum Gates and State Transformations)"></a>量子門與狀態轉換 (Quantum Gates and State Transformations)</h2><h3 id="常見量子門"><a href="#常見量子門" class="headerlink" title="常見量子門"></a>常見量子門</h3><h4 id="Hadamard-門"><a href="#Hadamard-門" class="headerlink" title="Hadamard 門"></a>Hadamard 門</h4><p>假設 $H_2$ 具有基底 $I, X, Y, Z$：</p>
 <ul>
 <li>$X | 0 \rangle = | 1 \rangle$, $X | 1 \rangle = | 0 \rangle$, $X = \begin{pmatrix} 0 &amp; 1 \ 1 &amp; 0 \end{pmatrix}$, $X^\dagger = X$</li>
 <li>$Y | 0 \rangle = +i | 1 \rangle$, $Y | 1 \rangle = -i | 0 \rangle$, $Y = \begin{pmatrix} 0 &amp; -i \ i &amp; 0 \end{pmatrix}$, $Y^\dagger = Y$</li>
@@ -457,7 +457,7 @@ U U^\dagger = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} \
 </ul>
 <p><strong>Hadamard 門</strong>：</p>
 <script type="math/tex; mode=display">
-U = \alpha I + \beta X + \gamma Y + \delta Z \quad (\text{Bell 態})</script><p><strong>Bell 態</strong>：</p>
+U = \alpha I + \beta X + \gamma Y + \delta Z \quad (\text{Bell 態})</script><h3 id="糾纏態與測量"><a href="#糾纏態與測量" class="headerlink" title="糾纏態與測量"></a>糾纏態與測量</h3><h4 id="Bell-態"><a href="#Bell-態" class="headerlink" title="Bell 態"></a>Bell 態</h4><p><strong>Bell 態</strong>：</p>
 <script type="math/tex; mode=display">
 \frac{1}{\sqrt{2}} (| 00 \rangle + | 11 \rangle)</script><script type="math/tex; mode=display">
 \frac{1}{\sqrt{2}} (| 00 \rangle - | 11 \rangle)</script><script type="math/tex; mode=display">
@@ -470,13 +470,12 @@ U = \alpha I + \beta X + \gamma Y + \delta Z \quad (\text{Bell 態})</script><p>
 <script type="math/tex; mode=display">
 \alpha_1 \alpha_0 | 00 \rangle + \beta_1 \beta_0 | 11 \rangle \neq | \psi_1 \rangle \otimes | \psi_0 \rangle</script><p>例如：</p>
 <script type="math/tex; mode=display">
-| 00 \rangle + | 11 \rangle = | 0 \rangle \otimes | 0 \rangle + | 1 \rangle \otimes | 1 \rangle</script><p><strong>糾纏測量</strong>：</p>
+| 00 \rangle + | 11 \rangle = | 0 \rangle \otimes | 0 \rangle + | 1 \rangle \otimes | 1 \rangle</script><h4 id="糾纏測量"><a href="#糾纏測量" class="headerlink" title="糾纏測量"></a>糾纏測量</h4><p><strong>糾纏測量</strong>：</p>
 <ul>
 <li>系統 1 測量到 $| 0 \rangle$，則系統 2 為 $| 0 \rangle$</li>
 <li>系統 1 測量到 $| 1 \rangle$，則系統 2 為 $| 1 \rangle$</li>
 </ul>
-<hr>
-<h2 id="Ch5-量子狀態轉換-Quantum-State-Transformations"><a href="#Ch5-量子狀態轉換-Quantum-State-Transformations" class="headerlink" title="Ch5. 量子狀態轉換 (Quantum State Transformations)"></a>Ch5. 量子狀態轉換 (Quantum State Transformations)</h2><h3 id="逆向計算-Reverse-Computation"><a href="#逆向計算-Reverse-Computation" class="headerlink" title="逆向計算 (Reverse Computation)"></a>逆向計算 (Reverse Computation)</h3><h4 id="CNOT-Control-NOT"><a href="#CNOT-Control-NOT" class="headerlink" title="CNOT (Control NOT)"></a>CNOT (Control NOT)</h4><p>CNOT 門的運作如下：</p>
+<h3 id="逆向計算-Reverse-Computation"><a href="#逆向計算-Reverse-Computation" class="headerlink" title="逆向計算 (Reverse Computation)"></a>逆向計算 (Reverse Computation)</h3><h4 id="CNOT-Control-NOT"><a href="#CNOT-Control-NOT" class="headerlink" title="CNOT (Control NOT)"></a>CNOT (Control NOT)</h4><p>CNOT 門的運作如下：</p>
 <p><img  
                        lazyload
                        alt="image"
@@ -487,27 +486,7 @@ U = \alpha I + \beta X + \gamma Y + \delta Z \quad (\text{Bell 態})</script><p>
 <li>$0 \rightarrow 0$, $1 \rightarrow 1$, $| 0 \rangle \otimes | 0 \rangle = 1$</li>
 <li>$1 \rightarrow 1$, $1 \rightarrow 0$, $| 0 \rangle \otimes | 0 \rangle = 0$</li>
 </ul>
-<h4 id="COPY"><a href="#COPY" class="headerlink" title="COPY"></a>COPY</h4><p>COPY 門的運作如下：</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="images/copy_gate.png"
-                        alt="COPY Gate"
-                 ></p>
-<h4 id="NOT"><a href="#NOT" class="headerlink" title="NOT"></a>NOT</h4><p>NOT 門的運作如下：</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="images/not_gate.png"
-                        alt="NOT Gate"
-                 ></p>
-<script type="math/tex; mode=display">
-| 0 \rangle X = \overline{X}</script><h4 id="CNOT-矩陣"><a href="#CNOT-矩陣" class="headerlink" title="CNOT 矩陣"></a>CNOT 矩陣</h4><script type="math/tex; mode=display">
-\text{CNOT} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix} = \begin{pmatrix} I & 0 \\ 0 & X \end{pmatrix}</script><p><strong>CNOT 性質</strong>：</p>
-<script type="math/tex; mode=display">
-\text{CNOT} \cdot \text{CNOT} = I</script><script type="math/tex; mode=display">
-\text{CNOT}^\dagger \cdot \text{CNOT} = I</script><script type="math/tex; mode=display">
-\text{CNOT}^\dagger = \text{CNOT}</script><h4 id="SWAP"><a href="#SWAP" class="headerlink" title="SWAP"></a>SWAP</h4><p>SWAP 門的運作如下：</p>
+<h4 id="SWAP-門"><a href="#SWAP-門" class="headerlink" title="SWAP 門"></a>SWAP 門</h4><p>SWAP 門的運作如下：</p>
 <p><img  
                        lazyload
                        alt="image"
@@ -529,28 +508,28 @@ U = \alpha I + \beta X + \gamma Y + \delta Z \quad (\text{Bell 態})</script><p>
 <script type="math/tex; mode=display">
 \text{CCNOT} \cdot \text{CCNOT} = I</script><script type="math/tex; mode=display">
 \text{CCNOT}^\dagger \cdot \text{CCNOT} = I</script><script type="math/tex; mode=display">
-\text{CCNOT}^\dagger = \text{CCNOT}</script><h4 id="AND"><a href="#AND" class="headerlink" title="AND"></a>AND</h4><p>AND 門的運作如下：</p>
+\text{CCNOT}^\dagger = \text{CCNOT}</script><h3 id="邏輯運算門"><a href="#邏輯運算門" class="headerlink" title="邏輯運算門"></a>邏輯運算門</h3><h4 id="AND-門"><a href="#AND-門" class="headerlink" title="AND 門"></a>AND 門</h4><p>AND 門的運作如下：</p>
 <p><img  
                        lazyload
                        alt="image"
                        data-src="images/and_gate.png"
                         alt="AND Gate"
                  ></p>
-<h4 id="XOR"><a href="#XOR" class="headerlink" title="XOR"></a>XOR</h4><p>XOR 門的運作如下：</p>
+<h4 id="XOR-門"><a href="#XOR-門" class="headerlink" title="XOR 門"></a>XOR 門</h4><p>XOR 門的運作如下：</p>
 <p><img  
                        lazyload
                        alt="image"
                        data-src="images/xor_gate.png"
                         alt="XOR Gate"
                  ></p>
-<h4 id="NAND-NOT-AND"><a href="#NAND-NOT-AND" class="headerlink" title="NAND (NOT AND)"></a>NAND (NOT AND)</h4><p>NAND 門的運作如下：</p>
+<h4 id="NAND-門"><a href="#NAND-門" class="headerlink" title="NAND 門"></a>NAND 門</h4><p>NAND 門的運作如下：</p>
 <p><img  
                        lazyload
                        alt="image"
                        data-src="images/nand_gate.png"
                         alt="NAND Gate"
                  ></p>
-<h4 id="OR"><a href="#OR" class="headerlink" title="OR"></a>OR</h4><p>OR 門的運作如下：</p>
+<h4 id="OR-門"><a href="#OR-門" class="headerlink" title="OR 門"></a>OR 門</h4><p>OR 門的運作如下：</p>
 <p><img  
                        lazyload
                        alt="image"
@@ -696,7 +675,7 @@ U = \alpha I + \beta X + \gamma Y + \delta Z \quad (\text{Bell 態})</script><p>
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8F%E5%AD%90%E8%A8%88%E7%AE%97%E5%9F%BA%E7%A4%8E"><span class="nav-text">量子計算基礎</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%96%AE%E9%87%8F%E5%AD%90%E4%BD%8D%E7%B3%BB%E7%B5%B1-Single-Qubit-Quantum-Systems"><span class="nav-text">單量子位系統 (Single-Qubit Quantum Systems)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hilbert-%E7%A9%BA%E9%96%93-Vector-Space"><span class="nav-text">Hilbert 空間 (Vector Space)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B"><span class="nav-text">範例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E5%BA%95"><span class="nav-text">基底</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-1"><span class="nav-text">範例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bloch-%E7%90%83-Bloch-Sphere"><span class="nav-text">Bloch 球 (Bloch Sphere)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ch3-%E5%A4%9A%E9%87%8F%E5%AD%90%E4%BD%8D%E7%B3%BB%E7%B5%B1-Multiple-Qubit-Systems"><span class="nav-text">Ch3. 多量子位系統 (Multiple-Qubit Systems)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hilbert-%E7%A9%BA%E9%96%93%E8%88%87%E5%BC%B5%E9%87%8F%E7%A9%8D"><span class="nav-text">Hilbert 空間與張量積</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-2"><span class="nav-text">範例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%81%8B%E7%AE%97%E5%AD%90"><span class="nav-text">運算子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%96%AE%E5%85%83%E7%9F%A9%E9%99%A3-Unitary-Matrix"><span class="nav-text">單元矩陣 (Unitary Matrix)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8F%E5%AD%90%E9%96%80"><span class="nav-text">量子門</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ch5-%E9%87%8F%E5%AD%90%E7%8B%80%E6%85%8B%E8%BD%89%E6%8F%9B-Quantum-State-Transformations"><span class="nav-text">Ch5. 量子狀態轉換 (Quantum State Transformations)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%86%E5%90%91%E8%A8%88%E7%AE%97-Reverse-Computation"><span class="nav-text">逆向計算 (Reverse Computation)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CNOT-Control-NOT"><span class="nav-text">CNOT (Control NOT)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#COPY"><span class="nav-text">COPY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NOT"><span class="nav-text">NOT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CNOT-%E7%9F%A9%E9%99%A3"><span class="nav-text">CNOT 矩陣</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SWAP"><span class="nav-text">SWAP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CCNOT-Toffoli-Gate"><span class="nav-text">CCNOT (Toffoli Gate)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AND"><span class="nav-text">AND</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#XOR"><span class="nav-text">XOR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NAND-NOT-AND"><span class="nav-text">NAND (NOT AND)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OR"><span class="nav-text">OR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-3"><span class="nav-text">範例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B5%90%E8%AB%96"><span class="nav-text">結論</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8F%E5%AD%90%E8%A8%88%E7%AE%97%E5%9F%BA%E7%A4%8E"><span class="nav-text">量子計算基礎</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%96%AE%E9%87%8F%E5%AD%90%E4%BD%8D%E7%B3%BB%E7%B5%B1-Single-Qubit-Quantum-Systems"><span class="nav-text">單量子位系統 (Single-Qubit Quantum Systems)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hilbert-%E7%A9%BA%E9%96%93-Vector-Space"><span class="nav-text">Hilbert 空間 (Vector Space)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B"><span class="nav-text">範例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E5%BA%95%E8%88%87%E6%8A%95%E5%BD%B1%E9%81%8B%E7%AE%97%E5%AD%90"><span class="nav-text">基底與投影運算子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E5%BA%95"><span class="nav-text">基底</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-1"><span class="nav-text">範例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%95%E5%BD%B1%E9%81%8B%E7%AE%97%E5%AD%90-Projection-Operator"><span class="nav-text">投影運算子 (Projection Operator)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bloch-%E7%90%83-Bloch-Sphere"><span class="nav-text">Bloch 球 (Bloch Sphere)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E9%87%8F%E5%AD%90%E4%BD%8D%E7%B3%BB%E7%B5%B1-Multiple-Qubit-Systems"><span class="nav-text">多量子位系統 (Multiple-Qubit Systems)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hilbert-%E7%A9%BA%E9%96%93%E8%88%87%E5%BC%B5%E9%87%8F%E7%A9%8D"><span class="nav-text">Hilbert 空間與張量積</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-2"><span class="nav-text">範例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%8B%E7%AE%97%E5%AD%90%E8%88%87%E5%96%AE%E5%85%83%E7%9F%A9%E9%99%A3"><span class="nav-text">運算子與單元矩陣</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%81%8B%E7%AE%97%E5%AD%90"><span class="nav-text">運算子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%96%AE%E5%85%83%E7%9F%A9%E9%99%A3-Unitary-Matrix"><span class="nav-text">單元矩陣 (Unitary Matrix)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8F%E5%AD%90%E9%96%80%E8%88%87%E7%8B%80%E6%85%8B%E8%BD%89%E6%8F%9B-Quantum-Gates-and-State-Transformations"><span class="nav-text">量子門與狀態轉換 (Quantum Gates and State Transformations)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A6%8B%E9%87%8F%E5%AD%90%E9%96%80"><span class="nav-text">常見量子門</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hadamard-%E9%96%80"><span class="nav-text">Hadamard 門</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BE%E7%BA%8F%E6%85%8B%E8%88%87%E6%B8%AC%E9%87%8F"><span class="nav-text">糾纏態與測量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bell-%E6%85%8B"><span class="nav-text">Bell 態</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B3%BE%E7%BA%8F%E6%B8%AC%E9%87%8F"><span class="nav-text">糾纏測量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%86%E5%90%91%E8%A8%88%E7%AE%97-Reverse-Computation"><span class="nav-text">逆向計算 (Reverse Computation)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CNOT-Control-NOT"><span class="nav-text">CNOT (Control NOT)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SWAP-%E9%96%80"><span class="nav-text">SWAP 門</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CCNOT-Toffoli-Gate"><span class="nav-text">CCNOT (Toffoli Gate)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97%E9%96%80"><span class="nav-text">邏輯運算門</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AND-%E9%96%80"><span class="nav-text">AND 門</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#XOR-%E9%96%80"><span class="nav-text">XOR 門</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NAND-%E9%96%80"><span class="nav-text">NAND 門</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OR-%E9%96%80"><span class="nav-text">OR 門</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-3"><span class="nav-text">範例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B5%90%E8%AB%96"><span class="nav-text">結論</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -856,7 +835,7 @@ U = \alpha I + \beta X + \gamma Y + \delta Z \quad (\text{Bell 態})</script><p>
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8F%E5%AD%90%E8%A8%88%E7%AE%97%E5%9F%BA%E7%A4%8E"><span class="nav-text">量子計算基礎</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%96%AE%E9%87%8F%E5%AD%90%E4%BD%8D%E7%B3%BB%E7%B5%B1-Single-Qubit-Quantum-Systems"><span class="nav-text">單量子位系統 (Single-Qubit Quantum Systems)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hilbert-%E7%A9%BA%E9%96%93-Vector-Space"><span class="nav-text">Hilbert 空間 (Vector Space)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B"><span class="nav-text">範例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E5%BA%95"><span class="nav-text">基底</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-1"><span class="nav-text">範例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bloch-%E7%90%83-Bloch-Sphere"><span class="nav-text">Bloch 球 (Bloch Sphere)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ch3-%E5%A4%9A%E9%87%8F%E5%AD%90%E4%BD%8D%E7%B3%BB%E7%B5%B1-Multiple-Qubit-Systems"><span class="nav-text">Ch3. 多量子位系統 (Multiple-Qubit Systems)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hilbert-%E7%A9%BA%E9%96%93%E8%88%87%E5%BC%B5%E9%87%8F%E7%A9%8D"><span class="nav-text">Hilbert 空間與張量積</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-2"><span class="nav-text">範例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%81%8B%E7%AE%97%E5%AD%90"><span class="nav-text">運算子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%96%AE%E5%85%83%E7%9F%A9%E9%99%A3-Unitary-Matrix"><span class="nav-text">單元矩陣 (Unitary Matrix)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8F%E5%AD%90%E9%96%80"><span class="nav-text">量子門</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ch5-%E9%87%8F%E5%AD%90%E7%8B%80%E6%85%8B%E8%BD%89%E6%8F%9B-Quantum-State-Transformations"><span class="nav-text">Ch5. 量子狀態轉換 (Quantum State Transformations)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%86%E5%90%91%E8%A8%88%E7%AE%97-Reverse-Computation"><span class="nav-text">逆向計算 (Reverse Computation)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CNOT-Control-NOT"><span class="nav-text">CNOT (Control NOT)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#COPY"><span class="nav-text">COPY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NOT"><span class="nav-text">NOT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CNOT-%E7%9F%A9%E9%99%A3"><span class="nav-text">CNOT 矩陣</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SWAP"><span class="nav-text">SWAP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CCNOT-Toffoli-Gate"><span class="nav-text">CCNOT (Toffoli Gate)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AND"><span class="nav-text">AND</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#XOR"><span class="nav-text">XOR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NAND-NOT-AND"><span class="nav-text">NAND (NOT AND)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OR"><span class="nav-text">OR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-3"><span class="nav-text">範例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B5%90%E8%AB%96"><span class="nav-text">結論</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8F%E5%AD%90%E8%A8%88%E7%AE%97%E5%9F%BA%E7%A4%8E"><span class="nav-text">量子計算基礎</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%96%AE%E9%87%8F%E5%AD%90%E4%BD%8D%E7%B3%BB%E7%B5%B1-Single-Qubit-Quantum-Systems"><span class="nav-text">單量子位系統 (Single-Qubit Quantum Systems)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hilbert-%E7%A9%BA%E9%96%93-Vector-Space"><span class="nav-text">Hilbert 空間 (Vector Space)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B"><span class="nav-text">範例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E5%BA%95%E8%88%87%E6%8A%95%E5%BD%B1%E9%81%8B%E7%AE%97%E5%AD%90"><span class="nav-text">基底與投影運算子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E5%BA%95"><span class="nav-text">基底</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-1"><span class="nav-text">範例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%95%E5%BD%B1%E9%81%8B%E7%AE%97%E5%AD%90-Projection-Operator"><span class="nav-text">投影運算子 (Projection Operator)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bloch-%E7%90%83-Bloch-Sphere"><span class="nav-text">Bloch 球 (Bloch Sphere)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E9%87%8F%E5%AD%90%E4%BD%8D%E7%B3%BB%E7%B5%B1-Multiple-Qubit-Systems"><span class="nav-text">多量子位系統 (Multiple-Qubit Systems)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hilbert-%E7%A9%BA%E9%96%93%E8%88%87%E5%BC%B5%E9%87%8F%E7%A9%8D"><span class="nav-text">Hilbert 空間與張量積</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-2"><span class="nav-text">範例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%8B%E7%AE%97%E5%AD%90%E8%88%87%E5%96%AE%E5%85%83%E7%9F%A9%E9%99%A3"><span class="nav-text">運算子與單元矩陣</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%81%8B%E7%AE%97%E5%AD%90"><span class="nav-text">運算子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%96%AE%E5%85%83%E7%9F%A9%E9%99%A3-Unitary-Matrix"><span class="nav-text">單元矩陣 (Unitary Matrix)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8F%E5%AD%90%E9%96%80%E8%88%87%E7%8B%80%E6%85%8B%E8%BD%89%E6%8F%9B-Quantum-Gates-and-State-Transformations"><span class="nav-text">量子門與狀態轉換 (Quantum Gates and State Transformations)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A6%8B%E9%87%8F%E5%AD%90%E9%96%80"><span class="nav-text">常見量子門</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hadamard-%E9%96%80"><span class="nav-text">Hadamard 門</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BE%E7%BA%8F%E6%85%8B%E8%88%87%E6%B8%AC%E9%87%8F"><span class="nav-text">糾纏態與測量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bell-%E6%85%8B"><span class="nav-text">Bell 態</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B3%BE%E7%BA%8F%E6%B8%AC%E9%87%8F"><span class="nav-text">糾纏測量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%86%E5%90%91%E8%A8%88%E7%AE%97-Reverse-Computation"><span class="nav-text">逆向計算 (Reverse Computation)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CNOT-Control-NOT"><span class="nav-text">CNOT (Control NOT)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SWAP-%E9%96%80"><span class="nav-text">SWAP 門</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CCNOT-Toffoli-Gate"><span class="nav-text">CCNOT (Toffoli Gate)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97%E9%96%80"><span class="nav-text">邏輯運算門</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AND-%E9%96%80"><span class="nav-text">AND 門</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#XOR-%E9%96%80"><span class="nav-text">XOR 門</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NAND-%E9%96%80"><span class="nav-text">NAND 門</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OR-%E9%96%80"><span class="nav-text">OR 門</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-3"><span class="nav-text">範例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B5%90%E8%AB%96"><span class="nav-text">結論</span></a></li></ol></li></ol>
     </div>
 </div>
 
