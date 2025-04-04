@@ -30,31 +30,30 @@ $$
 $$
 
 其中：
-- $| e_1 \rangle = \begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}$, $| e_2 \rangle = \begin{pmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{pmatrix}$, ..., $| e_N \rangle = \begin{pmatrix} 0 \\ \vdots \\ 0 \\ 1 \end{pmatrix}$
+$$|e_1\rangle = \begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}, |e_2\rangle = \begin{pmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{pmatrix}, \ldots, |e_N\rangle = \begin{pmatrix} 0 \\ \vdots \\ 0 \\ 1 \end{pmatrix}$$
 
 **Note**：單量子位 $N=2$ 的簡單空間，複數量子位 $N=32$ 的空間。
 
 #### 範例
 
-假設：
-- $| \psi \rangle = \begin{pmatrix} 1-i \\ 2 \end{pmatrix}$, $| \phi \rangle = \begin{pmatrix} 1 \\ 1+i \end{pmatrix}$
+我們拿一個例子來說明好了，假設： $| \psi \rangle = \begin{pmatrix} 1-i \\ 2 \end{pmatrix}$, $| \phi \rangle = \begin{pmatrix} 1 \\ 1+i \end{pmatrix}$，那麼可以做下列這幾個運算：
 
 **對偶向量 (Dual Vector)**：
-- $\langle \psi | = (1-i, 2)^* = (1+i, 2)$
-- $\langle \phi | = (1, 1+i)^* = (1, 1-i)$
+- $\langle \psi | = \begin{pmatrix} 1-i & 2 \end{pmatrix}^* = \begin{pmatrix} 1+i & 2 \end{pmatrix}$
+- $\langle \phi | = \begin{pmatrix} 1 & 1+i \end{pmatrix}^* = \begin{pmatrix} 1 & 1-i \end{pmatrix}$
 
 **內積 (Inner Product)**：
 $$
-\langle \phi | \psi \rangle = (1, 1-i) \begin{pmatrix} 1-i \\ 2 \end{pmatrix} = 3(1-i)
+\langle \phi | \psi \rangle = \begin{pmatrix} 1 & 1-i \end{pmatrix} \begin{pmatrix} 1-i \\ 2 \end{pmatrix} = 3(1-i)
 $$
 $$
-\langle \psi | \phi \rangle = (1+i, 2) \begin{pmatrix} 1 \\ 1+i \end{pmatrix} = 3(1+i)
+\langle \psi | \phi \rangle = \begin{pmatrix} 1+i & 2 \end{pmatrix} \begin{pmatrix} 1 \\ 1+i \end{pmatrix} = 3(1+i)
 $$
 $$
-\langle \psi | \psi \rangle = (1+i, 2) \begin{pmatrix} 1-i \\ 2 \end{pmatrix} = 6 \quad (\text{正實數})
+\langle \psi | \psi \rangle = \begin{pmatrix} 1+i & 2 \end{pmatrix} \begin{pmatrix} 1-i \\ 2 \end{pmatrix} = 6 \quad (\in \mathbb{R}_{\geq 0})
 $$
 $$
-\langle \phi | \phi \rangle = (1, 1-i) \begin{pmatrix} 1 \\ 1+i \end{pmatrix} = 3
+\langle \phi | \phi \rangle = \begin{pmatrix} 1 & 1-i \end{pmatrix} \begin{pmatrix} 1 \\ 1+i \end{pmatrix} = 3 \quad (\in \mathbb{R}_{\geq 0})
 $$
 
 因此：
@@ -78,28 +77,17 @@ $$
 
 計算內積：
 $$
-\langle \psi | \psi \rangle = \frac{(1+i, 2)}{\sqrt{6}} \cdot \frac{(1-i, 2)}{\sqrt{6}} = \frac{6}{6} = 1
+\langle \psi | \psi \rangle = \frac{\begin{pmatrix} 1+i & 2 \end{pmatrix}}{\sqrt{6}} \cdot \frac{\begin{pmatrix} 1-i \\ 2 \end{pmatrix}}{\sqrt{6}} = \frac{6}{6} = 1
 $$
 $$
-\langle \phi | \phi \rangle = \frac{(1, 1-i)}{\sqrt{3}} \cdot \frac{(1, 1+i)}{\sqrt{3}} = \frac{3}{3} = 1
-$$
-$$
-\langle \psi | \phi \rangle = \frac{(1+i, 2)}{\sqrt{6}} \cdot \frac{(1, 1+i)}{\sqrt{3}} = \frac{6}{\sqrt{18}} = 1 \in \mathbb{R} \cup \{0\} \quad (\text{非負實數})
-$$
-
-**正交性**：
-$$
-\langle \psi | \psi \rangle = \langle \overline{\psi} | \psi \rangle
-$$
-$$
-\langle \psi_1 | \psi_2 \rangle = a \langle \psi_1 | \psi_2 \rangle + b \langle \psi_3 | \psi_2 \rangle \implies a \langle \psi_1 | \psi_2 \rangle + b \langle \psi_3 | \psi_2 \rangle
+\langle \phi | \phi \rangle = \frac{\begin{pmatrix} 1 & 1-i \end{pmatrix}}{\sqrt{3}} \cdot \frac{\begin{pmatrix} 1 \\ 1+i \end{pmatrix}}{\sqrt{3}} = \frac{3}{3} = 1
 $$
 
 #### 基底
 
 基底 $\{ | e_1 \rangle, | e_2 \rangle, \dots, | e_N \rangle \}$ 滿足：
-- **正規化**：$\langle e_i | e_i \rangle = \langle e_2 | e_2 \rangle = \dots = \langle e_N | e_N \rangle = 1$
-- **正交**：$\langle e_i | e_j \rangle = \langle e_2 | e_3 \rangle = \dots = \langle e_N | e_N \rangle = 0$
+- **正規化 (Normalized)**：$\langle e_i | e_i \rangle = \langle e_2 | e_2 \rangle = \dots = \langle e_N | e_N \rangle = 1$
+- **正交 (Orthogoral)**：$\langle e_i | e_j \rangle = \langle e_2 | e_3 \rangle = \dots = \langle e_N | e_N \rangle = 0$
 
 因此：
 $$
@@ -108,15 +96,16 @@ $$
 
 #### 範例
 
-假設基底：
-- $| e_1 \rangle = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$, $| e_2 \rangle = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$
+假設基底：$| e_1 \rangle = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$, $| e_2 \rangle = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$
+
+那麼可以先求出對偶向量：$\langle e_1 | = \begin{pmatrix} 1 & 0 \end{pmatrix}, \langle e_2 | = \begin{pmatrix} 0 & 1 \end{pmatrix}$
 
 計算：
 $$
-\langle e_1 | e_1 \rangle = (1, 0) \begin{pmatrix} 1 \\ 0 \end{pmatrix} = 1
+\langle e_1 | e_1 \rangle = \begin{pmatrix} 1 & 0 \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = 1
 $$
 $$
-\langle e_2 | e_2 \rangle = (0, 1) \begin{pmatrix} 0 \\ 1 \end{pmatrix} = 1
+\langle e_2 | e_2 \rangle = \begin{pmatrix} 0 & 1 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = 1
 $$
 
 **投影運算子 (Projection Operator)**：
@@ -127,18 +116,12 @@ $$
 \langle e_1 | \psi \rangle = \langle e_1 | \left( \frac{1-i}{\sqrt{6}} | e_1 \rangle + \frac{2}{\sqrt{6}} | e_2 \rangle \right) = \frac{1-i}{\sqrt{6}} \langle e_1 | e_1 \rangle + \frac{2}{\sqrt{6}} \langle e_1 | e_2 \rangle = \frac{1-i}{\sqrt{6}}
 $$
 $$
-\langle e_2 | \psi \rangle = \langle e_2 | \left( \frac{1 savour: \frac{1-i}{\sqrt{6}} | e_1 \rangle + \frac{2}{\sqrt{6}} | e_2 \rangle \right) = \frac{1-i}{\sqrt{6}} \langle e_2 | e_1 \rangle + \frac{2}{\sqrt{6}} \langle e_2 | e_2 \rangle = \frac{2}{\sqrt{6}}
-$$
-
-因此：
-$$
-| \psi \rangle = \sum_i \alpha_i | e_i \rangle
+\langle e_2 | \psi \rangle = \langle e_2 | \left( \frac{1-i}{\sqrt{6}} | e_1 \rangle + \frac{2}{\sqrt{6}} | e_2 \rangle \right) = \frac{1-i}{\sqrt{6}} \langle e_2 | e_1 \rangle + \frac{2}{\sqrt{6}} \langle e_2 | e_2 \rangle = \frac{2}{\sqrt{6}}
 $$
 
 **崩塌 (Collapse)**：
-$$
-| e_i \rangle \text{ 出現機率為 } | \alpha_i |^2 \quad (\text{機率不可為負})
-$$
+
+我們前面說過，$| \psi \rangle = \sum_i \alpha_i | e_i \rangle$ 是由$N$維的基底所組成的。其中 $| e_i \rangle$ 在 $| \psi \rangle$ 出現的機率為 $| \alpha_i |^2$，則$|\alpha_1|^2 + |\alpha_2|^2 + \dots + |\alpha_N|^2 = 1$。
 
 **量子態 (Quantum State)**：
 $$

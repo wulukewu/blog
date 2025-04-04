@@ -76,7 +76,7 @@ toc:
   enable: true      # Option values: true | false
   number: false      # Option values: true | false
   expand_all: false  # Option values: true | false
-  init_open: false    # Option values: true | false
+  init_open: true    # Option values: true | false
   layout: right      # Option values: left | right
 
 website_count:
