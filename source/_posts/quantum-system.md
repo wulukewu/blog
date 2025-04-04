@@ -6,6 +6,7 @@ tags:
   - hilbert-space
   - algorithms
   - physics
+mathjax: true
 ---
 
 # 量子計算基礎
