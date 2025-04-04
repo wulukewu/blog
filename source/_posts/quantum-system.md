@@ -11,40 +11,47 @@ mathjax: true
 
 # 量子計算基礎
 
-大一下去修了一門量子計算的課程，跟一般電路學不一樣的是引入了新設計的邏輯閘。
+本文旨在介紹量子計算 (Quantum Computing) 的基本概念與原理，從量子位元 (Qubit) 的基本概念出發，逐步深入探討多量子位元系統的運算與應用。量子計算與傳統計算 (Classical Computing) 最大的不同在於其底層運算邏輯，透過量子力學的特性，例如疊加 (Superposition) 和糾纏 (Entanglement)，實現傳統計算難以達成的計算能力。
 
 ---
 
 ## 單量子位系統 (Single-Qubit Quantum Systems)
 
-### Hilbert 空間 (Vector Space)
+在量子計算中，量子位元 (Qubit) 是最基本的資訊單位，類似於傳統計算中的位元 (Bit)。然而，與傳統位元只能處於 0 或 1 的狀態不同，量子位元可以同時處於 0 和 1 的疊加態。本節將介紹單量子位元系統的基本概念，包括描述量子態的 Hilbert 空間 (Hilbert Space)、向量空間 (Vector Space) 的數學表示，以及相關的運算。
 
-量子態存在於 **Hilbert 空間** 中，這是一個複數向量空間。對於單量子位系統，我們有以下定義：
+### Hilbert 空間 (Hilbert Space)
 
-- $| \psi \rangle, | \phi \rangle \in V$，其中 $\alpha, \beta \in \mathbb{C}$
-- $\alpha | \psi \rangle + \beta | \psi \rangle \in V$
+在量子力學中，量子態並非存在於我們熟悉的歐幾里得空間，而是存在於一個更抽象的數學空間，稱為 Hilbert 空間。**因此，理解 Hilbert 空間對於理解量子態至關重要。** Hilbert 空間是一個完備的內積空間，允許我們進行向量的加法、純量乘法，以及計算向量之間的內積。對於單量子位元系統，Hilbert 空間是一個複數向量空間，具有以下特性：
 
-假設基底為 $\{ | e_1 \rangle, | e_2 \rangle, \dots, | e_N \rangle \}$，對於 $\text{dim}=N$ 的向量空間：
+- 量子態可以表示為 Hilbert 空間中的向量，例如 $| \psi \rangle$ 和 $| \phi \rangle$，它們都屬於 Hilbert 空間 $V$，即 $| \psi \rangle, | \phi \rangle \in V$。其中，$\alpha$ 和 $\beta$ 是複數，即 $\alpha, \beta \in \mathbb{C}$。
+- Hilbert 空間滿足線性疊加原理，即如果 $| \psi \rangle$ 和 $| \phi \rangle$ 是 Hilbert 空間中的向量，那麼它們的線性組合 $\alpha | \psi \rangle + \beta | \phi \rangle$ 也屬於 Hilbert 空間 $V$，即 $\alpha | \psi \rangle + \beta | \psi \rangle \in V$。
+
+假設 Hilbert 空間的基底為 $\{ | e_1 \rangle, | e_2 \rangle, \dots, | e_N \rangle \}$，對於維度 (Dimension) 為 $N$ 的向量空間，任意量子態 $| \psi \rangle$ 都可以表示為基底向量的線性組合：
 
 $$
 | \psi \rangle = \sum_i \alpha_i | e_i \rangle, \quad \alpha_i \in \mathbb{C}
 $$
 
-其中：
+其中，$\alpha_i$ 是複數，表示基底向量 $| e_i \rangle$ 在量子態 $| \psi \rangle$ 中的權重 (Weight)。基底向量 $| e_i \rangle$ 可以表示為列向量：
+
 $$|e_1\rangle = \begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}, |e_2\rangle = \begin{pmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{pmatrix}, \ldots, |e_N\rangle = \begin{pmatrix} 0 \\ \vdots \\ 0 \\ 1 \end{pmatrix}$$
 
-**Note**：單量子位 $N=2$ 的簡單空間，複數量子位 $N=32$ 的空間。
+**Note**：單量子位元系統的 Hilbert 空間是一個 $N=2$ 的簡單空間，而複數量子位元系統的 Hilbert 空間維度會隨著量子位元數量增加而指數成長，例如 5 個量子位元系統的 Hilbert 空間維度為 $N=2^5=32$。
 
 ##### 範例
 
-我們拿一個例子來說明好了，假設： $| \psi \rangle = \begin{pmatrix} 1-i \\ 2 \end{pmatrix}$, $| \phi \rangle = \begin{pmatrix} 1 \\ 1+i \end{pmatrix}$，那麼可以做下列這幾個運算：
+我們拿一個例子來說明好了，假設 $| \psi \rangle = \begin{pmatrix} 1-i \\ 2 \end{pmatrix}$, $| \phi \rangle = \begin{pmatrix} 1 \\ 1+i \end{pmatrix}$，那麼可以做下列這幾個運算：
 
 #### 對偶向量 (Dual Vector)
+
+**在進行內積運算之前，我們需要先了解對偶向量的概念。**
 
 - $\langle \psi | = \begin{pmatrix} 1-i & 2 \end{pmatrix}^* = \begin{pmatrix} 1+i & 2 \end{pmatrix}$
 - $\langle \phi | = \begin{pmatrix} 1 & 1+i \end{pmatrix}^* = \begin{pmatrix} 1 & 1-i \end{pmatrix}$
 
 #### 內積 (Inner Product)
+
+**有了對偶向量的基礎，我們就可以計算向量的內積。**
 
 $$
 \langle \phi | \psi \rangle = \begin{pmatrix} 1 & 1-i \end{pmatrix} \begin{pmatrix} 1-i \\ 2 \end{pmatrix} = 3(1-i)
@@ -69,11 +76,15 @@ $$
 
 #### 向量範數 (Norm)
 
+向量範數 (Norm) 是一種衡量向量大小的函數，它將向量映射到一個非負實數。在量子力學中，向量範數用於衡量量子態的長度。
+
 $$
 \| \psi \| = \sqrt{\langle \psi | \psi \rangle}
 $$
 
 #### 正規化向量 (Normalized Vector)
+
+正規化向量 (Normalized Vector) 是指將向量縮放到長度為 1 的過程。在量子力學中，量子態必須是正規化的，以保證測量結果的機率總和為 1。
 
 $$
 | \psi \rangle_N = \frac{| \psi \rangle}{\| \psi \|}
@@ -96,6 +107,8 @@ $$
 $$
 
 ### 基底與投影運算子
+
+在量子力學中，基底 (Basis) 是一組線性無關的向量，可以張成整個 Hilbert 空間。任意量子態都可以表示為基底向量的線性組合。投影運算子 (Projection Operator) 則是用於將量子態投影到特定基底向量上的運算符。本節將介紹基底與投影運算子的基本概念與性質。
 
 #### 基底
 
@@ -158,7 +171,7 @@ $$
 
 - $| e_2 \rangle$ 在 $| \psi \rangle$ 出現的機率為 $\left| \frac{2}{\sqrt{6}} \right|^2 = \frac{4}{6} = \frac{2}{3}$
 
--  $\frac{1}{3} + \frac{2}{3} = 1$
+- $\frac{1}{3} + \frac{2}{3} = 1$
 
 #### 量子態 (Quantum State)：
 
