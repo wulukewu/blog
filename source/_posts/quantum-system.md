@@ -199,7 +199,7 @@ $$
 
 Bloch 球用於表示單量子位的狀態：
 
-![Bloch Sphere](images/bloch_sphere.png)
+![](/images/posts/quantum-system/bloch_sphere.png)
 
 - $| 0 \rangle \rightarrow (0, 0, 1)$
 - $| 1 \rangle \rightarrow (0, 0, -1)$
