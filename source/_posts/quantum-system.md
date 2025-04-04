@@ -35,16 +35,16 @@ $$|e_1\rangle = \begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}, |e_2\rangle
 
 **Note**：單量子位 $N=2$ 的簡單空間，複數量子位 $N=32$ 的空間。
 
-#### 範例
+##### 範例
 
 我們拿一個例子來說明好了，假設： $| \psi \rangle = \begin{pmatrix} 1-i \\ 2 \end{pmatrix}$, $| \phi \rangle = \begin{pmatrix} 1 \\ 1+i \end{pmatrix}$，那麼可以做下列這幾個運算：
 
-**對偶向量 (Dual Vector)**：
+#### 對偶向量 (Dual Vector)
 
 - $\langle \psi | = \begin{pmatrix} 1-i & 2 \end{pmatrix}^* = \begin{pmatrix} 1+i & 2 \end{pmatrix}$
 - $\langle \phi | = \begin{pmatrix} 1 & 1+i \end{pmatrix}^* = \begin{pmatrix} 1 & 1-i \end{pmatrix}$
 
-**內積 (Inner Product)**：
+#### 內積 (Inner Product)
 
 $$
 \langle \phi | \psi \rangle = \begin{pmatrix} 1 & 1-i \end{pmatrix} \begin{pmatrix} 1-i \\ 2 \end{pmatrix} = 3(1-i)
@@ -67,13 +67,13 @@ $$
 - $\langle \phi | \psi \rangle \neq \langle \psi | \phi \rangle^*$，表示 $\langle \phi | \psi \rangle \neq \langle \psi | \phi \rangle$
 - $\langle \psi | \psi \rangle = 0 \implies | \psi \rangle$ 是正交 (Orthogonal)
 
-**向量範數 (Norm)**：
+#### 向量範數 (Norm)
 
 $$
 \| \psi \| = \sqrt{\langle \psi | \psi \rangle}
 $$
 
-**正規化向量 (Normalized Vector)**：
+#### 正規化向量 (Normalized Vector)
 
 $$
 | \psi \rangle_N = \frac{| \psi \rangle}{\| \psi \|}
@@ -110,7 +110,7 @@ $$
 \langle e_i | e_j \rangle = \delta_{ij} = \begin{cases} 1 & \text{if } i = j \\ 0 & \text{if } i \neq j \end{cases}
 $$
 
-#### 範例
+##### 範例
 
 假設基底：$| e_1 \rangle = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$, $| e_2 \rangle = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$
 
@@ -140,26 +140,44 @@ $$
 \langle e_2 | \psi \rangle = \langle e_2 | \left( \frac{1-i}{\sqrt{6}} | e_1 \rangle + \frac{2}{\sqrt{6}} | e_2 \rangle \right) = \frac{1-i}{\sqrt{6}} \langle e_2 | e_1 \rangle + \frac{2}{\sqrt{6}} \langle e_2 | e_2 \rangle = \frac{2}{\sqrt{6}}
 $$
 
-**崩塌 (Collapse)**：
+#### 崩塌 (Collapse)
 
 我們前面說過，$| \psi \rangle = \sum_i \alpha_i | e_i \rangle$ 是由$N$維的基底所組成的。其中 $| e_i \rangle$ 在 $| \psi \rangle$ 出現的機率為 $| \alpha_i |^2$，則$|\alpha_1|^2 + |\alpha_2|^2 + \dots + |\alpha_N|^2 = 1$。
 
-**量子態 (Quantum State)**：
+在 $| \psi \rangle = \sum_i \alpha_i | e_i \rangle$ 當中，$| e_i \rangle$ 出現的機率取決於 $| \alpha_i |^2$，而此時的觀測是**不可逆**的。當測量完成後，量子態會崩塌到對應的基底態 $| e_i \rangle$，並且無法回復到原本的疊加態。
+
+這表明測量過程不可逆，且量子態的疊加性在測量後不復存在。
+
+##### 範例
 
 $$
-| \psi \rangle = \alpha_1 | e_1 \rangle + \alpha_2 | e_2 \rangle
+| \psi \rangle = \frac{1}{\sqrt{6}} \begin{pmatrix} 1-i \\ 2 \end{pmatrix} = \frac{1-i}{\sqrt{6}} | e_1 \rangle + \frac{2}{\sqrt{6}} | e_2 \rangle
 $$
+
+- $| e_1 \rangle$ 在 $| \psi \rangle$ 出現的機率為 $\left| \frac{1-i}{\sqrt{6}} \right|^2 = \frac{2}{6} = \frac{1}{3}$
+
+- $| e_2 \rangle$ 在 $| \psi \rangle$ 出現的機率為 $\left| \frac{2}{\sqrt{6}} \right|^2 = \frac{4}{6} = \frac{2}{3}$
+
+-  $\frac{1}{3} + \frac{2}{3} = 1$
+
+#### 量子態 (Quantum State)：
 
 $$
 P_i | \psi \rangle \rightarrow | e_i \rangle
 $$
 
 $$
-\frac{\hat{P}_1}{| \alpha_1 |^2} | \psi \rangle = \frac{\alpha_1}{| \alpha_1 |^2} | e_1 \rangle = e^{i\theta_1} | e_1 \rangle \quad (\text{經典態})
+| \psi \rangle = \alpha_1 | e_1 \rangle + \alpha_2 | e_2 \rangle
+$$
+
+#### 經典態 (Classical State)：
+
+$$
+\frac{P_1}{| \alpha_1 |^2} | \psi \rangle = \frac{\alpha_1}{| \alpha_1 |^2} | e_1 \rangle = e^{i\theta_1} | e_1 \rangle
 $$
 
 $$
-\frac{\hat{P}_2}{| \alpha_2 |^2} | \psi \rangle = \frac{\alpha_2}{| \alpha_2 |^2} | e_2 \rangle = e^{i\theta_2} | e_2 \rangle \quad (\text{經典態})
+\frac{P_2}{| \alpha_2 |^2} | \psi \rangle = \frac{\alpha_2}{| \alpha_2 |^2} | e_2 \rangle = e^{i\theta_2} | e_2 \rangle
 $$
 
 ### Bloch 球 (Bloch Sphere)
@@ -206,7 +224,7 @@ $$
 \langle 0 | 0 \rangle = 1, \quad \langle 1 | 1 \rangle = 1
 $$
 
-**張量積**：
+#### 張量積
 
 $$
 H_2 \otimes H_2:
@@ -231,7 +249,7 @@ $$
 - $| 1 \rangle \otimes | 0 \rangle = | 10 \rangle$
 - $| 1 \rangle \otimes | 1 \rangle = | 11 \rangle$
 
-#### 範例
+##### 範例
 
 假設：
 
@@ -439,7 +457,7 @@ OR 門的運作如下：
 
 ![OR Gate](images/or_gate.png)
 
-#### 範例
+##### 範例
 
 以下是量子電路的等價性：
 
