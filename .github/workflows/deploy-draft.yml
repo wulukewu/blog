@@ -23,6 +23,9 @@ jobs:
         npm install
         npm install hexo-cli -g
 
+    - name: Install Pandoc
+      run: sudo apt-get install pandoc
+
     - name: Build site with draft base URL
       run: |
         echo "url: https://wulukewu.github.io/blog-draft/" > _config.draft.yml
