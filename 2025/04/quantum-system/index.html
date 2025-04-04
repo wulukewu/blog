@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Luke">
+    
+    <title>
+        
+            量子計算基礎 - 從單量子位到多量子位系統 |
+        
+        Luke&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/blog/images/favicon.jpg">
+    
+    
+<link rel="stylesheet" href="/blog/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/blog/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/blog/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/blog/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"wulukewu.github.io","root":"/blog/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#f1c40f","title":"Luke's Blog","author":"Luke","avatar":"/images/avatar.jpg","logo":"/images/logo.jpg","favicon":"/images/favicon.jpg","mode":"auto"},"menu":{"home":"/ || fa-solid fa-home","archives":"/archives || fa-solid fa-box-archive","tags":"/tags || fa-solid fa-tags","about":"/about || fa-solid fa-user-graduate"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Hi, I'm Luke!","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/wulukewu","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true,"enable":true},"home":{"announcement":null,"category":true,"tag":false,"post_datetime":"created","post_datetime_format":"ago"},"post":{"author_badge":{"enable":true,"level_badge":false,"custom_badge":"我什麼都不會"},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD","copyright_info":true,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null},"created_datetime_icon":"fa-solid fa-calendar-alt","updated_datetime_icon":"fa-solid fa-arrows-rotate"},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2024,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"/blog","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/blog/">
+                    <img src="/blog/images/logo.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/blog/">
+               Luke&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/blog/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/blog/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/blog/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                TAGS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/blog/about">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                
+                                ABOUT
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/blog/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/blog/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/blog/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            TAGS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/blog/about">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                </span>
+                            
+                            ABOUT
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        量子計算基礎 - 從單量子位到多量子位系統
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/blog/images/avatar.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Luke</span>
+                                
+                                    <span class="author-badge">我什麼都不會</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-alt"></i>&nbsp;
+                <span class="datetime">2025-04-04</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-arrows-rotate"></i>&nbsp;
+                    <span class="datetime" data-updated="Fri Apr 04 2025 11:53:04 GMT+0000">2025-04-04</span>
+                </span>
+            
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/quantum/">quantum</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/hilbert-space/">hilbert-space</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/algorithms/">algorithms</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/physics/">physics</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.3k Words</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>13 Mins</span>
+            </span>
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h1 id="量子計算基礎"><a href="#量子計算基礎" class="headerlink" title="量子計算基礎"></a>量子計算基礎</h1><p>大一下去修了一門量子計算的課程，跟一般電路學不一樣的是引入了新設計的邏輯閘。</p>
+<hr>
+<h2 id="單量子位系統-Single-Qubit-Quantum-Systems"><a href="#單量子位系統-Single-Qubit-Quantum-Systems" class="headerlink" title="單量子位系統 (Single-Qubit Quantum Systems)"></a>單量子位系統 (Single-Qubit Quantum Systems)</h2><h3 id="Hilbert-空間-Vector-Space"><a href="#Hilbert-空間-Vector-Space" class="headerlink" title="Hilbert 空間 (Vector Space)"></a>Hilbert 空間 (Vector Space)</h3><p>量子態存在於 <strong>Hilbert 空間</strong> 中，這是一個複數向量空間。對於單量子位系統，我們有以下定義：</p>
+<ul>
+<li>$| \psi \rangle, | \phi \rangle \in V$，其中 $\alpha, \beta \in \mathbb{C}$</li>
+<li>$\alpha | \psi \rangle + \beta | \psi \rangle \in V$</li>
+</ul>
+<p>假設基底為 ${ | e_1 \rangle, | e_2 \rangle, \dots, | e_N \rangle }$，對於 $\text{dim}&#x3D;N$ 的向量空間：</p>
+<p>$$<br>| \psi \rangle &#x3D; \sum_i \alpha_i | e_i \rangle, \quad \alpha_i \in \mathbb{C}<br>$$</p>
+<p>其中：</p>
+<ul>
+<li>$| e_1 \rangle &#x3D; \begin{pmatrix} 1 \ 0 \ \vdots \ 0 \end{pmatrix}$, $| e_2 \rangle &#x3D; \begin{pmatrix} 0 \ 1 \ \vdots \ 0 \end{pmatrix}$, …, $| e_N \rangle &#x3D; \begin{pmatrix} 0 \ \vdots \ 0 \ 1 \end{pmatrix}$</li>
+</ul>
+<p><strong>Note</strong>：單量子位 $N&#x3D;2$ 的簡單空間，複數量子位 $N&#x3D;32$ 的空間。</p>
+<h4 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h4><p>假設：</p>
+<ul>
+<li>$| \psi \rangle &#x3D; \begin{pmatrix} 1-i \ 2 \end{pmatrix}$, $| \phi \rangle &#x3D; \begin{pmatrix} 1 \ 1+i \end{pmatrix}$</li>
+</ul>
+<p><strong>對偶向量 (Dual Vector)</strong>：</p>
+<ul>
+<li>$\langle \psi | &#x3D; (1-i, 2)^* &#x3D; (1+i, 2)$</li>
+<li>$\langle \phi | &#x3D; (1, 1+i)^* &#x3D; (1, 1-i)$</li>
+</ul>
+<p><strong>內積 (Inner Product)</strong>：<br>$$<br>\langle \phi | \psi \rangle &#x3D; (1, 1-i) \begin{pmatrix} 1-i \ 2 \end{pmatrix} &#x3D; 3(1-i)<br>$$<br>$$<br>\langle \psi | \phi \rangle &#x3D; (1+i, 2) \begin{pmatrix} 1 \ 1+i \end{pmatrix} &#x3D; 3(1+i)<br>$$<br>$$<br>\langle \psi | \psi \rangle &#x3D; (1+i, 2) \begin{pmatrix} 1-i \ 2 \end{pmatrix} &#x3D; 6 \quad (\text{正實數})<br>$$<br>$$<br>\langle \phi | \phi \rangle &#x3D; (1, 1-i) \begin{pmatrix} 1 \ 1+i \end{pmatrix} &#x3D; 3<br>$$</p>
+<p>因此：</p>
+<ul>
+<li>$\langle \phi | \psi \rangle \neq \langle \psi | \phi \rangle^*$，表示 $\langle \phi | \psi \rangle \neq \langle \psi | \phi \rangle$</li>
+<li>$\langle \psi | \psi \rangle &#x3D; 0 \implies | \psi \rangle$ 是正交 (Orthogonal)</li>
+</ul>
+<p><strong>向量範數 (Norm)</strong>：<br>$$<br>| \psi | &#x3D; \sqrt{\langle \psi | \psi \rangle}<br>$$</p>
+<p><strong>正規化向量 (Normalized Vector)</strong>：<br>$$<br>| \psi \rangle_N &#x3D; \frac{| \psi \rangle}{| \psi |}<br>$$</p>
+<p>例如：<br>$$<br>| \psi \rangle &#x3D; \frac{1}{\sqrt{6}} \begin{pmatrix} 1-i \ 2 \end{pmatrix}, \quad | \phi \rangle &#x3D; \frac{1}{\sqrt{3}} \begin{pmatrix} 1 \ 1+i \end{pmatrix}<br>$$</p>
+<p>計算內積：<br>$$<br>\langle \psi | \psi \rangle &#x3D; \frac{(1+i, 2)}{\sqrt{6}} \cdot \frac{(1-i, 2)}{\sqrt{6}} &#x3D; \frac{6}{6} &#x3D; 1<br>$$<br>$$<br>\langle \phi | \phi \rangle &#x3D; \frac{(1, 1-i)}{\sqrt{3}} \cdot \frac{(1, 1+i)}{\sqrt{3}} &#x3D; \frac{3}{3} &#x3D; 1<br>$$<br>$$<br>\langle \psi | \phi \rangle &#x3D; \frac{(1+i, 2)}{\sqrt{6}} \cdot \frac{(1, 1+i)}{\sqrt{3}} &#x3D; \frac{6}{\sqrt{18}} &#x3D; 1 \in \mathbb{R} \cup {0} \quad (\text{非負實數})<br>$$</p>
+<p><strong>正交性</strong>：<br>$$<br>\langle \psi | \psi \rangle &#x3D; \langle \overline{\psi} | \psi \rangle<br>$$<br>$$<br>\langle \psi_1 | \psi_2 \rangle &#x3D; a \langle \psi_1 | \psi_2 \rangle + b \langle \psi_3 | \psi_2 \rangle \implies a \langle \psi_1 | \psi_2 \rangle + b \langle \psi_3 | \psi_2 \rangle<br>$$</p>
+<h4 id="基底"><a href="#基底" class="headerlink" title="基底"></a>基底</h4><p>基底 ${ | e_1 \rangle, | e_2 \rangle, \dots, | e_N \rangle }$ 滿足：</p>
+<ul>
+<li><strong>正規化</strong>：$\langle e_i | e_i \rangle &#x3D; \langle e_2 | e_2 \rangle &#x3D; \dots &#x3D; \langle e_N | e_N \rangle &#x3D; 1$</li>
+<li><strong>正交</strong>：$\langle e_i | e_j \rangle &#x3D; \langle e_2 | e_3 \rangle &#x3D; \dots &#x3D; \langle e_N | e_N \rangle &#x3D; 0$</li>
+</ul>
+<p>因此：<br>$$<br>\langle e_i | e_j \rangle &#x3D; \delta_{ij} &#x3D; \begin{cases} 1 &amp; \text{if } i &#x3D; j \ 0 &amp; \text{if } i \neq j \end{cases}<br>$$</p>
+<h4 id="範例-1"><a href="#範例-1" class="headerlink" title="範例"></a>範例</h4><p>假設基底：</p>
+<ul>
+<li>$| e_1 \rangle &#x3D; \begin{pmatrix} 1 \ 0 \end{pmatrix}$, $| e_2 \rangle &#x3D; \begin{pmatrix} 0 \ 1 \end{pmatrix}$</li>
+</ul>
+<p>計算：<br>$$<br>\langle e_1 | e_1 \rangle &#x3D; (1, 0) \begin{pmatrix} 1 \ 0 \end{pmatrix} &#x3D; 1<br>$$<br>$$<br>\langle e_2 | e_2 \rangle &#x3D; (0, 1) \begin{pmatrix} 0 \ 1 \end{pmatrix} &#x3D; 1<br>$$</p>
+<p><strong>投影運算子 (Projection Operator)</strong>：<br>$$<br>| \psi \rangle &#x3D; \frac{1}{\sqrt{6}} \begin{pmatrix} 1-i \ 2 \end{pmatrix} &#x3D; \frac{1-i}{\sqrt{6}} | e_1 \rangle + \frac{2}{\sqrt{6}} | e_2 \rangle<br>$$<br>$$<br>\langle e_1 | \psi \rangle &#x3D; \langle e_1 | \left( \frac{1-i}{\sqrt{6}} | e_1 \rangle + \frac{2}{\sqrt{6}} | e_2 \rangle \right) &#x3D; \frac{1-i}{\sqrt{6}} \langle e_1 | e_1 \rangle + \frac{2}{\sqrt{6}} \langle e_1 | e_2 \rangle &#x3D; \frac{1-i}{\sqrt{6}}<br>$$<br>$$<br>\langle e_2 | \psi \rangle &#x3D; \langle e_2 | \left( \frac{1 savour: \frac{1-i}{\sqrt{6}} | e_1 \rangle + \frac{2}{\sqrt{6}} | e_2 \rangle \right) &#x3D; \frac{1-i}{\sqrt{6}} \langle e_2 | e_1 \rangle + \frac{2}{\sqrt{6}} \langle e_2 | e_2 \rangle &#x3D; \frac{2}{\sqrt{6}}<br>$$</p>
+<p>因此：<br>$$<br>| \psi \rangle &#x3D; \sum_i \alpha_i | e_i \rangle<br>$$</p>
+<p><strong>崩塌 (Collapse)</strong>：<br>$$<br>| e_i \rangle \text{ 出現機率為 } | \alpha_i |^2 \quad (\text{機率不可為負})<br>$$</p>
+<p><strong>量子態 (Quantum State)</strong>：<br>$$<br>| \psi \rangle &#x3D; \alpha_1 | e_1 \rangle + \alpha_2 | e_2 \rangle<br>$$<br>$$<br>P_i | \psi \rangle \rightarrow | e_i \rangle<br>$$<br>$$<br>\frac{\hat{P}_1}{| \alpha_1 |^2} | \psi \rangle &#x3D; \frac{\alpha_1}{| \alpha_1 |^2} | e_1 \rangle &#x3D; e^{i\theta_1} | e_1 \rangle \quad (\text{經典態})<br>$$<br>$$<br>\frac{\hat{P}_2}{| \alpha_2 |^2} | \psi \rangle &#x3D; \frac{\alpha_2}{| \alpha_2 |^2} | e_2 \rangle &#x3D; e^{i\theta_2} | e_2 \rangle \quad (\text{經典態})<br>$$</p>
+<h4 id="Bloch-球-Bloch-Sphere"><a href="#Bloch-球-Bloch-Sphere" class="headerlink" title="Bloch 球 (Bloch Sphere)"></a>Bloch 球 (Bloch Sphere)</h4><p>Bloch 球用於表示單量子位的狀態：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/blog/images/bloch_sphere.png"
+                        alt="Bloch Sphere"
+                 ></p>
+<ul>
+<li>$| 0 \rangle \rightarrow (0, 0, 1)$</li>
+<li>$| 1 \rangle \rightarrow (0, 0, -1)$</li>
+<li>$| + \rangle \rightarrow (1, 0, 0)$</li>
+<li>$| - \rangle \rightarrow (-1, 0, 0)$</li>
+<li>$| i \rangle \rightarrow (0, 1, 0)$</li>
+<li>$| -i \rangle \rightarrow (0, -1, 0)$</li>
+</ul>
+<hr>
+<h2 id="Ch3-多量子位系統-Multiple-Qubit-Systems"><a href="#Ch3-多量子位系統-Multiple-Qubit-Systems" class="headerlink" title="Ch3. 多量子位系統 (Multiple-Qubit Systems)"></a>Ch3. 多量子位系統 (Multiple-Qubit Systems)</h2><h3 id="Hilbert-空間與張量積"><a href="#Hilbert-空間與張量積" class="headerlink" title="Hilbert 空間與張量積"></a>Hilbert 空間與張量積</h3><p>多量子位系統的 Hilbert 空間是單量子位空間的張量積：</p>
+<p>$$<br>H_2 \otimes H_2 \otimes \dots \otimes H_2 &#x3D; H_N \quad (N \text{ 個})<br>$$</p>
+<p>假設：</p>
+<ul>
+<li>系統 1 的 Hilbert 空間 $H_2$：${ | 0 \rangle, | 1 \rangle }$</li>
+<li>系統 2 的 Hilbert 空間 $H_2$：${ | 0 \rangle, | 1 \rangle }$</li>
+</ul>
+<p>則：<br>$$<br>| \psi \rangle &#x3D; \alpha_0 | 0 \rangle + \beta_0 | 1 \rangle, \quad | \psi \rangle &#x3D; \alpha_1 | 0 \rangle + \beta_1 | 1 \rangle<br>$$<br>$$<br>\langle 0 | 0 \rangle &#x3D; 0, \quad \langle 0 | 1 \rangle &#x3D; 0<br>$$<br>$$<br>\langle 0 | 0 \rangle &#x3D; 1, \quad \langle 1 | 1 \rangle &#x3D; 1<br>$$</p>
+<p><strong>張量積</strong>：<br>$$<br>H_2 \otimes H_2:<br>$$<br>$$<br>| \psi_1 \rangle \otimes | \psi_0 \rangle &#x3D; [\alpha_1 | 0 \rangle + \beta_1 | 1 \rangle] \otimes [\alpha_0 | 0 \rangle + \beta_0 | 1 \rangle]<br>$$<br>$$<br>&#x3D; \alpha_1 \alpha_0 | 0 \rangle \otimes | 0 \rangle + \alpha_1 \beta_0 | 0 \rangle \otimes | 1 \rangle + \beta_1 \alpha_0 | 1 \rangle \otimes | 0 \rangle + \beta_1 \beta_0 | 1 \rangle \otimes | 1 \rangle<br>$$<br>$$<br>&#x3D; \alpha_1 \alpha_0 | 00 \rangle + \alpha_1 \beta_0 | 01 \rangle + \beta_1 \alpha_0 | 10 \rangle + \beta_1 \beta_0 | 11 \rangle<br>$$</p>
+<p>因此：</p>
+<ul>
+<li>$| 0 \rangle \otimes | 0 \rangle &#x3D; | 00 \rangle$</li>
+<li>$| 0 \rangle \otimes | 1 \rangle &#x3D; | 01 \rangle$</li>
+<li>$| 1 \rangle \otimes | 0 \rangle &#x3D; | 10 \rangle$</li>
+<li>$| 1 \rangle \otimes | 1 \rangle &#x3D; | 11 \rangle$</li>
+</ul>
+<h4 id="範例-2"><a href="#範例-2" class="headerlink" title="範例"></a>範例</h4><p>假設：</p>
+<ul>
+<li>系統 1 的 Hilbert 空間 $H_2$：$| 0 \rangle &#x3D; \begin{pmatrix} 1 \ 0 \end{pmatrix}$, $| 1 \rangle &#x3D; \begin{pmatrix} 0 \ 1 \end{pmatrix}$</li>
+<li>系統 2 的 Hilbert 空間 $H_2$：$| 0 \rangle &#x3D; \begin{pmatrix} 1 \ 0 \end{pmatrix}$, $| 1 \rangle &#x3D; \begin{pmatrix} 0 \ 1 \end{pmatrix}$</li>
+</ul>
+<p>計算張量積：<br>$$<br>| 0 \rangle \otimes | 0 \rangle &#x3D; \begin{pmatrix} 1 \ 0 \end{pmatrix} \otimes \begin{pmatrix} 1 \ 0 \end{pmatrix} &#x3D; \begin{pmatrix} 1 \times \begin{pmatrix} 1 \ 0 \end{pmatrix} \ 0 \times \begin{pmatrix} 1 \ 0 \end{pmatrix} \end{pmatrix} &#x3D; \begin{pmatrix} 1 \ 0 \ 0 \ 0 \end{pmatrix} &#x3D; | 00 \rangle<br>$$<br>$$<br>| 1 \rangle \otimes | 1 \rangle &#x3D; \begin{pmatrix} 0 \ 1 \end{pmatrix} \otimes \begin{pmatrix} 0 \ 1 \end{pmatrix} &#x3D; \begin{pmatrix} 0 \times \begin{pmatrix} 0 \ 1 \end{pmatrix} \ 1 \times \begin{pmatrix} 0 \ 1 \end{pmatrix} \end{pmatrix} &#x3D; \begin{pmatrix} 0 \ 0 \ 0 \ 1 \end{pmatrix} &#x3D; | 11 \rangle<br>$$</p>
+<h4 id="運算子"><a href="#運算子" class="headerlink" title="運算子"></a>運算子</h4><p>假設運算子 $T$：<br>$$<br>T(| \psi \rangle \otimes | \psi \rangle) &#x3D; \alpha T(| \psi \rangle) + \beta T(| \psi \rangle)<br>$$</p>
+<p><strong>張量積運算子</strong>：<br>$$<br>T_0 \otimes T_1 &#x3D; T<br>$$</p>
+<p>例如：<br>$$<br>I | \psi \rangle &#x3D; | \psi \rangle<br>$$<br>$$<br>T | \psi_1 \rangle, | \psi_0 \rangle \quad (T \otimes I) (| \psi_1 \rangle \otimes | \psi_0 \rangle)<br>$$</p>
+<p><strong>單位運算子</strong>：<br>$$<br>I \otimes I &#x3D; \begin{pmatrix} 1 &amp; 0 \ 0 &amp; 1 \end{pmatrix} \otimes \begin{pmatrix} 1 &amp; 0 \ 0 &amp; 1 \end{pmatrix} &#x3D; \begin{pmatrix} 1 \times \begin{pmatrix} 1 &amp; 0 \ 0 &amp; 1 \end{pmatrix} &amp; 0 \times \begin{pmatrix} 1 &amp; 0 \ 0 &amp; 1 \end{pmatrix} \ 0 \times \begin{pmatrix} 1 &amp; 0 \ 0 &amp; 1 \end{pmatrix} &amp; 1 \times \begin{pmatrix} 1 &amp; 0 \ 0 &amp; 1 \end{pmatrix} \end{pmatrix} &#x3D; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 1 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 1 \end{pmatrix} &#x3D; I<br>$$</p>
+<h4 id="單元矩陣-Unitary-Matrix"><a href="#單元矩陣-Unitary-Matrix" class="headerlink" title="單元矩陣 (Unitary Matrix)"></a>單元矩陣 (Unitary Matrix)</h4><p>假設 $U$ 是單元矩陣：<br>$$<br>U &#x3D; \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \ 1 &amp; -1 \end{pmatrix}<br>$$<br>$$<br>U^\dagger &#x3D; \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \ 1 &amp; -1 \end{pmatrix}^*<br>$$<br>$$<br>U^\dagger U &#x3D; \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \ 1 &amp; -1 \end{pmatrix} \cdot \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \ 1 &amp; -1 \end{pmatrix} &#x3D; \frac{1}{2} \begin{pmatrix} 2 &amp; 0 \ 0 &amp; 2 \end{pmatrix} &#x3D; \begin{pmatrix} 1 &amp; 0 \ 0 &amp; 1 \end{pmatrix} &#x3D; I<br>$$<br>$$<br>U U^\dagger &#x3D; \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \ 1 &amp; -1 \end{pmatrix} \cdot \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \ 1 &amp; -1 \end{pmatrix} &#x3D; \frac{1}{2} \begin{pmatrix} 2 &amp; 0 \ 0 &amp; 2 \end{pmatrix} &#x3D; \begin{pmatrix} 1 &amp; 0 \ 0 &amp; 1 \end{pmatrix} &#x3D; I<br>$$</p>
+<h4 id="量子門"><a href="#量子門" class="headerlink" title="量子門"></a>量子門</h4><p>假設 $H_2$ 具有基底 $I, X, Y, Z$：</p>
+<ul>
+<li>$X | 0 \rangle &#x3D; | 1 \rangle$, $X | 1 \rangle &#x3D; | 0 \rangle$, $X &#x3D; \begin{pmatrix} 0 &amp; 1 \ 1 &amp; 0 \end{pmatrix}$, $X^\dagger &#x3D; X$</li>
+<li>$Y | 0 \rangle &#x3D; +i | 1 \rangle$, $Y | 1 \rangle &#x3D; -i | 0 \rangle$, $Y &#x3D; \begin{pmatrix} 0 &amp; -i \ i &amp; 0 \end{pmatrix}$, $Y^\dagger &#x3D; Y$</li>
+<li>$Z | 0 \rangle &#x3D; | 0 \rangle$, $Z | 1 \rangle &#x3D; -| 1 \rangle$, $Z &#x3D; \begin{pmatrix} 1 &amp; 0 \ 0 &amp; -1 \end{pmatrix}$, $Z^\dagger &#x3D; Z$</li>
+</ul>
+<p><strong>Hadamard 門</strong>：<br>$$<br>U &#x3D; \alpha I + \beta X + \gamma Y + \delta Z \quad (\text{Bell 態})<br>$$</p>
+<p><strong>Bell 態</strong>：<br>$$<br>\frac{1}{\sqrt{2}} (| 00 \rangle + | 11 \rangle)<br>$$<br>$$<br>\frac{1}{\sqrt{2}} (| 00 \rangle - | 11 \rangle)<br>$$<br>$$<br>\frac{1}{\sqrt{2}} (| 01 \rangle + | 10 \rangle)<br>$$<br>$$<br>\frac{1}{\sqrt{2}} (| 01 \rangle - | 10 \rangle)<br>$$</p>
+<p>假設：<br>$$<br>| \psi_1 \rangle &#x3D; \alpha_1 | 0 \rangle + \beta_1 | 1 \rangle, \quad | \psi_0 \rangle &#x3D; \alpha_0 | 0 \rangle + \beta_0 | 1 \rangle<br>$$<br>$$<br>| \psi_1 \rangle \otimes | \psi_0 \rangle &#x3D; \alpha_1 \alpha_0 | 00 \rangle + \alpha_1 \beta_0 | 01 \rangle + \beta_1 \alpha_0 | 10 \rangle + \beta_1 \beta_0 | 11 \rangle<br>$$</p>
+<p>如果 $\alpha_1 \beta_0 &#x3D; 0$，則為 <strong>可分離態</strong>；否則為 <strong>糾纏態</strong>。</p>
+<p><strong>糾纏態範例</strong>：<br>$$<br>\alpha_1 \alpha_0 | 00 \rangle + \beta_1 \beta_0 | 11 \rangle \neq | \psi_1 \rangle \otimes | \psi_0 \rangle<br>$$</p>
+<p>例如：<br>$$<br>| 00 \rangle + | 11 \rangle &#x3D; | 0 \rangle \otimes | 0 \rangle + | 1 \rangle \otimes | 1 \rangle<br>$$</p>
+<p><strong>糾纏測量</strong>：</p>
+<ul>
+<li>系統 1 測量到 $| 0 \rangle$，則系統 2 為 $| 0 \rangle$</li>
+<li>系統 1 測量到 $| 1 \rangle$，則系統 2 為 $| 1 \rangle$</li>
+</ul>
+<hr>
+<h2 id="Ch5-量子狀態轉換-Quantum-State-Transformations"><a href="#Ch5-量子狀態轉換-Quantum-State-Transformations" class="headerlink" title="Ch5. 量子狀態轉換 (Quantum State Transformations)"></a>Ch5. 量子狀態轉換 (Quantum State Transformations)</h2><h3 id="逆向計算-Reverse-Computation"><a href="#逆向計算-Reverse-Computation" class="headerlink" title="逆向計算 (Reverse Computation)"></a>逆向計算 (Reverse Computation)</h3><h4 id="CNOT-Control-NOT"><a href="#CNOT-Control-NOT" class="headerlink" title="CNOT (Control NOT)"></a>CNOT (Control NOT)</h4><p>CNOT 門的運作如下：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/blog/images/cnot_gate.png"
+                        alt="CNOT Gate"
+                 ></p>
+<ul>
+<li>$0 \rightarrow 0$, $1 \rightarrow 1$, $| 0 \rangle \otimes | 0 \rangle &#x3D; 1$</li>
+<li>$1 \rightarrow 1$, $1 \rightarrow 0$, $| 0 \rangle \otimes | 0 \rangle &#x3D; 0$</li>
+</ul>
+<h4 id="COPY"><a href="#COPY" class="headerlink" title="COPY"></a>COPY</h4><p>COPY 門的運作如下：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/blog/images/copy_gate.png"
+                        alt="COPY Gate"
+                 ></p>
+<h4 id="NOT"><a href="#NOT" class="headerlink" title="NOT"></a>NOT</h4><p>NOT 門的運作如下：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/blog/images/not_gate.png"
+                        alt="NOT Gate"
+                 ></p>
+<p>$$<br>| 0 \rangle X &#x3D; \overline{X}<br>$$</p>
+<h4 id="CNOT-矩陣"><a href="#CNOT-矩陣" class="headerlink" title="CNOT 矩陣"></a>CNOT 矩陣</h4><p>$$<br>\text{CNOT} &#x3D; \begin{pmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 1 \ 0 &amp; 0 &amp; 1 &amp; 0 \end{pmatrix} &#x3D; \begin{pmatrix} I &amp; 0 \ 0 &amp; X \end{pmatrix}<br>$$</p>
+<p><strong>CNOT 性質</strong>：<br>$$<br>\text{CNOT} \cdot \text{CNOT} &#x3D; I<br>$$<br>$$<br>\text{CNOT}^\dagger \cdot \text{CNOT} &#x3D; I<br>$$<br>$$<br>\text{CNOT}^\dagger &#x3D; \text{CNOT}<br>$$</p>
+<h4 id="SWAP"><a href="#SWAP" class="headerlink" title="SWAP"></a>SWAP</h4><p>SWAP 門的運作如下：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/blog/images/swap_gate.png"
+                        alt="SWAP Gate"
+                 ></p>
+<h4 id="CCNOT-Toffoli-Gate"><a href="#CCNOT-Toffoli-Gate" class="headerlink" title="CCNOT (Toffoli Gate)"></a>CCNOT (Toffoli Gate)</h4><p>CCNOT 門的運作如下：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/blog/images/ccnot_gate.png"
+                        alt="CCNOT Gate"
+                 ></p>
+<ul>
+<li>$a&#x3D;0, b&#x3D;0 \implies ab&#x3D;0 \implies | c \oplus ab \rangle &#x3D; | c \oplus 0 \rangle &#x3D; | c \rangle$</li>
+<li>$a&#x3D;1, b&#x3D;1 \implies ab&#x3D;1 \implies | c \oplus ab \rangle &#x3D; | c \oplus 1 \rangle &#x3D; | \overline{c} \rangle$</li>
+</ul>
+<p><strong>CCNOT 性質</strong>：<br>$$<br>\text{CCNOT} \cdot \text{CCNOT} &#x3D; I<br>$$<br>$$<br>\text{CCNOT}^\dagger \cdot \text{CCNOT} &#x3D; I<br>$$<br>$$<br>\text{CCNOT}^\dagger &#x3D; \text{CCNOT}<br>$$</p>
+<h4 id="AND"><a href="#AND" class="headerlink" title="AND"></a>AND</h4><p>AND 門的運作如下：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/blog/images/and_gate.png"
+                        alt="AND Gate"
+                 ></p>
+<h4 id="XOR"><a href="#XOR" class="headerlink" title="XOR"></a>XOR</h4><p>XOR 門的運作如下：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/blog/images/xor_gate.png"
+                        alt="XOR Gate"
+                 ></p>
+<h4 id="NAND-NOT-AND"><a href="#NAND-NOT-AND" class="headerlink" title="NAND (NOT AND)"></a>NAND (NOT AND)</h4><p>NAND 門的運作如下：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/blog/images/nand_gate.png"
+                        alt="NAND Gate"
+                 ></p>
+<h4 id="OR"><a href="#OR" class="headerlink" title="OR"></a>OR</h4><p>OR 門的運作如下：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/blog/images/or_gate.png"
+                        alt="OR Gate"
+                 ></p>
+<h4 id="範例-3"><a href="#範例-3" class="headerlink" title="範例"></a>範例</h4><p>以下是量子電路的等價性：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/blog/images/quantum_circuit_equivalence.png"
+                        alt="Quantum Circuit Equivalence"
+                 ></p>
+<hr>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>至此介紹了量子計算的基礎，從單量子位系統的 Hilbert 空間、內積、正規化，到多量子位系統的張量積、糾纏態，以及量子門和狀態轉換。</p>
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                量子計算基礎 - 從單量子位到多量子位系統
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2025/04/quantum-system/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    Author
+                </div>
+                <div class="content">Luke</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    Published
+                </div>
+                <div class="content">2025-04-04 18:48</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    License
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="Copy copyright info" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/quantum/">quantum</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/hilbert-space/">hilbert-space</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/algorithms/">algorithms</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/physics/">physics</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/blog/2025/01/vue-basic-syntax/"
+                                   title="Vue Basic Syntax"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Vue Basic Syntax</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8F%E5%AD%90%E8%A8%88%E7%AE%97%E5%9F%BA%E7%A4%8E"><span class="nav-text">量子計算基礎</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%96%AE%E9%87%8F%E5%AD%90%E4%BD%8D%E7%B3%BB%E7%B5%B1-Single-Qubit-Quantum-Systems"><span class="nav-text">單量子位系統 (Single-Qubit Quantum Systems)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hilbert-%E7%A9%BA%E9%96%93-Vector-Space"><span class="nav-text">Hilbert 空間 (Vector Space)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B"><span class="nav-text">範例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E5%BA%95"><span class="nav-text">基底</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-1"><span class="nav-text">範例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bloch-%E7%90%83-Bloch-Sphere"><span class="nav-text">Bloch 球 (Bloch Sphere)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ch3-%E5%A4%9A%E9%87%8F%E5%AD%90%E4%BD%8D%E7%B3%BB%E7%B5%B1-Multiple-Qubit-Systems"><span class="nav-text">Ch3. 多量子位系統 (Multiple-Qubit Systems)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hilbert-%E7%A9%BA%E9%96%93%E8%88%87%E5%BC%B5%E9%87%8F%E7%A9%8D"><span class="nav-text">Hilbert 空間與張量積</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-2"><span class="nav-text">範例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%81%8B%E7%AE%97%E5%AD%90"><span class="nav-text">運算子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%96%AE%E5%85%83%E7%9F%A9%E9%99%A3-Unitary-Matrix"><span class="nav-text">單元矩陣 (Unitary Matrix)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8F%E5%AD%90%E9%96%80"><span class="nav-text">量子門</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ch5-%E9%87%8F%E5%AD%90%E7%8B%80%E6%85%8B%E8%BD%89%E6%8F%9B-Quantum-State-Transformations"><span class="nav-text">Ch5. 量子狀態轉換 (Quantum State Transformations)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%86%E5%90%91%E8%A8%88%E7%AE%97-Reverse-Computation"><span class="nav-text">逆向計算 (Reverse Computation)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CNOT-Control-NOT"><span class="nav-text">CNOT (Control NOT)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#COPY"><span class="nav-text">COPY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NOT"><span class="nav-text">NOT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CNOT-%E7%9F%A9%E9%99%A3"><span class="nav-text">CNOT 矩陣</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SWAP"><span class="nav-text">SWAP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CCNOT-Toffoli-Gate"><span class="nav-text">CCNOT (Toffoli Gate)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AND"><span class="nav-text">AND</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#XOR"><span class="nav-text">XOR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NAND-NOT-AND"><span class="nav-text">NAND (NOT AND)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OR"><span class="nav-text">OR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-3"><span class="nav-text">範例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B5%90%E8%AB%96"><span class="nav-text">結論</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2024</span>&nbsp;-&nbsp;2025
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/blog/">Luke</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8F%E5%AD%90%E8%A8%88%E7%AE%97%E5%9F%BA%E7%A4%8E"><span class="nav-text">量子計算基礎</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%96%AE%E9%87%8F%E5%AD%90%E4%BD%8D%E7%B3%BB%E7%B5%B1-Single-Qubit-Quantum-Systems"><span class="nav-text">單量子位系統 (Single-Qubit Quantum Systems)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hilbert-%E7%A9%BA%E9%96%93-Vector-Space"><span class="nav-text">Hilbert 空間 (Vector Space)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B"><span class="nav-text">範例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E5%BA%95"><span class="nav-text">基底</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-1"><span class="nav-text">範例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bloch-%E7%90%83-Bloch-Sphere"><span class="nav-text">Bloch 球 (Bloch Sphere)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ch3-%E5%A4%9A%E9%87%8F%E5%AD%90%E4%BD%8D%E7%B3%BB%E7%B5%B1-Multiple-Qubit-Systems"><span class="nav-text">Ch3. 多量子位系統 (Multiple-Qubit Systems)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hilbert-%E7%A9%BA%E9%96%93%E8%88%87%E5%BC%B5%E9%87%8F%E7%A9%8D"><span class="nav-text">Hilbert 空間與張量積</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-2"><span class="nav-text">範例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%81%8B%E7%AE%97%E5%AD%90"><span class="nav-text">運算子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%96%AE%E5%85%83%E7%9F%A9%E9%99%A3-Unitary-Matrix"><span class="nav-text">單元矩陣 (Unitary Matrix)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8F%E5%AD%90%E9%96%80"><span class="nav-text">量子門</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ch5-%E9%87%8F%E5%AD%90%E7%8B%80%E6%85%8B%E8%BD%89%E6%8F%9B-Quantum-State-Transformations"><span class="nav-text">Ch5. 量子狀態轉換 (Quantum State Transformations)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%86%E5%90%91%E8%A8%88%E7%AE%97-Reverse-Computation"><span class="nav-text">逆向計算 (Reverse Computation)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CNOT-Control-NOT"><span class="nav-text">CNOT (Control NOT)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#COPY"><span class="nav-text">COPY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NOT"><span class="nav-text">NOT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CNOT-%E7%9F%A9%E9%99%A3"><span class="nav-text">CNOT 矩陣</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SWAP"><span class="nav-text">SWAP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CCNOT-Toffoli-Gate"><span class="nav-text">CCNOT (Toffoli Gate)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AND"><span class="nav-text">AND</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#XOR"><span class="nav-text">XOR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NAND-NOT-AND"><span class="nav-text">NAND (NOT AND)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OR"><span class="nav-text">OR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B-3"><span class="nav-text">範例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B5%90%E8%AB%96"><span class="nav-text">結論</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/header-shrink.js"></script>
+
+<script src="/blog/js/back2top.js"></script>
+
+<script src="/blog/js/toggle-theme.js"></script>
+
+<script src="/blog/js/code-block.js"></script>
+
+<script src="/blog/js/main.js"></script>
+
+<script src="/blog/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/blog/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/blog/js/lazyload.js"></script>
+
+
+
+<div class="pjax">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/blog/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/blog/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+            
+<script src="/blog/js/post/copyright-info.js"></script>
+
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    
+<script src="/blog/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
