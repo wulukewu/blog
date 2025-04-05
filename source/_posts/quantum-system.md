@@ -112,7 +112,7 @@ $$
 
 在量子力學中，基底 (Basis) 是一組線性無關的向量，可以張成整個 Hilbert 空間。任意量子態都可以表示為基底向量的線性組合。投影運算子 (Projection Operator) 則是用於將量子態投影到特定基底向量上的運算符。本節將介紹基底與投影運算子的基本概念與性質。
 
-#### 基底
+#### 基底 (Basis)
 
 基底 $\{ | e_1 \rangle, | e_2 \rangle, \dots, | e_N \rangle \}$ 滿足：
 
@@ -268,44 +268,56 @@ $| 00 \rangle, | 01 \rangle, | 10 \rangle, | 11 \rangle$ 為 $H_4$ 的基底
 
 假設：
 
-- 系統 1 的 Hilbert 空間 $H_2$：$| 0 \rangle = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$, $| 1 \rangle = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$
-- 系統 2 的 Hilbert 空間 $H_2$：$| 0 \rangle = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$, $| 1 \rangle = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$
+- 第0個 $H_2$：$| 0 \rangle _0 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$, $| 1 \rangle _0 = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$, $T_0$ operator
+- 第1個 $H_2$：$| 0 \rangle _1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$, $| 1 \rangle _1 = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$, $T_1$ operator
 
 計算張量積：
 
 $$
-| 0 \rangle \otimes | 0 \rangle = \begin{pmatrix} 1 \\ 0 \end{pmatrix} \otimes \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 1 \times \begin{pmatrix} 1 \\ 0 \end{pmatrix} \\ 0 \times \begin{pmatrix} 1 \\ 0 \end{pmatrix} \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix} = | 00 \rangle
+| 0 \rangle _{10} = |00 \rangle _2 = | 0 \rangle _1 \otimes |0 \rangle _0 = \begin{pmatrix} 1 \\ 0 \end{pmatrix} \otimes \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix}
 $$
 
 $$
-| 1 \rangle \otimes | 1 \rangle = \begin{pmatrix} 0 \\ 1 \end{pmatrix} \otimes \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} 0 \times \begin{pmatrix} 0 \\ 1 \end{pmatrix} \\ 1 \times \begin{pmatrix} 0 \\ 1 \end{pmatrix} \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \\ 1 \end{pmatrix} = | 11 \rangle
+| 1 \rangle _{10} = |01 \rangle _2 = | 0 \rangle _1 \otimes |1 \rangle _0 = \begin{pmatrix} 1 \\ 0 \end{pmatrix} \otimes \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} 0 \\ 1 \\ 0 \\ 0 \end{pmatrix}
+$$
+
+$$
+| 2 \rangle _{10} = |10 \rangle _2 = | 1 \rangle _1 \otimes |0 \rangle _0 = \begin{pmatrix} 0 \\ 1 \end{pmatrix} \otimes \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 1 \\ 0 \end{pmatrix}
+$$
+
+$$
+| 3 \rangle _{10} = |11 \rangle _2 = | 1 \rangle _1 \otimes |1 \rangle _0 = \begin{pmatrix} 0 \\ 1 \end{pmatrix} \otimes \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \\ 1 \end{pmatrix}
 $$
 
 ### 運算子與單元矩陣
 
-#### 運算子
+在多量子位系統中，運算子 $T$ 和單位運算子 $I$ 的結合可以用來描述量子態的演化。假設 $T_0$ 和 $T_1$ 是作用於不同量子位的運算子，若它們相等，即 $T_0 = T_1 = T$，則可以簡化為單一運算子 $T$ 的作用。
 
-假設運算子 $T$：
-
-$$
-T(| \psi \rangle \otimes | \psi \rangle) = \alpha T(| \psi \rangle) + \beta T(| \psi \rangle)
-$$
-
-**張量積運算子**：
+單位運算子 $I$ 的作用不會改變量子態，滿足以下關係：
 
 $$
-T_0 \otimes T_1 = T
+I |\psi\rangle = |\psi\rangle
 $$
 
-例如：
+其中，單位運算子 $I$ 的矩陣形式為：
 
 $$
-I | \psi \rangle = | \psi \rangle
+I = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}
 $$
 
+當運算子 $T$ 作用於單一量子位的量子態時，可以表示為：
+
 $$
-T | \psi_1 \rangle, | \psi_0 \rangle \quad (T \otimes I) (| \psi_1 \rangle \otimes | \psi_0 \rangle)
+T | \psi _1 \rangle, | \psi _0 \rangle
 $$
+
+而當運算子 $T$ 與單位運算子 $I$ 結合，作用於多量子位系統的張量積態時，則可以表示為：
+
+$$
+(T \otimes I) (| \psi _1 \rangle \otimes | \psi _0 \rangle)
+$$
+
+這種表示方式清楚地展示了運算子如何作用於多量子位系統，並且是量子計算中描述量子態演化的重要工具。
 
 **單位運算子**：
 
@@ -315,23 +327,29 @@ $$
 
 #### 單元矩陣 (Unitary Matrix)
 
-假設 $U$ 是單元矩陣：
+假設 $U$ ：
 
 $$
-U = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}
+U = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & i \\ i & 1 \end{pmatrix}
+$$
+
+則可發現 $U^{-1} = U^\dagger$
+
+**Note**：共軛轉置 $U^\dagger = (U^*)^T$
+
+$$
+U^{-1} = [\frac{1}{\sqrt{2}} \begin{pmatrix} 1 & i \\ i & 1 \end{pmatrix}]^* = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & -i \\ -i & 1 \end{pmatrix}
 $$
 
 $$
-U^\dagger = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}^*
+U^\dagger U = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & -i \\ -i & 1 \end{pmatrix} \cdot \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & i \\ i & 1 \end{pmatrix} = \frac{1}{2} \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I
 $$
 
 $$
-U^\dagger U = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} \cdot \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} = \frac{1}{2} \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I
+U U^\dagger = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & i \\ i & 1 \end{pmatrix} \cdot \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & -i \\ -i & 1 \end{pmatrix} = \frac{1}{2} \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I
 $$
 
-$$
-U U^\dagger = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} \cdot \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} = \frac{1}{2} \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I
-$$
+$U$ 是單元矩陣
 
 ---
 
@@ -339,25 +357,71 @@ $$
 
 ### 常見量子門
 
-#### Hadamard 門
+$H_2$ 的基本運算子為 $I, X, Y, Z$
 
-假設 $H_2$ 具有基底 $I, X, Y, Z$：
-
-- $X | 0 \rangle = | 1 \rangle$, $X | 1 \rangle = | 0 \rangle$, $X = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$, $X^\dagger = X$
-- $Y | 0 \rangle = +i | 1 \rangle$, $Y | 1 \rangle = -i | 0 \rangle$, $Y = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}$, $Y^\dagger = Y$
-- $Z | 0 \rangle = | 0 \rangle$, $Z | 1 \rangle = -| 1 \rangle$, $Z = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$, $Z^\dagger = Z$
-
-**Hadamard 門**：
+#### 基本運算子 - X (NOT)
 
 $$
-U = \alpha I + \beta X + \gamma Y + \delta Z \quad (\text{Bell 態})
+X | 0 \rangle = | 1 \rangle, \quad X | 1 \rangle = | 0 \rangle
+$$
+
+$$
+X = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+$$
+
+其中：
+
+$$
+X^2 = I = X^{-1}X
+$$
+
+$$
+X^{-1} = X
+$$
+
+#### 基本運算子 - Y
+$$
+Y | 0 \rangle = +i | 1 \rangle, \quad Y | 1 \rangle = -i | 0 \rangle
+$$
+
+$$
+Y = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}
+$$
+
+其中：
+$$
+Y^\dagger = Y
+$$
+
+$$
+Y^\dagger Y = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I
+$$
+
+$$
+Y^2 = I
+$$
+
+$Y$ 是單元矩陣
+
+#### 基本運算子 - Z
+
+$$
+Z | 0 \rangle = | 0 \rangle, \quad Z | 1 \rangle = -| 1 \rangle
+$$
+
+$$
+Z = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}
 $$
 
 ### 糾纏態與測量
 
-#### Bell 態
+在$H_2$中，
 
-**Bell 態**：
+$$
+U = \alpha I + \beta X + \gamma Y + \delta Z
+$$
+
+#### Bell State （貝爾態）
 
 $$
 \frac{1}{\sqrt{2}} (| 00 \rangle + | 11 \rangle)
@@ -381,13 +445,15 @@ $$
 | \psi_1 \rangle = \alpha_1 | 0 \rangle + \beta_1 | 1 \rangle, \quad | \psi_0 \rangle = \alpha_0 | 0 \rangle + \beta_0 | 1 \rangle
 $$
 
+則它們的張量積
+
 $$
 | \psi_1 \rangle \otimes | \psi_0 \rangle = \alpha_1 \alpha_0 | 00 \rangle + \alpha_1 \beta_0 | 01 \rangle + \beta_1 \alpha_0 | 10 \rangle + \beta_1 \beta_0 | 11 \rangle
 $$
 
-如果 $\alpha_1 \beta_0 = 0$，則為 **可分離態**；否則為 **糾纏態**。
+如果 $\beta_1 \alpha_0 = \alpha_1 \beta_0 = 0$，則為 **可分離態**；否則為 **糾纏態 (entanglement)**。
 
-**糾纏態範例**：
+#### 糾纏測量
 
 $$
 \alpha_1 \alpha_0 | 00 \rangle + \beta_1 \beta_0 | 11 \rangle \neq | \psi_1 \rangle \otimes | \psi_0 \rangle
@@ -396,15 +462,15 @@ $$
 例如：
 
 $$
-| 00 \rangle + | 11 \rangle = | 0 \rangle \otimes | 0 \rangle + | 1 \rangle \otimes | 1 \rangle
+| 00 \rangle + | 11 \rangle = | 0 \rangle _1 \otimes | 0 \rangle _0 + | 1 \rangle _1 \otimes | 1 \rangle _0
 $$
 
-#### 糾纏測量
+![Entangled Measurement](../../../images/posts/quantum-system/entangled_measurement.png)
 
-**糾纏測量**：
+此時去做量子測量：
 
-- 系統 1 測量到 $| 0 \rangle$，則系統 2 為 $| 0 \rangle$
-- 系統 1 測量到 $| 1 \rangle$，則系統 2 為 $| 1 \rangle$
+- 第 1 個質點測量到 $| 0 \rangle$，則第 0 個質點就確定為 $| 0 \rangle$
+- 第 1 個質點測量到 $| 1 \rangle$，則第 0 個質點就確定為 $| 1 \rangle$
 
 ### 逆向計算 (Reverse Computation)
 
@@ -412,71 +478,100 @@ $$
 
 CNOT 門的運作如下：
 
-![CNOT Gate](images/cnot_gate.png)
+![CNOT Gate](../../../images/posts/quantum-system/cnot_gate.png)
 
-- $0 \rightarrow 0$, $1 \rightarrow 1$, $| 0 \rangle \otimes | 0 \rangle = 1$
-- $1 \rightarrow 1$, $1 \rightarrow 0$, $| 0 \rangle \otimes | 0 \rangle = 0$
+$$
+\text{CNOT} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix} = \begin{pmatrix} I & O \\ O & X \end{pmatrix}
+$$
 
-#### SWAP 門
+**CNOT 性質**：
 
-SWAP 門的運作如下：
+$$
+\text{CNOT} \cdot \text{CNOT} = I
+$$
 
-![SWAP Gate](images/swap_gate.png)
+$$
+\text{CNOT}^{-1} \cdot \text{CNOT} = I
+$$
+
+$$
+\text{CNOT}^{-1} = \text{CNOT}
+$$
+
+舉個例子好了：
+
+| $1 \otimes 0 = 1$ | $1 \otimes 1 = 0$ |
+|-----------|-----------|
+| ![Example 1](../../../images/posts/quantum-system/cnot_gate_ex1.png) | ![Example 2](../../../images/posts/quantum-system/cnot_gate_ex2.png) |
+
+這是所有計算中最重要的一個運算門，並且可以延伸出 COPY、NOT 和 SWAP 三種操作：
+
+| COPY | NOT | SWAP |
+|-----------|-----------|-----------|
+| ![COPY Gate](../../../images/posts/quantum-system/cnot_gate_copy.png) | ![NOT Gate](../../../images/posts/quantum-system/cnot_gate_not.png) | ![SWAP Gate (Using CNOT)](../../../images/posts/quantum-system/swap_gate_cnot.jpg) |
 
 #### CCNOT (Toffoli Gate)
 
 CCNOT 門的運作如下：
 
-![CCNOT Gate](images/ccnot_gate.png)
+![CCNOT Gate](../../../images/posts/quantum-system/ccnot_gate.png)
 
 - $a=0, b=0 \implies ab=0 \implies | c \oplus ab \rangle = | c \oplus 0 \rangle = | c \rangle$
 - $a=1, b=1 \implies ab=1 \implies | c \oplus ab \rangle = | c \oplus 1 \rangle = | \overline{c} \rangle$
 
 **CCNOT 性質**：
 
+![CCNOT Reversibility](../../../images/posts/quantum-system/ccnot_gate_reversibility.png)
+
 $$
 \text{CCNOT} \cdot \text{CCNOT} = I
 $$
 
 $$
-\text{CCNOT}^\dagger \cdot \text{CCNOT} = I
+\text{CCNOT}^{-1} \cdot \text{CCNOT} = I
 $$
 
 $$
-\text{CCNOT}^\dagger = \text{CCNOT}
+\text{CCNOT}^{-1} = \text{CCNOT}
 $$
 
 ### 邏輯運算門
 
-#### AND 門
+#### AND
 
-AND 門的運作如下：
+AND 的運作如下：
 
-![AND Gate](images/and_gate.png)
+![AND Gate](../../../images/posts/quantum-system/and_gate.png)
 
-#### XOR 門
+#### XOR
 
-XOR 門的運作如下：
+XOR 的運作如下：
 
-![XOR Gate](images/xor_gate.png)
+![XOR Gate](../../../images/posts/quantum-system/xor_gate.png)
 
-#### NAND 門
+#### NAND (NOT AND)
 
-NAND 門的運作如下：
+NAND 的運作如下：
 
-![NAND Gate](images/nand_gate.png)
+![NAND Gate](../../../images/posts/quantum-system/nand_gate.png)
 
-#### OR 門
+#### NOT
 
-OR 門的運作如下：
+NOT 也可以用 CNOT 的形式來表示：
 
-![OR Gate](images/or_gate.png)
+![NOT Gate](../../../images/posts/quantum-system/not_gate.png)
+
+#### OR
+
+OR 的運作如下：
+
+![OR Gate](../../../images/posts/quantum-system/or_gate.png)
 
 ##### 範例
 
 以下是量子電路的等價性：
 
-![Quantum Circuit Equivalence](images/quantum_circuit_equivalence.png)
+![Quantum Circuit Equivalence](../../../images/posts/quantum-system/quantum_circuit_equivalence.png)
 
 ---
 
