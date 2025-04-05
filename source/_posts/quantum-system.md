@@ -13,7 +13,7 @@ mathjax: true
 
 # 量子計算基礎
 
-本文旨在介紹量子計算 (Quantum Computing) 的基本概念與原理，從量子位元 (Qubit) 的基本概念出發，逐步深入探討多量子位元系統的運算與應用。量子計算與傳統計算 (Classical Computing) 最大的不同在於其底層運算邏輯，透過量子力學的特性，例如疊加 (Superposition) 和糾纏 (Entanglement)，實現傳統計算難以達成的計算能力。
+本文會介紹量子計算 (Quantum Computing) 的基本概念與原理，從量子位元 (Qubit) 的基本概念出發，逐步深入探討多量子位元系統的運算與應用。量子計算與傳統計算 (Classical Computing) 最大的不同在於其底層運算邏輯，透過量子力學的特性，例如疊加 (Superposition) 和糾纏 (Entanglement)，實現傳統計算難以達成的計算能力。
 
 ---
 
@@ -155,13 +155,13 @@ $$
 \langle e_2 | \psi \rangle = \langle e_2 | \left( \frac{1-i}{\sqrt{6}} | e_1 \rangle + \frac{2}{\sqrt{6}} | e_2 \rangle \right) = \frac{1-i}{\sqrt{6}} \langle e_2 | e_1 \rangle + \frac{2}{\sqrt{6}} \langle e_2 | e_2 \rangle = \frac{2}{\sqrt{6}}
 $$
 
+此時算出的 $\langle e_1 | \psi \rangle = \frac{1-i}{\sqrt{6}}$ 和 $\langle e_2 | \psi \rangle = \frac{2}{\sqrt{6}}$ 就分別是 $| \psi \rangle$ 在 $| e_1 \rangle$ 和 $| e_2 \rangle$ 兩個基底的投影運算子。
+
 #### 崩塌 (Collapse)
 
 我們前面說過，$| \psi \rangle = \sum_i \alpha_i | e_i \rangle$ 是由$N$維的基底所組成的。其中 $| e_i \rangle$ 在 $| \psi \rangle$ 出現的機率為 $| \alpha_i |^2$，則$|\alpha_1|^2 + |\alpha_2|^2 + \dots + |\alpha_N|^2 = 1$。
 
-在 $| \psi \rangle = \sum_i \alpha_i | e_i \rangle$ 當中，$| e_i \rangle$ 出現的機率取決於 $| \alpha_i |^2$，而此時的觀測是**不可逆**的。當測量完成後，量子態會崩塌到對應的基底態 $| e_i \rangle$，並且無法回復到原本的疊加態。
-
-這表明測量過程不可逆，且量子態的疊加性在測量後不復存在。
+在 $| \psi \rangle = \sum_i \alpha_i | e_i \rangle$ 當中，$| e_i \rangle$ 出現的機率取決於 $| \alpha_i |^2$，而此時的觀測是**不可逆**的。當測量完成後，量子態會崩塌到對應的基底態 $| e_i \rangle$，並且無法回復到原本的疊加態。因此**測量過程不可逆，且量子態的疊加性在測量後不復存在**。
 
 ##### 範例
 
@@ -212,7 +212,7 @@ Bloch 球用於表示單量子位的狀態：
 
 ## 多量子位系統 (Multiple-Qubit Systems)
 
-### Hilbert 空間與張量積
+### Hilbert 空間與張量積 (Tensor Product)
 
 多量子位系統的 Hilbert 空間是單量子位空間的張量積：
 
@@ -222,47 +222,47 @@ $$
 
 假設：
 
-- 系統 1 的 Hilbert 空間 $H_2$：$\{ | 0 \rangle, | 1 \rangle \}$
-- 系統 2 的 Hilbert 空間 $H_2$：$\{ | 0 \rangle, | 1 \rangle \}$
+- 第 0 個 $H_2$：$\{ | 0 \rangle _0, | 1 \rangle _0 \}$
+- 第 1 個 $H_2$：$\{ | 0 \rangle _1, | 1 \rangle _1 \}$
 
 則：
 
 $$
-| \psi \rangle = \alpha_0 | 0 \rangle + \beta_0 | 1 \rangle, \quad | \psi \rangle = \alpha_1 | 0 \rangle + \beta_1 | 1 \rangle
+| \psi_{0} \rangle = \alpha_{0} | 0 \rangle_{0} + \beta_{0} | 1 \rangle_{0}, \quad | \psi_{1} \rangle = \alpha_{1} | 0 \rangle_{1} + \beta_{1} | 1 \rangle_{1}
 $$
 
 $$
-\langle 0 | 0 \rangle = 0, \quad \langle 0 | 1 \rangle = 0
+{}_{0}\langle 0 | 1 \rangle_{0} = 0, \quad {}_{1}\langle 0 | 1 \rangle_{1} = 0
 $$
 
 $$
-\langle 0 | 0 \rangle = 1, \quad \langle 1 | 1 \rangle = 1
+{}_{0}\langle 0 | 0 \rangle_{0} = {}_{0}\langle 1 | 1 \rangle_{0} = 1, \quad {}_{1}\langle 0 | 0 \rangle_{1} = {}_{1}\langle 1 | 1 \rangle_{1} = 1
 $$
 
 #### 張量積
 
+$H_2 \otimes H_2:$
+
 $$
-H_2 \otimes H_2:
+| \psi_1 \rangle \otimes | \psi_0 \rangle = [\alpha_1 | 0 \rangle_1 + \beta_1 | 1 \rangle_1] \otimes [\alpha_0 | 0 \rangle_0 + \beta_0 | 1 \rangle_0]
 $$
 
 $$
-| \psi_1 \rangle \otimes | \psi_0 \rangle = [\alpha_1 | 0 \rangle + \beta_1 | 1 \rangle] \otimes [\alpha_0 | 0 \rangle + \beta_0 | 1 \rangle]
+= \alpha_1 \alpha_0 | 0 \rangle_1 \otimes | 0 \rangle_0 + \alpha_1 \beta_0 | 0 \rangle_1 \otimes | 1 \rangle_0 + \beta_1 \alpha_0 | 1 \rangle_1 \otimes | 0 \rangle_0 + \beta_1 \beta_0 | 1 \rangle_1 \otimes | 1 \rangle_0
 $$
 
 $$
-= \alpha_1 \alpha_0 | 0 \rangle \otimes | 0 \rangle + \alpha_1 \beta_0 | 0 \rangle \otimes | 1 \rangle + \beta_1 \alpha_0 | 1 \rangle \otimes | 0 \rangle + \beta_1 \beta_0 | 1 \rangle \otimes | 1 \rangle
+= \alpha_1 \alpha_0 | 00 \rangle_{10} + \alpha_1 \beta_0 | 01 \rangle_{10} + \beta_1 \alpha_0 | 10 \rangle_{10} + \beta_1 \beta_0 | 11 \rangle_{10}
 $$
 
-$$
-= \alpha_1 \alpha_0 | 00 \rangle + \alpha_1 \beta_0 | 01 \rangle + \beta_1 \alpha_0 | 10 \rangle + \beta_1 \beta_0 | 11 \rangle
-$$
+而此時：
 
-因此：
+- $| 0 \rangle_1 \otimes | 0 \rangle_0 = | 00 \rangle_{10}$
+- $| 0 \rangle_1 \otimes | 1 \rangle_0 = | 01 \rangle_{10}$
+- $| 1 \rangle_1 \otimes | 0 \rangle_0 = | 10 \rangle_{10}$
+- $| 1 \rangle_1 \otimes | 1 \rangle_0 = | 11 \rangle_{10}$
 
-- $| 0 \rangle \otimes | 0 \rangle = | 00 \rangle$
-- $| 0 \rangle \otimes | 1 \rangle = | 01 \rangle$
-- $| 1 \rangle \otimes | 0 \rangle = | 10 \rangle$
-- $| 1 \rangle \otimes | 1 \rangle = | 11 \rangle$
+$| 00 \rangle, | 01 \rangle, | 10 \rangle, | 11 \rangle$ 為 $H_4$ 的基底
 
 ##### 範例
 
