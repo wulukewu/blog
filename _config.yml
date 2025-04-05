@@ -122,3 +122,10 @@ search:
   field: post
   content: true
   format: striptags
+
+
+# Plugins
+easy_tags_plugin:
+  enable: true
+  tag_name_case: 1
+  sort_ignore_case: true
