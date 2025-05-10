@@ -9,36 +9,42 @@ tags:
 mathjax: true
 ---
 
-（大一下去修了一門量子計算的課程，跟一般電路學不一樣的是引入了新設計的邏輯閘。）
+大一下去修了一門量子計算的課，前面的概念跟線性代數有滿多相似的地方，後半部分才真正開始講量子演算法。
 
 # 量子計算基礎
 
-本文會介紹量子計算 (Quantum Computing) 的基本概念與原理，從量子位元 (Qubit) 的基本概念出發，逐步深入探討多量子位元系統的運算與應用。量子計算與傳統計算 (Classical Computing) 最大的不同在於其底層運算邏輯，透過量子力學的特性，例如疊加 (Superposition) 和糾纏 (Entanglement)，實現傳統計算難以達成的計算能力。
+量子電腦與傳統電腦的差別，在於傳統電腦儲存資訊的最小單位是位元（bit），量子電腦則是使用量子位元（qubit）。位元可以存在一種狀態，1 或是 0。量子位元特別的地方是，它在一個時間，可以同時是 1 也是 0。
+
+過去超大整數的質因數分解，即使傳統超級電腦的運算能力也無法在短時間破解。不過，量子演算法（Shor's Algorithm，可解質因數分解）能在合理時間內完成破解，會顛覆現在 RSA 等加密算法。
 
 ---
 
 ## 單量子位系統 (Single-Qubit Quantum Systems)
 
-在量子計算中，量子位元 (Qubit) 是最基本的資訊單位，類似於傳統計算中的位元 (Bit)。然而，與傳統位元只能處於 0 或 1 的狀態不同，量子位元可以同時處於 0 和 1 的疊加態。本節將介紹單量子位元系統的基本概念，包括描述量子態的 Hilbert 空間 (Hilbert Space)、向量空間 (Vector Space) 的數學表示，以及相關的運算。
+在量子計算中，量子位元 (Qubit) 是最基本的資訊單位，類似於傳統計算中的位元 (Bit)。然而，與傳統位元只能處於 0 或 1 的狀態不同，量子位元可以同時處於 0 和 1 的疊加態。先來介紹一下量子計算所處於的空間定義：
 
 ### Hilbert 空間 (Hilbert Space)
 
-在量子力學中，量子態並非存在於我們熟悉的歐幾里得空間，而是存在於一個更抽象的數學空間，稱為 Hilbert 空間。**因此，理解 Hilbert 空間對於理解量子態至關重要。** Hilbert 空間是一個完備的內積空間，允許我們進行向量的加法、純量乘法，以及計算向量之間的內積。對於單量子位元系統，Hilbert 空間是一個複數向量空間，具有以下特性：
+對於單量子位元系統，Hilbert 空間是一個複數 $\mathbb{C}$ 中的 inner product space，有向量加法、純量乘法，以及計算向量之間的內積。
 
-- 量子態可以表示為 Hilbert 空間中的向量，例如 $| \psi \rangle$ 和 $| \phi \rangle$，它們都屬於 Hilbert 空間 $V$，即 $| \psi \rangle, | \phi \rangle \in V$。其中，$\alpha$ 和 $\beta$ 是複數，即 $\alpha, \beta \in \mathbb{C}$。
-- Hilbert 空間滿足線性疊加原理，即如果 $| \psi \rangle$ 和 $| \phi \rangle$ 是 Hilbert 空間中的向量，那麼它們的線性組合 $\alpha | \psi \rangle + \beta | \phi \rangle$ 也屬於 Hilbert 空間 $V$，即 $\alpha | \psi \rangle + \beta | \psi \rangle \in V$。
+> If $| \psi \rangle, | \phi \rangle \in V$, $\alpha, \beta \in \mathbb{C}$, then $\alpha | \psi \rangle + \beta | \phi \rangle \in V$.
 
-假設 Hilbert 空間的基底為 $\{ | e_1 \rangle, | e_2 \rangle, \dots, | e_N \rangle \}$，對於維度 (Dimension) 為 $N$ 的向量空間，任意量子態 $| \psi \rangle$ 都可以表示為基底向量的線性組合：
+在單量子位元系統當中，我們常用$|0\rangle=\begin{pmatrix} 1 \\ 0 \end{pmatrix}$, $|1\rangle=\begin{pmatrix} 0 \\ 1 \end{pmatrix}$當作標準基底，而一個量子位元則可表示為 $| \psi \rangle = \alpha | 0 \rangle + \beta | 1 \rangle$。
 
-$$
-| \psi \rangle = \sum_i \alpha_i | e_i \rangle, \quad \alpha_i \in \mathbb{C}
-$$
-
-其中，$\alpha_i$ 是複數，表示基底向量 $| e_i \rangle$ 在量子態 $| \psi \rangle$ 中的權重 (Weight)。基底向量 $| e_i \rangle$ 可以表示為列向量：
+至於維度 (Dimension) 為 $N$ 的向量空間，則會以 $\{ | e_1 \rangle, | e_2 \rangle, \dots, | e_N \rangle \}$ 當作標準基底，也可以寫成$\{ | 0 \rangle, | 1 \rangle, \dots, | N-1 \rangle \}$ 。
 
 $$|e_1\rangle = \begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}, |e_2\rangle = \begin{pmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{pmatrix}, \ldots, |e_N\rangle = \begin{pmatrix} 0 \\ \vdots \\ 0 \\ 1 \end{pmatrix}$$
 
-**Note**：單量子位元系統的 Hilbert 空間是一個 $N=2$ 的簡單空間，而複數量子位元系統的 Hilbert 空間維度會隨著量子位元數量增加而指數成長，例如 5 個量子位元系統的 Hilbert 空間維度為 $N=2^5=32$。
+- **正規化 (Normalized)**：$\langle e_i | e_i \rangle = \langle e_2 | e_2 \rangle = \dots = \langle e_N | e_N \rangle = 1$
+- **正交 (Orthogoral)**：$\langle e_i | e_j \rangle = \langle e_2 | e_3 \rangle = \dots = \langle e_N | e_N \rangle = 0$
+
+因此：
+
+$$
+\langle e_i | e_j \rangle = \delta_{ij} = \begin{cases} 1 & \text{if } i = j \\ 0 & \text{if } i \neq j \end{cases}
+$$
+
+**Note**：單量子位元系統的 Hilbert 空間是一個 $N=2$ 的簡單空間，而複數量子位元系統的 Hilbert 空間維度會隨著量子位元數量增加而指數成長，例如 $n=5$ 個量子位元系統的 Hilbert 空間維度為 $N=2^5=32$。
 
 ##### 範例
 
@@ -46,14 +52,10 @@ $$|e_1\rangle = \begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}, |e_2\rangle
 
 #### 對偶向量 (Dual Vector)
 
-**在進行內積運算之前，我們需要先了解對偶向量的概念。**
-
 - $\langle \psi | = \begin{pmatrix} 1-i & 2 \end{pmatrix}^* = \begin{pmatrix} 1+i & 2 \end{pmatrix}$
 - $\langle \phi | = \begin{pmatrix} 1 & 1+i \end{pmatrix}^* = \begin{pmatrix} 1 & 1-i \end{pmatrix}$
 
 #### 內積 (Inner Product)
-
-**有了對偶向量的基礎，我們就可以計算向量的內積。**
 
 $$
 \langle \phi | \psi \rangle = \begin{pmatrix} 1 & 1-i \end{pmatrix} \begin{pmatrix} 1-i \\ 2 \end{pmatrix} = 3(1-i)
@@ -73,12 +75,11 @@ $$
 
 因此：
 
-- $\langle \phi | \psi \rangle \neq \langle \psi | \phi \rangle^*$，表示 $\langle \phi | \psi \rangle \neq \langle \psi | \phi \rangle$
-- $\langle \psi | \psi \rangle = 0 \implies | \psi \rangle$ 是正交 (Orthogonal)
+- $\langle v | v \rangle \in \mathbb{R}_{\geq 0}$ (non-negative real)
+- $\langle v_1 | v_2 \rangle = \overline{\langle v_2 | v_1 \rangle}$
+- $(a \langle v_2 | + b \langle v_3 |)| v_1 \rangle = a \langle v_2 | v_1 \rangle + b \langle v_3 | v_1 \rangle$
 
 #### 向量範數 (Norm)
-
-向量範數 (Norm) 是一種衡量向量大小的函數，它將向量映射到一個非負實數。在量子力學中，向量範數用於衡量量子態的長度。
 
 $$
 \| \psi \| = \sqrt{\langle \psi | \psi \rangle}
@@ -86,7 +87,7 @@ $$
 
 #### 正規化向量 (Normalized Vector)
 
-正規化向量 (Normalized Vector) 是指將向量縮放到長度為 1 的過程。在量子力學中，量子態必須是正規化的，以保證測量結果的機率總和為 1。
+量子態必須是正規化的，以保證測量結果的機率總和為 1。
 
 $$
 | \psi \rangle_N = \frac{| \psi \rangle}{\| \psi \|}
@@ -106,39 +107,6 @@ $$
 
 $$
 \langle \phi | \phi \rangle = \frac{\begin{pmatrix} 1 & 1-i \end{pmatrix}}{\sqrt{3}} \cdot \frac{\begin{pmatrix} 1 \\ 1+i \end{pmatrix}}{\sqrt{3}} = \frac{3}{3} = 1
-$$
-
-### 基底與投影運算子
-
-在量子力學中，基底 (Basis) 是一組線性無關的向量，可以張成整個 Hilbert 空間。任意量子態都可以表示為基底向量的線性組合。投影運算子 (Projection Operator) 則是用於將量子態投影到特定基底向量上的運算符。本節將介紹基底與投影運算子的基本概念與性質。
-
-#### 基底 (Basis)
-
-基底 $\{ | e_1 \rangle, | e_2 \rangle, \dots, | e_N \rangle \}$ 滿足：
-
-- **正規化 (Normalized)**：$\langle e_i | e_i \rangle = \langle e_2 | e_2 \rangle = \dots = \langle e_N | e_N \rangle = 1$
-- **正交 (Orthogoral)**：$\langle e_i | e_j \rangle = \langle e_2 | e_3 \rangle = \dots = \langle e_N | e_N \rangle = 0$
-
-因此：
-
-$$
-\langle e_i | e_j \rangle = \delta_{ij} = \begin{cases} 1 & \text{if } i = j \\ 0 & \text{if } i \neq j \end{cases}
-$$
-
-##### 範例
-
-假設基底：$| e_1 \rangle = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$, $| e_2 \rangle = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$
-
-那麼可以先求出對偶向量：$\langle e_1 | = \begin{pmatrix} 1 & 0 \end{pmatrix}, \langle e_2 | = \begin{pmatrix} 0 & 1 \end{pmatrix}$
-
-計算：
-
-$$
-\langle e_1 | e_1 \rangle = \begin{pmatrix} 1 & 0 \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = 1
-$$
-
-$$
-\langle e_2 | e_2 \rangle = \begin{pmatrix} 0 & 1 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = 1
 $$
 
 #### 投影運算子 (Projection Operator)
@@ -194,6 +162,8 @@ $$
 $$
 \frac{P_2}{| \alpha_2 |^2} | \psi \rangle = \frac{\alpha_2}{| \alpha_2 |^2} | e_2 \rangle = e^{i\theta_2} | e_2 \rangle
 $$
+
+量子態在測量後會崩塌到某個基底態，而此時的經典態不再具有量子態的疊加性。
 
 ### Bloch 球 (Bloch Sphere)
 
@@ -268,8 +238,8 @@ $| 00 \rangle, | 01 \rangle, | 10 \rangle, | 11 \rangle$ 為 $H_4$ 的基底
 
 假設：
 
-- 第0個 $H_2$：$| 0 \rangle _0 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$, $| 1 \rangle _0 = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$, $T_0$ operator
-- 第1個 $H_2$：$| 0 \rangle _1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$, $| 1 \rangle _1 = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$, $T_1$ operator
+- 第 0 個 $H_2$：$| 0 \rangle _0 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$, $| 1 \rangle _0 = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$, $T_0$ operator
+- 第 1 個 $H_2$：$| 0 \rangle _1 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$, $| 1 \rangle _1 = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$, $T_1$ operator
 
 計算張量積：
 
@@ -380,6 +350,7 @@ X^{-1} = X
 $$
 
 #### 基本運算子 - Y
+
 $$
 Y | 0 \rangle = +i | 1 \rangle, \quad Y | 1 \rangle = -i | 0 \rangle
 $$
@@ -389,6 +360,7 @@ Y = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}
 $$
 
 其中：
+
 $$
 Y^\dagger = Y
 $$
@@ -500,14 +472,14 @@ $$
 
 舉個例子好了：
 
-| $1 \otimes 0 = 1$ | $1 \otimes 1 = 0$ |
-|-----------|-----------|
+| $1 \otimes 0 = 1$                                                    | $1 \otimes 1 = 0$                                                    |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | ![Example 1](../../../images/posts/quantum-system/cnot_gate_ex1.png) | ![Example 2](../../../images/posts/quantum-system/cnot_gate_ex2.png) |
 
 這是所有計算中最重要的一個運算門，並且可以延伸出 COPY、NOT 和 SWAP 三種操作：
 
-| COPY | NOT | SWAP |
-|-----------|-----------|-----------|
+| COPY                                                                  | NOT                                                                 | SWAP                                                                               |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | ![COPY Gate](../../../images/posts/quantum-system/cnot_gate_copy.png) | ![NOT Gate](../../../images/posts/quantum-system/cnot_gate_not.png) | ![SWAP Gate (Using CNOT)](../../../images/posts/quantum-system/swap_gate_cnot.jpg) |
 
 #### CCNOT (Toffoli Gate)
