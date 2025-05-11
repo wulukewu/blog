@@ -91,7 +91,7 @@ local_search:
   preload: true     # Preload the search data when the page loads
 
 lazyload:
-  enable: true  # Option values: true | false
+  enable: false  # Option values: true | false
 
 pjax:
   enable: true   # Option values: true | false
