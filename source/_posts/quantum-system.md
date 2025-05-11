@@ -178,6 +178,15 @@ Bloch 球用於表示單量子位的狀態：
 - $| i \rangle \rightarrow (0, 1, 0)$
 - $| -i \rangle \rightarrow (0, -1, 0)$
 
+#### Bloch 球上的 I, X, Y, Z 運算子幾何意義
+
+- **I (單位運算子)**：不改變 Bloch 球上的狀態（即不旋轉）。
+- **X 門（Pauli-X）**：繞 $x$ 軸旋轉 $\pi$ 弧度（180°），將 $|0\rangle$ 和 $|1\rangle$ 互換。對應於 Bloch 球上的 $x$ 軸翻轉。
+- **Y 門（Pauli-Y）**：繞 $y$ 軸旋轉 $\pi$ 弧度（180°），將 $|0\rangle$ 和 $|1\rangle$ 互換，並帶有相位。對應於 Bloch 球上的 $y$ 軸翻轉。
+- **Z 門（Pauli-Z）**：繞 $z$ 軸旋轉 $\pi$ 弧度（180°），將 $|+\rangle$ 和 $|-\rangle$ 互換，$|0\rangle$ 不變，$|1\rangle$ 變號。對應於 Bloch 球上的 $z$ 軸翻轉。
+
+簡單來說，X, Y, Z 分別對應於 Bloch 球上繞 $x$、$y$、$z$ 軸的 180° 旋轉。
+
 ---
 
 ## 多量子位系統 (Multiple-Qubit Systems)
@@ -195,21 +204,7 @@ $$
 - 第 0 個 $H_2$：$\{ | 0 \rangle _0, | 1 \rangle _0 \}$
 - 第 1 個 $H_2$：$\{ | 0 \rangle _1, | 1 \rangle _1 \}$
 
-則：
-
-$$
-| \psi_{0} \rangle = \alpha_{0} | 0 \rangle_{0} + \beta_{0} | 1 \rangle_{0}, \quad | \psi_{1} \rangle = \alpha_{1} | 0 \rangle_{1} + \beta_{1} | 1 \rangle_{1}
-$$
-
-$$
-{}_{0}\langle 0 | 1 \rangle_{0} = 0, \quad {}_{1}\langle 0 | 1 \rangle_{1} = 0
-$$
-
-$$
-{}_{0}\langle 0 | 0 \rangle_{0} = {}_{0}\langle 1 | 1 \rangle_{0} = 1, \quad {}_{1}\langle 0 | 0 \rangle_{1} = {}_{1}\langle 1 | 1 \rangle_{1} = 1
-$$
-
-#### 張量積
+#### Tensor Product
 
 $H_2 \otimes H_2:$
 
@@ -287,8 +282,6 @@ $$
 (T \otimes I) (| \psi _1 \rangle \otimes | \psi _0 \rangle)
 $$
 
-這種表示方式清楚地展示了運算子如何作用於多量子位系統，並且是量子計算中描述量子態演化的重要工具。
-
 **單位運算子**：
 
 $$
@@ -305,7 +298,7 @@ $$
 
 則可發現 $U^{-1} = U^\dagger$
 
-**Note**：共軛轉置 $U^\dagger = (U^*)^T$
+**Note**：共軛轉置 (conjugate) $U^\dagger = (U^*)^T$
 
 $$
 U^{-1} = [\frac{1}{\sqrt{2}} \begin{pmatrix} 1 & i \\ i & 1 \end{pmatrix}]^* = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & -i \\ -i & 1 \end{pmatrix}
@@ -319,7 +312,7 @@ $$
 U U^\dagger = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & i \\ i & 1 \end{pmatrix} \cdot \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & -i \\ -i & 1 \end{pmatrix} = \frac{1}{2} \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I
 $$
 
-$U$ 是單元矩陣
+$U$ 是 Unitary Matrix
 
 ---
 
@@ -411,6 +404,8 @@ $$
 \frac{1}{\sqrt{2}} (| 01 \rangle - | 10 \rangle)
 $$
 
+Bell State 是兩個 qubit 之間最純粹的糾纏態。
+
 假設：
 
 $$
@@ -470,7 +465,7 @@ $$
 \text{CNOT}^{-1} = \text{CNOT}
 $$
 
-舉個例子好了：
+舉個例子：
 
 | $1 \otimes 0 = 1$                                                    | $1 \otimes 1 = 0$                                                    |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
@@ -547,6 +542,12 @@ OR 的運作如下：
 
 ---
 
-## 結論
+## 量子傳輸
 
-至此介紹了量子計算的基礎，從單量子位系統的 Hilbert 空間、內積、正規化，到多量子位系統的張量積、糾纏態，以及量子門和狀態轉換。
+## 量子演算法
+
+### Bernstein-Vazirani Algorithm
+
+### Simon's Algorithm
+
+### Shor’s Algorithm
