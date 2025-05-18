@@ -11,11 +11,71 @@ mathjax: true
 
 大一下去修了一門量子計算的課，前面的概念跟線性代數有滿多相似的地方，後半部分才真正開始講量子演算法。
 
-# 量子計算基礎
+# 量子計算基礎簡介
 
 量子電腦與傳統電腦的差別，在於傳統電腦儲存資訊的最小單位是位元（bit），量子電腦則是使用量子位元（qubit）。位元可以存在一種狀態，1 或是 0。量子位元特別的地方是，它在一個時間，可以同時是 1 也是 0。
 
+![bit vs qubit](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*w9516UckuSEBQdiUOoiHbQ.png)
+
 過去超大整數的質因數分解，即使傳統超級電腦的運算能力也無法在短時間破解。不過，量子演算法（Shor's Algorithm，可解質因數分解）能在合理時間內完成破解，會顛覆現在 RSA 等加密算法。
+
+## Classical v.s. Quantum
+
+### 拆解質數
+
+現在有個數字 $N = f_1 \times f_2$，由 $f_1, f_2$ 兩個很大的質數構成。破解 RSA 的核心，就是從 $N$ 找出 $f_1$ 和 $f_2$。
+
+想要找到 $N$ 的因數，只要不斷給定 $g$，透過 Euclid's Algorithm（歐幾里得演算法，又稱輾轉相除法）快速計算判斷，當 $g$ 使得公因數 $\gcd(N, g) = a > 1$ 時，對於 RSA 來說就已經結束了。
+
+但要找到 $g$ 可以滿足上述條件其實並不容易，事實上真的只能一個一個猜 $g$ 是多少。不過，我們可以將這個隨機猜測的數字 $g$ 轉換成很有可能滿足條件的 $g^{p/2} \pm 1$。
+
+<details>
+<summary>為什麼是 $g^{p/2} \pm 1$ ？</summary>
+
+若給定兩個數 $A, B$，且 $\gcd(A, B) = 1$，則存在一個正整數 $p$ 使得 $A^p = m \cdot B + 1$，其中 $m$ 為某個整數。
+
+舉兩個例子來說：
+
+**Ex1**
+
+給定 $(A, B) = (7, 15)$，則：
+
+$$
+\begin{align*}
+p &= 2, & 7^2 &= 3 \cdot 15 + 4 \\
+p &= 3, & 7^3 &= 22 \cdot 15 + 13 \\
+p &= 4, & 7^4 &= 160 \cdot 15 + 1
+\end{align*}
+$$
+
+**Ex2**
+
+給定 $(A, B) = (42, 13)$，則：
+
+$$
+\begin{align*}
+p &= 2, & 42^2 &= 135 \cdot 13 + 9 \\
+p &= 3, & 42^3 &= 5699 \cdot 13 + 1
+\end{align*}
+$$
+
+因此，$m \cdot B = A^p - 1 = \left(A^{p/2}+1\right)\left(A^{p/2}-1\right)$
+
+</details>
+
+將機會不大的數字 g 轉換成很有可能的$g^{p/2} \pm 1$，只要找到這樣的$p$就好（$p$要是偶數才能真正拆解喔！）
+
+#### Classical
+
+我們用個例子來想，要用傳統電腦找到一個 $p$ 使得 $42^p = m \times 13 + 1$，可能會從 $p=1,2,3,\ldots$ 開始一個一個慢慢代入判斷，但如果現在給定 $g^p = m \times N + 1$ 的 $g$ 和 $N$ 都很大呢？
+
+對傳統電腦來說，就真的只能一個一個數字慢慢算，直到找到答案為止，這也就是為什麼現在能夠這麼廣泛地使用 RSA 加密。但是對量子電腦來說就不太一樣了……
+
+#### Quantum
+
+> 標準的 2048 位元 RSA 加密，就算用目前世界上最強的超級電腦（太湖之光，中國製），花費地球年齡的時間（46 億年）都無法破解。
+
+如果量子電腦真的存在，那麼再怎麼大的數字 $N$，都能在一瞬間拆解成 $f_1, f_2$ 兩個質數。但是現在還不需要擔心，因為目前的技術還沒辦法處理太多位元的數字，可能只能拆解 $15=3\times5$ 這種容易的而已。
 
 ---
 
@@ -131,6 +191,8 @@ $$
 
 在 $| \psi \rangle = \sum_i \alpha_i | e_i \rangle$ 當中，$| e_i \rangle$ 出現的機率取決於 $| \alpha_i |^2$，而此時的觀測是**不可逆**的。當測量完成後，量子態會崩塌到對應的基底態 $| e_i \rangle$，並且無法回復到原本的疊加態。因此**測量過程不可逆，且量子態的疊加性在測量後不復存在**。
 
+![Quantum Measurement Single](../../../images/posts/quantum-system/quantum_measurement_single.gif)
+
 ##### 範例
 
 $$
@@ -167,9 +229,17 @@ $$
 
 ### Bloch 球 (Bloch Sphere)
 
-Bloch 球用於表示單量子位的狀態：
+Bloch 球用於表示單量子位的狀態：[video](../../../images/posts/quantum-system/spherical_vs_cartesian_coordinate_systems.mp4)
 
 ![Bloch Sphere](../../../images/posts/quantum-system/bloch_sphere.png)
+
+<!-- <div align="center">
+
+<video src="../../../images/posts/quantum-system/spherical_vs_cartesian_coordinate_systems.mp4" width="350" controls autoplay loop muted playsinline>
+  Your browser does not support the video tag.
+</video>
+
+</div> -->
 
 - $| 0 \rangle \rightarrow (0, 0, 1)$
 - $| 1 \rangle \rightarrow (0, 0, -1)$
@@ -439,6 +509,8 @@ $$
 - 第 1 個質點測量到 $| 0 \rangle$，則第 0 個質點就確定為 $| 0 \rangle$
 - 第 1 個質點測量到 $| 1 \rangle$，則第 0 個質點就確定為 $| 1 \rangle$
 
+![Quantum Measurement Multiple](../../../images/posts/quantum-system/quantum_measurement_multiple.gif)
+
 ### 逆向計算 (Reverse Computation)
 
 #### CNOT (Control NOT)
@@ -551,3 +623,5 @@ OR 的運作如下：
 ### Simon's Algorithm
 
 ### Shor’s Algorithm
+
+### Grover's Algorithm
