@@ -11,7 +11,7 @@ mathjax: true
 
 大一下去修了一門量子計算的課，前面的概念跟線性代數有滿多相似的地方，後半部分才真正開始講量子演算法。
 
-# 量子計算基礎簡介
+## 量子計算基礎簡介
 
 量子電腦與傳統電腦的差別，在於傳統電腦儲存資訊的最小單位是位元（bit），量子電腦則是使用量子位元（qubit）。位元可以存在一種狀態，1 或是 0。量子位元特別的地方是，它在一個時間，可以同時是 1 也是 0。
 
@@ -23,9 +23,9 @@ mathjax: true
 
 過去超大整數的質因數分解，即使傳統超級電腦的運算能力也無法在短時間破解。不過，量子演算法（Shor's Algorithm，可解質因數分解）能在合理時間內完成破解，會顛覆現在 RSA 等加密算法。
 
-## Classical v.s. Quantum
+### Classical v.s. Quantum
 
-### 拆解質數
+#### 拆解質數
 
 現在有個數字 $N = f_1 \times f_2$，由 $f_1, f_2$ 兩個很大的質數構成。破解 RSA 的核心，就是從 $N$ 找出 $f_1$ 和 $f_2$。
 
@@ -160,7 +160,7 @@ $$
 
 **Note**：單量子位元系統的 Hilbert 空間是一個 $N=2$ 的簡單空間，而複數量子位元系統的 Hilbert 空間維度會隨著量子位元數量增加而指數成長，例如 $n=5$ 個量子位元系統的 Hilbert 空間維度為 $N=2^5=32$。
 
-##### 範例
+#### 範例
 
 我們拿一個例子來說明好了，假設 $| \psi \rangle = \begin{pmatrix} 1-i \\ 2 \end{pmatrix}$, $| \phi \rangle = \begin{pmatrix} 1 \\ 1+i \end{pmatrix}$，那麼可以做下列這幾個運算：
 
@@ -247,7 +247,7 @@ $$
 
 ![Quantum Measurement Single](../../../images/posts/quantum-system/quantum_measurement_single.gif)
 
-##### 範例
+#### 範例
 
 $$
 | \psi \rangle = \frac{1}{\sqrt{6}} \begin{pmatrix} 1-i \\ 2 \end{pmatrix} = \frac{1-i}{\sqrt{6}} | e_1 \rangle + \frac{2}{\sqrt{6}} | e_2 \rangle
@@ -353,7 +353,7 @@ $$
 
 $| 00 \rangle, | 01 \rangle, | 10 \rangle, | 11 \rangle$ 為 $H_4$ 的基底
 
-##### 範例
+#### 範例
 
 假設：
 
@@ -676,6 +676,6 @@ OR 的運作如下：
 
 ### Simon's Algorithm
 
-### Shor’s Algorithm
+### Shor's Algorithm
 
 ### Grover's Algorithm
