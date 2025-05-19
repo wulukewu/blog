@@ -679,3 +679,7 @@ OR 的運作如下：
 ### Shor's Algorithm
 
 ### Grover's Algorithm
+
+## References
+- [Shor’s Algorithm - 量子計算初學者的理解](https://howardpeng911.medium.com/shor-algorithm-2c1abca22da2)
+- [How Quantum Computers Break Encryption | Shor's Algorithm Explained](https://youtu.be/lvTqbM5Dq4Q)
