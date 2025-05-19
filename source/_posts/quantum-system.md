@@ -15,7 +15,11 @@ mathjax: true
 
 量子電腦與傳統電腦的差別，在於傳統電腦儲存資訊的最小單位是位元（bit），量子電腦則是使用量子位元（qubit）。位元可以存在一種狀態，1 或是 0。量子位元特別的地方是，它在一個時間，可以同時是 1 也是 0。
 
-![bit vs qubit](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*w9516UckuSEBQdiUOoiHbQ.png)
+![bit vs qubit](https://image-cdn.learnin.tw/bnextmedia/image/album/2024-04/img-1713263203-31716.jpg?output=webp&w=1200)
+
+量子在通訊上有很高的安全性，利用量子力學原理，能夠在兩方之間安全地分發加密密鑰。任何試圖竊聽的行為都會擾亂量子態，被接收方檢測到。
+
+![quantum application](https://image-cdn.learnin.tw/bnextmedia/image/album/2024-04/img-1713263155-27502.jpg?output=webp&w=1200)
 
 過去超大整數的質因數分解，即使傳統超級電腦的運算能力也無法在短時間破解。不過，量子演算法（Shor's Algorithm，可解質因數分解）能在合理時間內完成破解，會顛覆現在 RSA 等加密算法。
 
@@ -105,6 +109,8 @@ $$
 
 這個「週期性」就是 Shor's Algorithm 能有效率分解質因數的關鍵。只要能找到這個週期 $p$，就能透過 Quantum Fourier Transform（量子傅立葉變換）進一步拆解 $N$。
 
+![quantum fourier transform](../../../images/posts/quantum-system/quantum_fourier_transform.png)
+
 ---
 
 前面提到，在量子的世界中，我們可以構建量子閘，讓所有輸入 $x$ 的餘數 $r$ 同時被計算出來：
@@ -117,13 +123,13 @@ $$
 
 ![quantum shor process](../../../images/posts/quantum-system/quantum_shor_process.png)
 
-從這些餘數當中，任取一個 $r$，可以經由適當的轉換，將其餘的 $x$ 都變成 $0$。最後找出的 $g = x$ 和 $p$，就可以利用前面提過的傳統方式，判斷 $g^{p/2} \pm 1$ 是否與 $N$ 有公因數，將 $N$ 拆解開來。
+從這些餘數當中，任取一個 $r$，可以經由適當的轉換，將其餘的 $x$ 都變成 $0$。最後透過 Fourier Transform 找出的 $g = x$ 和 $p$，就可以利用前面提過的傳統方式，判斷 $g^{p/2} \pm 1$ 是否與 $N$ 有公因數，將 $N$ 拆解開來。
 
 ---
 
 > 標準的 2048 位元 RSA 加密，就算用目前世界上最強的超級電腦（太湖之光，中國製），花費地球年齡的時間（46 億年）都無法破解。
 
-如果量子電腦真的存在，那麼再怎麼大的數字 $N$，都能在一瞬間拆解成 $f_1, f_2$ 兩個質數。但是現在還不需要擔心，因為目前的技術還沒辦法處理太多位元的數字，可能只能拆解 $15=3\times5$ 這種容易的而已。
+如果量子電腦真的存在，能將運算時間由數十億年縮減為幾分、幾秒鐘，數字 $N$ 都能快速被拆解成 $f_1, f_2$ 兩個質數，現在的金融、通訊等都會受到嚴重的影響。但是現在還不需要擔心，因為目前的技術還沒辦法處理太多位元的數字，可能只能拆解 $15=3\times5$ 這種容易的而已。
 
 ---
 
