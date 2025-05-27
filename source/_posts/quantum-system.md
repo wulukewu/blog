@@ -36,7 +36,7 @@ mathjax: true
 <details>
 <summary>為什麼是 $g^{p/2} \pm 1$ ？</summary>
 
-若給定兩個數 $A, B$，且 $\gcd(A, B) = 1$，則存在一個正整數 $p$ 使得 $A^p = m \cdot B + 1$，其中 $m$ 為某個整數。
+若給定兩個數 $A, B$，且 $\gcd(A, B) = 1$，則存在一個正整數 $p$ 使得 $A^p = m \cdot B + 1$，其中 $m$ 為某個整數（根據歐拉定理）。
 
 舉兩個例子來說：
 
@@ -149,8 +149,8 @@ $$
 
 $$|e_1\rangle = \begin{pmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}, |e_2\rangle = \begin{pmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{pmatrix}, \ldots, |e_N\rangle = \begin{pmatrix} 0 \\ \vdots \\ 0 \\ 1 \end{pmatrix}$$
 
-- **正規化 (Normalized)**：$\langle e_i | e_i \rangle = \langle e_2 | e_2 \rangle = \dots = \langle e_N | e_N \rangle = 1$
-- **正交 (Orthogoral)**：$\langle e_i | e_j \rangle = \langle e_2 | e_3 \rangle = \dots = \langle e_N | e_N \rangle = 0$
+- **正規化 (Normalized)**：$\langle e_1 | e_1 \rangle = \langle e_2 | e_2 \rangle = \dots = \langle e_N | e_N \rangle = 1$
+- **正交 (Orthogoral)**：$\langle e_1 | e_2 \rangle = \langle e_2 | e_3 \rangle = \dots = \langle e_{N-1} | e_N \rangle = 0$
 
 因此：
 
