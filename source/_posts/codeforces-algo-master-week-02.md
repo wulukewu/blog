@@ -74,7 +74,7 @@ void solve() {
 ## J. Forest Clearing
 
 - [Problem](https://codeforces.com/group/jtU6D2hVEi/contest/533121/problem/F)
-- [GitHub Solution]()
+- [GitHub Solution](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533121/J_Forest_Clearing.cpp)
 
 用 binary_search 找最少能砍完的天數
 
@@ -123,7 +123,7 @@ void solve() {
 ## C. Transformations
 
 - [Problem](https://codeforces.com/group/jtU6D2hVEi/contest/533123/problem/C)
-- [GitHub Solution]()
+- [GitHub Solution](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533123/C_Transformations.cpp)
 
 BFS 從 `b` 每次做 `-1` 或 `/2` 的動作推到 `a`
 其中 queue `q` 是存 BFS 路徑的節點，再用 map `prev` 、 `op` 存經過每個數字的下個點及做得動作，最後 `now` 從 `a` 跑到 `b`，再將答案的等式做出來。
@@ -182,7 +182,67 @@ void solve() {
 ## E. Weighing
 
 - [Problem](https://codeforces.com/group/jtU6D2hVEi/contest/533123/problem/E)
-- [GitHub Solution]()
+- [GitHub Solution](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533123/E_Weighing.cpp)
+
+每個砝碼 (`w[i]`) 有三種選擇：
+
+1. 放左邊 `-w[i]`
+2. 放右邊 `+w[i]`
+3. 不放 `+0`
+
+- `m` 為砝碼總重，如果將所有砝碼都放在同一邊，陣列左右都設成`m`，重量不會超過
+- 初始化二維 `dp` ，第一行 `idx=0` 什麼都不放，所以在平衝狀態 `dp[0][m]` 為 `true`
+- 對於每行 `dp[i][j]` 為 `true` 的狀態，分別考慮當前砝碼做三個動作後的平衡狀態（寫入 `dp[i+1]` 列）
+- 迴圈跑完後，最後看若將重量為 `k` 的砝碼放在右邊，是不是還存在這樣的狀況
+
+```
+void solve() {
+    int k, n;
+    cin >> k >> n;
+
+    int m = 0;
+    vector < int > w(n);
+    FOR(i, 0, n){
+        cin >> w[i];
+        m += w[i];
+    }
+
+    vector < vector < bool > > dp(n+1, vector < bool > (2*m+1, false));
+    dp[0][m] = true;
+
+    FOR(i, 0, n){
+        int current = w[i];
+        FOR(j, 0, 2*m+1){
+            if(dp[i][j]){
+                dp[i+1][j] = true;
+
+                int idx_left = j - current;
+                if(idx_left >= 0){
+                    dp[i+1][idx_left] = true;
+                }
+
+                int idx_right = j + current;
+                if(idx_right < 2*m+1){
+                    dp[i+1][idx_right] = true;
+                }
+            }
+        }
+    }
+
+    // FOR(i, 0, n+1){
+    //     FOR(j, 0, 2*m+1){
+    //         cout << dp[i][j] << ' ';
+    //     }
+    //     cout << endl;
+    // }
+
+    if(k+m>=0 and k+m<2*m+1 and dp[n][k+m]){
+        cout << "YES" << endl;
+    }else{
+        cout << "NO" << endl;
+    }
+}
+```
 
 ## L. Peaceful Queens
 
