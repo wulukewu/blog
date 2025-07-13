@@ -390,7 +390,7 @@ mjx-container[display="true"] + br {
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-arrows-rotate"></i>&nbsp;
-                    <span class="datetime" data-updated="Fri Jul 11 2025 03:34:04 GMT+0000">2025-07-11</span>
+                    <span class="datetime" data-updated="Sun Jul 13 2025 15:21:39 GMT+0000">2025-07-13</span>
                 </span>
             
         
@@ -417,12 +417,12 @@ mjx-container[display="true"] + br {
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>223 Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>563 Words</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>3 Mins</span>
             </span>
         
         
@@ -473,6 +473,12 @@ Solution<i class="fas fa-external-link-alt"></i></a></li>
 <li><a class="link" target="_blank" rel="noopener" href="https://codeforces.com/group/jtU6D2hVEi/contest/533121/problem/F">Problem<i class="fas fa-external-link-alt"></i></a></li>
 <li><a href="">GitHub Solution</a></li>
 </ul>
+<p>用 binary_search 找最少能砍完的天數</p>
+<p>記得開<code>long long</code>，其中
+<code>y += a * (mid - mid / k);</code> 及
+<code>y += b * (mid - mid / m);</code> 可能會卡在 WA，因為 <span class="math inline">10<sup>9</sup> × 10<sup>18</sup> = 10<sup>27</sup></span>
+會溢位。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">void solve() {</span><br><span class="line">    int a, k, b, m, x;</span><br><span class="line">    cin &gt;&gt; a &gt;&gt; k &gt;&gt; b &gt;&gt; m &gt;&gt; x;</span><br><span class="line"></span><br><span class="line">    int l = 1;</span><br><span class="line">    int r = 2 * x;</span><br><span class="line"></span><br><span class="line">    int ans = r;</span><br><span class="line">    while(l&lt;=r){</span><br><span class="line">        int mid = l + (r-l) / 2;</span><br><span class="line"></span><br><span class="line">        int y = 0;</span><br><span class="line">        if((mid - mid / k) &gt; x / a){</span><br><span class="line">            y = x + 1;</span><br><span class="line">        }else{</span><br><span class="line">            y += a * (mid - mid / k);</span><br><span class="line">        }</span><br><span class="line">        if((mid - mid / m) &gt; x / b){</span><br><span class="line">            y = x + 1;</span><br><span class="line">        }else{</span><br><span class="line">            y += b * (mid - mid / m);</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        if(y&gt;=x){</span><br><span class="line">            r = mid - 1;</span><br><span class="line">            ans = mid;</span><br><span class="line">        }else{</span><br><span class="line">            l = mid + 1;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <h1 id="contest-13.-recursion">Contest 13. Recursion</h1>
 <ul>
 <li><a class="link" target="_blank" rel="noopener" href="https://codeforces.com/group/jtU6D2hVEi/contest/533123">Contenst
@@ -483,6 +489,12 @@ Problems<i class="fas fa-external-link-alt"></i></a></li>
 <li><a class="link" target="_blank" rel="noopener" href="https://codeforces.com/group/jtU6D2hVEi/contest/533123/problem/C">Problem<i class="fas fa-external-link-alt"></i></a></li>
 <li><a href="">GitHub Solution</a></li>
 </ul>
+<p>BFS 從 <code>b</code> 每次做 <code>-1</code> 或 <code>/2</code>
+的動作推到 <code>a</code> 其中 queue <code>q</code> 是存 BFS
+路徑的節點，再用 map <code>prev</code> 、 <code>op</code>
+存經過每個數字的下個點及做得動作，最後 <code>now</code> 從
+<code>a</code> 跑到 <code>b</code>，再將答案的等式做出來。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">void solve() {</span><br><span class="line">    int a, b;</span><br><span class="line">    cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line"></span><br><span class="line">    queue &lt; int &gt; q;</span><br><span class="line">    map &lt; int, int &gt; prev;</span><br><span class="line">    map &lt; int, char &gt; op;</span><br><span class="line"></span><br><span class="line">    q.push(b);</span><br><span class="line">    prev[b] = 0;</span><br><span class="line">    op[b] = ' ';</span><br><span class="line"></span><br><span class="line">    while(!q.empty()){</span><br><span class="line">        int c = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line"></span><br><span class="line">        if(c==a) break;</span><br><span class="line"></span><br><span class="line">        int next = c - 1;</span><br><span class="line">        if(next&gt;=a and prev.find(next)==prev.end()){</span><br><span class="line">            q.push(next);</span><br><span class="line">            prev[next] = c;</span><br><span class="line">            op[next] = '+';</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        if(c%2==0){</span><br><span class="line">            next = c / 2;</span><br><span class="line">            if(next&gt;=a and prev.find(next)==prev.end()){</span><br><span class="line">                q.push(next);</span><br><span class="line">                prev[next] = c;</span><br><span class="line">                op[next] = '*';</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    string ans = to_string(a);</span><br><span class="line">    int now = a;</span><br><span class="line">    while(now!=b){</span><br><span class="line">        if(op[now]=='+'){</span><br><span class="line">            ans = "(" + ans + " + 1)";</span><br><span class="line">        }else{</span><br><span class="line">            ans = ans + " * 2";</span><br><span class="line">        }</span><br><span class="line">        now = prev[now];</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; b &lt;&lt; " = " &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <h2 id="e.-weighing">E. Weighing</h2>
 <ul>
 <li><a class="link" target="_blank" rel="noopener" href="https://codeforces.com/group/jtU6D2hVEi/contest/533123/problem/E">Problem<i class="fas fa-external-link-alt"></i></a></li>
