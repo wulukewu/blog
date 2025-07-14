@@ -11,16 +11,17 @@ tags:
 
 # Contest 11. Binary Search
 
-- [Contenst Problems](https://codeforces.com/group/jtU6D2hVEi/contest/533121)
+- [Contest Problems](https://codeforces.com/group/jtU6D2hVEi/contest/533121)
 
 ## C. Street with monuments
 
-- [Problem](https://codeforces.com/group/jtU6D2hVEi/contest/533121/problem/C)
-- [GitHub Solution](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533121/C_Street_with_monuments.cpp)
+> **Problem:** [C. Street with monuments](https://codeforces.com/group/jtU6D2hVEi/contest/533121/problem/C)
+>
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533121/C_Street_with_monuments.cpp)
 
 用 `upper_bound()` 找第一個大於目標 `target=d[i]+r` 的元素
 
-```
+```cpp
 void solve() {
     int n, r;
     cin >> n >> r;
@@ -42,12 +43,13 @@ void solve() {
 
 ## E. Diplomas
 
-- [Problem](https://codeforces.com/group/jtU6D2hVEi/contest/533121/problem/E)
-- [GitHub Solution](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533121/E_Diplomas.cpp)
+> **Problem:** [E. Diplomas](https://codeforces.com/group/jtU6D2hVEi/contest/533121/problem/E)
+>
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533121/E_Diplomas.cpp)
 
 如果答案邊長是 `ans` ，那麼邊長為 `ans+1` 也會成立，所以目標是用 binary_search 找到最小的邊長
 
-```
+```cpp
 void solve() {
     int w, h, n;
     cin >> w >> h >> n;
@@ -73,14 +75,15 @@ void solve() {
 
 ## J. Forest Clearing
 
-- [Problem](https://codeforces.com/group/jtU6D2hVEi/contest/533121/problem/F)
-- [GitHub Solution](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533121/J_Forest_Clearing.cpp)
+> **Problem:** [J. Forest Clearing](https://codeforces.com/group/jtU6D2hVEi/contest/533121/problem/F)
+>
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533121/J_Forest_Clearing.cpp)
 
 用 binary_search 找最少能砍完的天數
 
-記得開`long long`，其中 `y += a * (mid - mid / k);` 及 `y += b * (mid - mid / m);` 可能會卡在 WA，因為 $10^9 \times 10^{18} = 10^{27}$ 會溢位。
+記得開 `long long` ，其中 `y += a * (mid - mid / k);` 及 `y += b * (mid - mid / m);` 可能會卡在 WA，因為 $10^9 \times 10^{18} = 10^{27}$ 會溢位。
 
-```
+```cpp
 void solve() {
     int a, k, b, m, x;
     cin >> a >> k >> b >> m >> x;
@@ -118,17 +121,18 @@ void solve() {
 
 # Contest 13. Recursion
 
-- [Contenst Problems](https://codeforces.com/group/jtU6D2hVEi/contest/533123)
+- [Contest Problems](https://codeforces.com/group/jtU6D2hVEi/contest/533123)
 
 ## C. Transformations
 
-- [Problem](https://codeforces.com/group/jtU6D2hVEi/contest/533123/problem/C)
-- [GitHub Solution](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533123/C_Transformations.cpp)
+> **Problem:** [C. Transformations](https://codeforces.com/group/jtU6D2hVEi/contest/533123/problem/C)
+>
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533123/C_Transformations.cpp)
 
 BFS 從 `b` 每次做 `-1` 或 `/2` 的動作推到 `a`
-其中 queue `q` 是存 BFS 路徑的節點，再用 map `prev` 、 `op` 存經過每個數字的下個點及做得動作，最後 `now` 從 `a` 跑到 `b`，再將答案的等式做出來。
+其中 queue `q` 是存 BFS 路徑的節點，再用 map `prev` 、 `op` 存經過每個數字的下個點及做的動作，最後 `now` 從 `a` 跑到 `b`，再將答案的等式做出來。
 
-```
+```cpp
 void solve() {
     int a, b;
     cin >> a >> b;
@@ -181,8 +185,9 @@ void solve() {
 
 ## E. Weighing
 
-- [Problem](https://codeforces.com/group/jtU6D2hVEi/contest/533123/problem/E)
-- [GitHub Solution](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533123/E_Weighing.cpp)
+> **Problem:** [E. Weighing](https://codeforces.com/group/jtU6D2hVEi/contest/533123/problem/E)
+>
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533123/E_Weighing.cpp)
 
 每個砝碼 (`w[i]`) 有三種選擇：
 
@@ -195,7 +200,7 @@ void solve() {
 - 對於每行 `dp[i][j]` 為 `true` 的狀態，分別考慮當前砝碼做三個動作後的平衡狀態（寫入 `dp[i+1]` 列）
 - 迴圈跑完後，最後看若將重量為 `k` 的砝碼放在右邊，是不是還存在這樣的狀況
 
-```
+```cpp
 void solve() {
     int k, n;
     cin >> k >> n;
@@ -229,13 +234,6 @@ void solve() {
         }
     }
 
-    // FOR(i, 0, n+1){
-    //     FOR(j, 0, 2*m+1){
-    //         cout << dp[i][j] << ' ';
-    //     }
-    //     cout << endl;
-    // }
-
     if(k+m>=0 and k+m<2*m+1 and dp[n][k+m]){
         cout << "YES" << endl;
     }else{
@@ -246,13 +244,14 @@ void solve() {
 
 ## L. Peaceful Queens
 
-- [Problem](https://codeforces.com/group/jtU6D2hVEi/contest/533123/problem/L)
-- [GitHub Solution](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533123/L_Peaceful_Queens.cpp)
+> **Problem:** [L. Peaceful Queens](https://codeforces.com/group/jtU6D2hVEi/contest/533123/problem/L)
+>
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533123/L_Peaceful_Queens.cpp)
 
 - 用 dfs 做下去，每層往上確認能不能放進去，走到底之後再存到 `ans` 的陣列裡
 - 用三個一維陣列 `visit` 、 `diag_pos` 、 `diag_neg` 來存直線跟對角能不能放的狀態
 
-```
+```cpp
 void solve() {
     int n;
     cin >> n;

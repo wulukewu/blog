@@ -11,14 +11,15 @@ tags:
 
 # Contest 09. Prefix sums and countings
 
-- [Contenst Problems](https://codeforces.com/group/jtU6D2hVEi/contest/104997)
+- [Contest Problems](https://codeforces.com/group/jtU6D2hVEi/contest/104997)
 
 ## C. Rectangle Sum
 
-- [Problem](https://codeforces.com/group/jtU6D2hVEi/contest/104997/problem/C)
-- [GitHub Solution](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/104997/C_Rectangle_Sum.cpp)
+> **Problem:** [C. Rectangle Sum](https://codeforces.com/group/jtU6D2hVEi/contest/104997/problem/C)
+> 
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/104997/C_Rectangle_Sum.cpp)
 
-```
+```cpp
 #include <iostream>
 #include <vector>
 
@@ -58,10 +59,11 @@ int main(){
 
 ## F. Counting Sort
 
-- [Problem](https://codeforces.com/group/jtU6D2hVEi/contest/104997/problem/F)
-- [GitHub Solution](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/104997/F_Counting_Sort.cpp)
+> **Problem:** [F. Counting Sort](https://codeforces.com/group/jtU6D2hVEi/contest/104997/problem/F)
+> 
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/104997/F_Counting_Sort.cpp)
 
-```
+```cpp
 #include <iostream>
 #include <vector>
 
@@ -92,10 +94,11 @@ int main(){
 
 ## G. Haybale Stacking
 
-- [Problem](https://codeforces.com/group/jtU6D2hVEi/contest/104997/problem/G)
-- [GitHub Solution](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/104997/G_Haybale_Stacking.cpp)
+> **Problem:** [G. Haybale Stacking](https://codeforces.com/group/jtU6D2hVEi/contest/104997/problem/G)
+> 
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/104997/G_Haybale_Stacking.cpp)
 
-```
+```cpp
 #include <iostream>
 #include <vector>
 
@@ -125,14 +128,15 @@ int main(){
 
 # Contest 10. Sorting
 
-- [Contenst Problems](https://codeforces.com/group/jtU6D2hVEi/contest/105000)
+- [Contest Problems](https://codeforces.com/group/jtU6D2hVEi/contest/105000)
 
 ## C. Sorting halves
 
-- [Problem](https://codeforces.com/group/jtU6D2hVEi/contest/105000/problem/C)
-- [GitHub Solution](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/105000/C_Sorting_halves.cpp)
+> **Problem:** [C. Sorting halves](https://codeforces.com/group/jtU6D2hVEi/contest/105000/problem/C)
+> 
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/105000/C_Sorting_halves.cpp)
 
-```
+```cpp
 #include <bits/stdc++.h>
 // #include <iostream>
 // #include <vector>
@@ -169,10 +173,11 @@ int main(){
 
 ## D. Merge Lists
 
-- [Problem](https://codeforces.com/group/jtU6D2hVEi/contest/105000/problem/D)
-- [GitHub Solution](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/105000/D_Merge_Lists.cpp)
+> **Problem:** [D. Merge Lists](https://codeforces.com/group/jtU6D2hVEi/contest/105000/problem/D)
+> 
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/105000/D_Merge_Lists.cpp)
 
-```
+```cpp
 #include <bits/stdc++.h>
 // #include <iostream>
 // #include <vector>
@@ -235,10 +240,11 @@ int main(){
 
 ## F. Sorting. Stone method.
 
-- [Problem](https://codeforces.com/group/jtU6D2hVEi/contest/105000/problem/F)
-- [GitHub Solution](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/105000/F_Sorting_Stone_method.cpp)
+> **Problem:** [F. Sorting. Stone method.](https://codeforces.com/group/jtU6D2hVEi/contest/105000/problem/F)
+> 
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/105000/F_Sorting_Stone_method.cpp)
 
-```
+```cpp
 #include <bits/stdc++.h>
 // #include <iostream>
 // #include <vector>
@@ -279,10 +285,11 @@ int main(){
 
 ## K. Olympiad Results
 
-- [Problem](https://codeforces.com/group/jtU6D2hVEi/contest/105000/problem/K)
-- [GitHub Solution](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/105000/K_Olympiad_Results.cpp)
+> **Problem:** [K. Olympiad Results](https://codeforces.com/group/jtU6D2hVEi/contest/105000/problem/K)
+> 
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/105000/K_Olympiad_Results.cpp)
 
-```
+```cpp
 #include <bits/stdc++.h>
 // #include <iostream>
 // #include <vector>
