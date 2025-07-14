@@ -247,4 +247,67 @@ void solve() {
 ## L. Peaceful Queens
 
 - [Problem](https://codeforces.com/group/jtU6D2hVEi/contest/533123/problem/L)
-- [GitHub Solution]()
+- [GitHub Solution](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533123/L_Peaceful_Queens.cpp)
+
+\* 目前用 dfs 下去做，會 `TLE on test 8`
+
+```
+void solve() {
+    int n;
+    cin >> n;
+
+    vector < vector < int > > ans;
+
+    vector < bool > visit(n, false);
+    auto dfs = [&](vector < int > v, auto&& self) -> void {
+        int m = v.size();
+        if(m==n){
+            ans.push_back(v);
+            return;
+        }
+
+        vector < vector < bool > > check(n, vector < bool > (n, true));
+        FOR(i, 0, m){
+            FOR(j, 0, n){
+                check[i][j] = false;
+                check[j][v[i]] = false;
+                if(i+j<n and v[i]+j<n){
+                    check[i+j][v[i]+j] = false;
+                }
+                if(i+j<n and v[i]-j>=0){
+                    check[i+j][v[i]-j] = false;
+                }
+            }
+        }
+        // FOR(i, 0, n){
+        //     FOR(j, 0, n){
+        //         cout << check[i][j] << ' ';
+        //     }
+        //     cout << endl;
+        // }
+
+        FOR(i, 0, n){
+            if(!visit[i] and check[m][i]){
+                v.push_back(i);
+                visit[i] = true;
+                self(v, self);
+                v.pop_back();
+                visit[i] = false;
+            }
+        }
+    };
+
+    dfs(vector < int >(), dfs);
+
+    for(auto i: ans){
+        cout << "(";
+        FOR(j, 0, n){
+            cout << i[j]+1;
+            if(j<n-1){
+                cout << ",";
+            }
+        }
+        cout << ")" << endl;
+    }
+}
+```
