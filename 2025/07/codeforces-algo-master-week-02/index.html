@@ -390,7 +390,7 @@ mjx-container[display="true"] + br {
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-arrows-rotate"></i>&nbsp;
-                    <span class="datetime" data-updated="Sun Jul 13 2025 17:20:40 GMT+0000">2025-07-13</span>
+                    <span class="datetime" data-updated="Mon Jul 14 2025 01:04:26 GMT+0000">2025-07-14</span>
                 </span>
             
         
@@ -417,12 +417,12 @@ mjx-container[display="true"] + br {
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>878 Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.1k Words</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>4 Mins</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>6 Mins</span>
             </span>
         
         
@@ -525,8 +525,11 @@ Solution<i class="fas fa-external-link-alt"></i></a></li>
 <h2 id="l.-peaceful-queens">L. Peaceful Queens</h2>
 <ul>
 <li><a class="link" target="_blank" rel="noopener" href="https://codeforces.com/group/jtU6D2hVEi/contest/533123/problem/L">Problem<i class="fas fa-external-link-alt"></i></a></li>
-<li><a href="">GitHub Solution</a></li>
+<li><a class="link" target="_blank" rel="noopener" href="https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533123/L_Peaceful_Queens.cpp">GitHub
+Solution<i class="fas fa-external-link-alt"></i></a></li>
 </ul>
+<p>* 目前用 dfs 下去做，會 <code>TLE on test 8</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">void solve() {</span><br><span class="line">    int n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line"></span><br><span class="line">    vector &lt; vector &lt; int &gt; &gt; ans;</span><br><span class="line"></span><br><span class="line">    vector &lt; bool &gt; visit(n, false);</span><br><span class="line">    auto dfs = [&amp;](vector &lt; int &gt; v, auto&amp;&amp; self) -&gt; void {</span><br><span class="line">        int m = v.size();</span><br><span class="line">        if(m==n){</span><br><span class="line">            ans.push_back(v);</span><br><span class="line">            return;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        vector &lt; vector &lt; bool &gt; &gt; check(n, vector &lt; bool &gt; (n, true));</span><br><span class="line">        FOR(i, 0, m){</span><br><span class="line">            FOR(j, 0, n){</span><br><span class="line">                check[i][j] = false;</span><br><span class="line">                check[j][v[i]] = false;</span><br><span class="line">                if(i+j&lt;n and v[i]+j&lt;n){</span><br><span class="line">                    check[i+j][v[i]+j] = false;</span><br><span class="line">                }</span><br><span class="line">                if(i+j&lt;n and v[i]-j&gt;=0){</span><br><span class="line">                    check[i+j][v[i]-j] = false;</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        // FOR(i, 0, n){</span><br><span class="line">        //     FOR(j, 0, n){</span><br><span class="line">        //         cout &lt;&lt; check[i][j] &lt;&lt; ' ';</span><br><span class="line">        //     }</span><br><span class="line">        //     cout &lt;&lt; endl;</span><br><span class="line">        // }</span><br><span class="line"></span><br><span class="line">        FOR(i, 0, n){</span><br><span class="line">            if(!visit[i] and check[m][i]){</span><br><span class="line">                v.push_back(i);</span><br><span class="line">                visit[i] = true;</span><br><span class="line">                self(v, self);</span><br><span class="line">                v.pop_back();</span><br><span class="line">                visit[i] = false;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    };</span><br><span class="line"></span><br><span class="line">    dfs(vector &lt; int &gt;(), dfs);</span><br><span class="line"></span><br><span class="line">    for(auto i: ans){</span><br><span class="line">        cout &lt;&lt; "(";</span><br><span class="line">        FOR(j, 0, n){</span><br><span class="line">            cout &lt;&lt; i[j]+1;</span><br><span class="line">            if(j&lt;n-1){</span><br><span class="line">                cout &lt;&lt; ",";</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        cout &lt;&lt; ")" &lt;&lt; endl;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
                     
                 </div>
