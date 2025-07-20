@@ -75,7 +75,7 @@ void solve() {
 
 ## J. Forest Clearing
 
-> **Problem:** [J. Forest Clearing](https://codeforces.com/group/jtU6D2hVEi/contest/533121/problem/F)
+> **Problem:** [J. Forest Clearing](https://codeforces.com/group/jtU6D2hVEi/contest/533121/problem/J)
 >
 > **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533121/J_Forest_Clearing.cpp)
 
@@ -238,6 +238,89 @@ void solve() {
         cout << "YES" << endl;
     }else{
         cout << "NO" << endl;
+    }
+}
+```
+
+## J. Coins
+
+> **Problem:** [J. Coins](https://codeforces.com/group/jtU6D2hVEi/contest/533123/problem/J)
+>
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533123/J_Coins.cpp)
+
+用 dfs 遍歷每個可能
+
+```cpp
+void solve() {
+    int n, m;
+    cin >> n >> m;
+
+    int a;
+    set < int > aset;
+    FOR(i, 0, m){
+        cin >> a;
+        if(aset.find(a)==aset.end()){
+            aset.insert(a);
+        }
+    }
+
+    vector < int > arr;
+    for(int i: aset){
+        arr.PB(i);
+    }
+
+    int total = 0;
+    FOR(i, 0, m) total += arr[i];
+    total *= 2;
+
+    if(n>total){
+        cout << -1 << endl;
+        return;
+    }
+
+    vector < int > v(m, 0);
+    int ans_cnt = 2*m+1;
+    vector < int > ans(m, 0);
+    auto dfs = [&](int rem, int idx, int coin_cnt, auto&& self) -> void {
+        if(idx>=m){
+            if(rem==0 and coin_cnt < ans_cnt){
+                ans = v;
+            }
+            return;
+        }else if(rem<0){
+            return;
+        }
+
+        if(v[idx]<2){
+            v[idx] += 1;
+            self(rem-arr[idx], idx, coin_cnt+1, self);
+            v[idx] -= 1;
+        }
+        self(rem, idx+1, coin_cnt, self);
+    };
+
+    dfs(n, 0, 0, dfs);
+
+    int k = 0;
+    FOR(i, 0, m){
+        k += ans[i];
+    }
+    cout << k << endl;
+
+    if(k>0){
+        vector < int > ans_sort;
+        FOR(i, 0, m){
+            FOR(j, 0, ans[i]){
+                ans_sort.PB(arr[i]);
+            }
+        }
+    
+        sort(ALL(ans_sort));
+    
+        for(int i: ans_sort){
+            cout << i << ' ';
+        }
+        cout << endl;
     }
 }
 ```
