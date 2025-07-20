@@ -108,7 +108,7 @@ void solve() {
 
 > **Problem:** [G. Elves and Reindeer](https://codeforces.com/group/jtU6D2hVEi/contest/533249/problem/G)
 >
-> **Solution:** [GitHub Code]()
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533249/G_Elves_and_Reindeer.cpp)
 
 WA on test 2
 
@@ -129,10 +129,6 @@ void solve() {
         brr.insert(make_pair(x, i+1));
     }
 
-    // for(auto b: brr){
-    //     cout << b.F << ' ' << b.S << endl;
-    // }
-
     sort(ALL(arr));
 
     vector < pair < int, pair < int, int > > > ans;
@@ -147,7 +143,6 @@ void solve() {
 
         pair < int, int > p1 = *it1;
         pair < int, int > p2 = *it2;
-        // cout << p1.F << ' ' << p1.S << ' ' << p2.F << ' ' << p2.S << endl;
 
         ans.PB(make_pair(a.S, make_pair(p1.S, p2.S)));
 
@@ -170,7 +165,7 @@ void solve() {
 
 > **Problem:** [C. Brackets](https://codeforces.com/group/jtU6D2hVEi/contest/533250/problem/C)
 >
-> **Solution:** [GitHub Code]()
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533250/C_Brackets.cpp)
 
 用 stack 儲存左括號，並判斷是否能消去右括號
 
@@ -220,7 +215,7 @@ void solve() {
 
 > **Problem:** [H. Postfix Notation](https://codeforces.com/group/jtU6D2hVEi/contest/533250/problem/H)
 >
-> **Solution:** [GitHub Code]()
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533250/H_Postfix_Notation.cpp)
 
 用 stack 儲存數字，每次的符號提出最上面兩個數做運算再存回去
 
@@ -258,7 +253,7 @@ void solve() {
 
 > **Problem:** [M. Adjacency Lists](https://codeforces.com/group/jtU6D2hVEi/contest/533250/problem/M)
 >
-> **Solution:** [GitHub Code]()
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533250/M_Adjacency_Lists.cpp)
 
 建立大小為 `n` 的二維 `vector` ，裡面存入每個點會連結到的其他點
 
@@ -293,7 +288,7 @@ void solve() {
 
 > **Problem:** [B. Same values](https://codeforces.com/group/jtU6D2hVEi/contest/533251/problem/B)
 >
-> **Solution:** [GitHub Code]()
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533251/B_Same_values.cpp)
 
 先用 map 存所有出現的數字對應到的位置，再去找到位置後 iterator 往前一格看
 
@@ -330,7 +325,7 @@ oid solve() {
 
 > **Problem:** [G. Shooting](https://codeforces.com/group/jtU6D2hVEi/contest/533251/problem/G)
 >
-> **Solution:** [GitHub Code]()
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533251/G_Shooting.cpp)
 
 - 用 map 存每個人的總分，再印出來最高分的所有人
 - 這裡用了 `name_set` 及 `name_vector` 來存名字的順序
@@ -381,7 +376,7 @@ void solve() {
 
 > **Problem:** [L. Set 3](https://codeforces.com/group/jtU6D2hVEi/contest/533251/problem/L)
 >
-> **Solution:** [GitHub Code]()
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533251/L_Set_3.cpp)
 
 做一個 set 按照題意照做，在 `nearest` 時用 `lower_bound` 找到最接近的其中一個位置
 
