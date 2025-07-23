@@ -390,7 +390,7 @@ mjx-container[display="true"] + br {
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-arrows-rotate"></i>&nbsp;
-                    <span class="datetime" data-updated="Tue Jul 22 2025 16:19:06 GMT+0000">2025-07-22</span>
+                    <span class="datetime" data-updated="Wed Jul 23 2025 03:05:23 GMT+0000">2025-07-23</span>
                 </span>
             
         
@@ -417,12 +417,12 @@ mjx-container[display="true"] + br {
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>77 Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>354 Words</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>2 Mins</span>
             </span>
         
         
@@ -456,12 +456,20 @@ Problems<i class="fas fa-external-link-alt"></i></a></li>
 Grasshoper-K<i class="fas fa-external-link-alt"></i></a></p>
 <p><strong>Solution:</strong> <a href="">GitHub Code</a></p>
 </blockquote>
+<p>每格的種數由前面 1~k 格加總</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="type">int</span> n, k;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line"></span><br><span class="line">    vector &lt; <span class="type">int</span> &gt; <span class="built_in">dp</span>(n, <span class="number">0</span>);</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">FOR</span>(i, <span class="number">1</span>, n){</span><br><span class="line">        <span class="built_in">FOR</span>(j, <span class="number">1</span>, k<span class="number">+1</span>){</span><br><span class="line">            <span class="keyword">if</span>(i-j&gt;=<span class="number">0</span>){</span><br><span class="line">                dp[i] += dp[i-j];</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; dp[n<span class="number">-1</span>] &lt;&lt; endl;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <h2 id="e.-grasshopper-and-money">E. Grasshopper and Money</h2>
 <blockquote>
 <p><strong>Problem:</strong> <a class="link" target="_blank" rel="noopener" href="https://codeforces.com/group/jtU6D2hVEi/contest/533277/problem/E">E.
 Grasshopper and Money<i class="fas fa-external-link-alt"></i></a></p>
 <p><strong>Solution:</strong> <a href="">GitHub Code</a></p>
 </blockquote>
+<ul>
+<li>解題過程是先用 dp 把最大值求出來，再讓 <code>dp</code>
+同時存著最大路徑時走過的點</li>
+<li>但是這個解法可能會 MLE，總共花了 86 MB（題目限制是 256 MB）</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="type">int</span> n, k;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line"></span><br><span class="line">    vector &lt; <span class="type">int</span> &gt; <span class="built_in">coins</span>(n<span class="number">-2</span>);</span><br><span class="line">    <span class="built_in">FOR</span>(i, <span class="number">0</span>, n<span class="number">-2</span>) cin &gt;&gt; coins[i];</span><br><span class="line"></span><br><span class="line">    vector &lt; pair &lt; <span class="type">int</span>, vector &lt; <span class="type">int</span> &gt; &gt; &gt; <span class="built_in">dp</span>(n);</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="built_in">make_pair</span>(<span class="number">0</span>, vector &lt; <span class="type">int</span> &gt;());</span><br><span class="line">    <span class="built_in">FOR</span>(i, <span class="number">1</span>, n){</span><br><span class="line">        <span class="type">int</span> max_coins = -INT_MAX;</span><br><span class="line">        <span class="type">int</span> max_coins_idx = <span class="number">-1</span>;</span><br><span class="line">        <span class="built_in">FOR</span>(j, <span class="number">1</span>, k<span class="number">+1</span>){</span><br><span class="line">            <span class="keyword">if</span>(i-j&lt;<span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">if</span>(dp[i-j].F&gt;max_coins){</span><br><span class="line">                max_coins = dp[i-j].F;</span><br><span class="line">                max_coins_idx = i-j;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(i&lt;n<span class="number">-1</span>){</span><br><span class="line">            dp[i].F = max_coins + coins[i<span class="number">-1</span>];</span><br><span class="line">        }<span class="keyword">else</span>{</span><br><span class="line">            dp[i].F = max_coins;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        vector &lt; <span class="type">int</span> &gt; v = dp[max_coins_idx].S;</span><br><span class="line">        v.<span class="built_in">PB</span>(max_coins_idx<span class="number">+1</span>);</span><br><span class="line">        dp[i].S = v;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; dp[n<span class="number">-1</span>].F &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; dp[n<span class="number">-1</span>].S.<span class="built_in">size</span>() &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i: dp[n<span class="number">-1</span>].S){</span><br><span class="line">        cout &lt;&lt; i &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">    }</span><br><span class="line">    cout &lt;&lt; n &lt;&lt; endl;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <h2 id="j.-milk-in-bottles---k">J. Milk in Bottles - K</h2>
 <blockquote>
 <p><strong>Problem:</strong> <a class="link" target="_blank" rel="noopener" href="https://codeforces.com/group/jtU6D2hVEi/contest/533277/problem/J">J.
