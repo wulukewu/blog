@@ -149,7 +149,38 @@ void solve() {
 
 > **Problem:** [L. Array Filling](https://codeforces.com/group/jtU6D2hVEi/contest/533277/problem/L)
 >
-> **Solution:** [GitHub Code]()
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533277/L_Array_Filling.cpp)
+
+WA on test 7
+
+```cpp
+void solve() {
+    ifstream fcin("input.txt");
+    ofstream fcout("output.txt");
+    int n;
+    fcin >> n;
+
+    int x = n + 1;
+    int m = x / 2;
+    int ans = 0;
+
+    for(int i=1; i*i<=x; i++){
+        if(x%i==0){
+            if(i<=m){
+                ans++;
+            }
+            if(i*i!=x){
+                int j = x / i;
+                if(j<=m){
+                    ans++;
+                }
+            }
+        }
+    }
+
+    fcout << ans << endl;
+}
+```
 
 # Contest XX. Greedy
 
