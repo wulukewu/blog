@@ -116,7 +116,49 @@ void solve() {
 
 > **Problem:** [I. Levenshtein Distance](https://codeforces.com/group/jtU6D2hVEi/contest/533280/problem/I)
 >
-> **Solution:** [GitHub Code]()
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533280/I_Levenshtein_Distance.cpp)
+
+- 兩個字串由後往前找 `(i, j)` ：
+
+  1. 如果 `s1[i]==s2[j]`: 則可以視 `(i+1, j+1)` 為相同的答案
+  2. 如果不一樣，那麼就找以下三種作法的最小值+1：
+     1. Replace: `(i+1, j+1)`
+     2. Delete: `(i+1, j)`
+     3. Insert: `(i, j+1)`
+
+- 初始化最後一排及最後一列，此狀態問題為字串`s1`/`s2`與空字串的差，即為字串`s1`/`s2`的長度，因此遞減為`0`
+- 可以參考[這支影片](https://youtu.be/XYi2-LPrwm4)
+
+![Levenshtein Distance](../../../images/posts/codeforces-algo-master-week-05/levenshtein-distance.png)
+
+
+```cpp
+void solve() {
+    string s1, s2;
+    cin >> s1 >> s2;
+
+    int l1 = s1.size();
+    int l2 = s2.size();
+
+    vector < vector < int > > dp(l1+1, vector < int > (l2+1, 0));
+    FOR(i, 0, l1+1) dp[i][l2] = l1-i;
+    FOR(j, 0, l2+1) dp[l1][j] = l2-j;
+
+    for(int i=l1-1; i>=0; i--){
+        for(int j=l2-1; j>=0; j--){
+            if(s1[i]==s2[j]){
+                dp[i][j] = dp[i+1][j+1];
+            }else{
+                int val = min(dp[i+1][j], dp[i][j+1]);
+                val = min(val, dp[i+1][j+1]);
+                dp[i][j] = val + 1;
+            }
+        }
+    }
+
+    cout << dp[0][0] << endl;
+}
+```
 
 ## N. Knapsack Problem
 
