@@ -390,7 +390,7 @@ mjx-container[display="true"] + br {
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-arrows-rotate"></i>&nbsp;
-                    <span class="datetime" data-updated="Fri Aug 01 2025 13:50:35 GMT+0000">2025-08-01</span>
+                    <span class="datetime" data-updated="Sat Aug 02 2025 11:32:38 GMT+0000">2025-08-02</span>
                 </span>
             
         
@@ -417,12 +417,12 @@ mjx-container[display="true"] + br {
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>421 Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>660 Words</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>2 Mins</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>3 Mins</span>
             </span>
         
         
@@ -479,8 +479,29 @@ Code<i class="fas fa-external-link-alt"></i></a></p>
 <blockquote>
 <p><strong>Problem:</strong> <a class="link" target="_blank" rel="noopener" href="https://codeforces.com/group/jtU6D2hVEi/contest/533280/problem/I">I.
 Levenshtein Distance<i class="fas fa-external-link-alt"></i></a></p>
-<p><strong>Solution:</strong> <a href="">GitHub Code</a></p>
+<p><strong>Solution:</strong> <a class="link" target="_blank" rel="noopener" href="https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533280/I_Levenshtein_Distance.cpp">GitHub
+Code<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
+<ul>
+<li><p>兩個字串由後往前找 <code>(i, j)</code> ：</p>
+<ol type="1">
+<li>如果 <code>s1[i]==s2[j]</code>: 則可以視 <code>(i+1, j+1)</code>
+為相同的答案</li>
+<li>如果不一樣，那麼就找以下三種作法的最小值+1：
+<ol type="1">
+<li>Replace: <code>(i+1, j+1)</code></li>
+<li>Delete: <code>(i+1, j)</code></li>
+<li>Insert: <code>(i, j+1)</code></li>
+</ol></li>
+</ol></li>
+<li><p>初始化最後一排及最後一列，此狀態問題為字串<code>s1</code>/<code>s2</code>與空字串的差，即為字串<code>s1</code>/<code>s2</code>的長度，因此遞減為<code>0</code></p></li>
+<li><p>可以參考<a class="link" target="_blank" rel="noopener" href="https://youtu.be/XYi2-LPrwm4">這支影片<i class="fas fa-external-link-alt"></i></a></p></li>
+</ul>
+<figure>
+<img src="../../../images/posts/codeforces-algo-master-week-05/levenshtein-distance.png" alt="Levenshtein Distance">
+<figcaption aria-hidden="true">Levenshtein Distance</figcaption>
+</figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>{</span><br><span class="line">    string s1, s2;</span><br><span class="line">    cin &gt;&gt; s1 &gt;&gt; s2;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> l1 = s<span class="number">1.</span><span class="built_in">size</span>();</span><br><span class="line">    <span class="type">int</span> l2 = s<span class="number">2.</span><span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">    vector &lt; vector &lt; <span class="type">int</span> &gt; &gt; <span class="built_in">dp</span>(l1<span class="number">+1</span>, vector &lt; <span class="type">int</span> &gt; (l2<span class="number">+1</span>, <span class="number">0</span>));</span><br><span class="line">    <span class="built_in">FOR</span>(i, <span class="number">0</span>, l1<span class="number">+1</span>) dp[i][l2] = l1-i;</span><br><span class="line">    <span class="built_in">FOR</span>(j, <span class="number">0</span>, l2<span class="number">+1</span>) dp[l1][j] = l2-j;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=l1<span class="number">-1</span>; i&gt;=<span class="number">0</span>; i--){</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=l2<span class="number">-1</span>; j&gt;=<span class="number">0</span>; j--){</span><br><span class="line">            <span class="keyword">if</span>(s1[i]==s2[j]){</span><br><span class="line">                dp[i][j] = dp[i<span class="number">+1</span>][j<span class="number">+1</span>];</span><br><span class="line">            }<span class="keyword">else</span>{</span><br><span class="line">                <span class="type">int</span> val = <span class="built_in">min</span>(dp[i<span class="number">+1</span>][j], dp[i][j<span class="number">+1</span>]);</span><br><span class="line">                val = <span class="built_in">min</span>(val, dp[i<span class="number">+1</span>][j<span class="number">+1</span>]);</span><br><span class="line">                dp[i][j] = val + <span class="number">1</span>;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; dp[<span class="number">0</span>][<span class="number">0</span>] &lt;&lt; endl;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <h2 id="n.-knapsack-problem">N. Knapsack Problem</h2>
 <blockquote>
 <p><strong>Problem:</strong> <a class="link" target="_blank" rel="noopener" href="https://codeforces.com/group/jtU6D2hVEi/contest/533280/problem/N">N.
@@ -582,6 +603,22 @@ Weights<i class="fas fa-external-link-alt"></i></a></p>
 
                 
                     <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/blog/2025/08/codeforces-algo-master-week-05-lzr/"
+                                   title="Codeforces 暑期特訓：我想成為演算法大師 - 團練 GCPC 2017 - Week 5"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Codeforces 暑期特訓：我想成為演算法大師 - 團練 GCPC 2017 - Week 5</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
                         
                         
                             <div class="next-post">
