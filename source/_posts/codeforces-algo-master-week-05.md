@@ -131,7 +131,6 @@ void solve() {
 
 ![Levenshtein Distance](../../../images/posts/codeforces-algo-master-week-05/levenshtein-distance.png)
 
-
 ```cpp
 void solve() {
     string s1, s2;
@@ -164,10 +163,92 @@ void solve() {
 
 > **Problem:** [N. Knapsack Problem](https://codeforces.com/group/jtU6D2hVEi/contest/533280/problem/N)
 >
-> **Solution:** [GitHub Code]()
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533280/N_Knapsack_Problem.cpp)
+
+- 01 背包問題，只是陣列裡存的是最少物品數量，若為 `INT_MAX` 則找不到解法
+- `dp[i][j]` 表示前 `i` 個物品當中，重量剛好為 `j` 的最少物品數量
+
+```cpp
+void solve() {
+    ifstream fcin("input.txt");
+    ofstream fcout("output.txt");
+
+    int n, m;
+    fcin >> n >> m;
+
+    vector < int > arr(n);
+    FOR(i, 0, n) fcin >> arr[i];
+
+    vector < vector < int > > dp(n+1, vector < int > (m+1, INT_MAX));
+    FOR(i, 0, n+1) dp[i][0] = 0;
+
+    FOR(i, 1, n+1){
+        FOR(j, 1, m+1){
+            dp[i][j] = dp[i-1][j];
+            if(j-arr[i-1]>=0 and dp[i-1][j-arr[i-1]]!=INT_MAX){
+                dp[i][j] = min(dp[i][j], dp[i-1][j-arr[i-1]]+1);
+            }
+        }
+    }
+
+    if(dp[n][m]!=INT_MAX){
+        fcout << dp[n][m] << endl;
+    }else{
+        fcout << 0 << endl;
+    }
+}
+```
 
 ## P. Weights
 
 > **Problem:** [P. Weights](https://codeforces.com/group/jtU6D2hVEi/contest/533280/problem/P)
 >
-> **Solution:** [GitHub Code]()
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533280/P_Weights.cpp)
+
+- 要能將重量平均放在兩邊，則每邊重量各別為總重量的一半
+- 若總重量的一半為 `m` ，則可用 01 背包問題求背包最大為 `m` 時，是否能裝滿
+
+```cpp
+void solve() {
+    ifstream fcin("input.txt");
+    ofstream fcout("output.txt");
+
+    int n;
+    fcin >> n;
+
+    int m = 0;
+    vector < int > arr(n);
+    FOR(i, 0, n){
+        fcin >> arr[i];
+        m += arr[i];
+    }
+
+    if(m%2==1){
+        fcout << "NO" << endl;
+        return;
+    }
+    m /= 2;
+
+    vector < vector < int > > dp(n+1, vector < int > (m+1, 0));
+    FOR(i, 0, n+1) dp[i][m] = 0;
+    FOR(j, 0, m+1){
+        if(j>=arr[0]) dp[0][j] = arr[0];
+        else dp[0][j] = 0;
+    }
+
+    FOR(i, 1, n){
+        FOR(j, 1, m+1){
+            dp[i][j] = dp[i-1][j];
+            if(j-arr[i-1]>=0){
+                dp[i][j] = max(dp[i][j], dp[i-1][j-arr[i-1]]+arr[i-1]);
+            }
+        }
+    }
+
+    if(dp[n-1][m] == m){
+        fcout << "YES" << endl;
+    }else{
+        fcout << "NO" << endl;
+    }
+}
+```
