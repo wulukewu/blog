@@ -390,7 +390,7 @@ mjx-container[display="true"] + br {
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-arrows-rotate"></i>&nbsp;
-                    <span class="datetime" data-updated="Thu Aug 07 2025 05:21:57 GMT+0000">2025-08-07</span>
+                    <span class="datetime" data-updated="Thu Aug 07 2025 14:55:53 GMT+0000">2025-08-07</span>
                 </span>
             
         
@@ -417,12 +417,12 @@ mjx-container[display="true"] + br {
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>338 Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>513 Words</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>2 Mins</span>
             </span>
         
         
@@ -471,8 +471,14 @@ Code<i class="fas fa-external-link-alt"></i></a></p>
 <blockquote>
 <p><strong>Problem:</strong> <a class="link" target="_blank" rel="noopener" href="https://codeforces.com/group/jtU6D2hVEi/contest/533255/problem/E">E.
 Bipartite graph<i class="fas fa-external-link-alt"></i></a></p>
-<p><strong>Solution:</strong> <a href="">GitHub Code</a></p>
+<p><strong>Solution:</strong> <a class="link" target="_blank" rel="noopener" href="https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533255/E_Bipartite_graph.cpp">GitHub
+Code<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
+<ul>
+<li>用 bfs 對每個點去跑，如果還沒走過就先設 1，接下來每層再反轉 1 或
+2</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> u, v;</span><br><span class="line">    vector &lt; vector &lt; <span class="type">int</span> &gt; &gt; <span class="built_in">G</span>(n<span class="number">+1</span>);</span><br><span class="line">    <span class="built_in">FOR</span>(i, <span class="number">0</span>, m){</span><br><span class="line">        cin &gt;&gt; u &gt;&gt; v;</span><br><span class="line">        G[u].<span class="built_in">PB</span>(v);</span><br><span class="line">        G[v].<span class="built_in">PB</span>(u);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="type">bool</span> ans = <span class="literal">true</span>;</span><br><span class="line">    vector &lt; <span class="type">int</span> &gt; <span class="built_in">color</span>(n<span class="number">+1</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">FOR</span>(i, <span class="number">1</span>, n<span class="number">+1</span>){</span><br><span class="line">        <span class="keyword">if</span>(color[i]!=<span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">        queue &lt; <span class="type">int</span> &gt; q;</span><br><span class="line">        color[i] = <span class="number">1</span>;</span><br><span class="line">        q.<span class="built_in">push</span>(i);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(!q.<span class="built_in">empty</span>()){</span><br><span class="line">            <span class="type">int</span> t = q.<span class="built_in">front</span>();</span><br><span class="line">            q.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> y: G[t]){</span><br><span class="line">                <span class="keyword">if</span>(color[y]==<span class="number">0</span>){</span><br><span class="line">                    color[y] = <span class="number">3</span> - color[t];</span><br><span class="line">                    q.<span class="built_in">push</span>(y);</span><br><span class="line">                }<span class="keyword">else</span> <span class="keyword">if</span>(color[y]==color[t]){</span><br><span class="line">                    ans = <span class="literal">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(!ans) <span class="keyword">break</span>;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(!ans) <span class="keyword">break</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(ans){</span><br><span class="line">        cout &lt;&lt; <span class="string">"YES"</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">FOR</span>(i, <span class="number">1</span>, n<span class="number">+1</span>){</span><br><span class="line">            cout &lt;&lt; color[i] &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">        }</span><br><span class="line">    }<span class="keyword">else</span>{</span><br><span class="line">        cout &lt;&lt; <span class="string">"NO"</span> &lt;&lt; endl;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <h2 id="j.-mafija">J. Mafija</h2>
 <blockquote>
 <p><strong>Problem:</strong> <a class="link" target="_blank" rel="noopener" href="https://codeforces.com/group/jtU6D2hVEi/contest/533255/problem/J">J.
