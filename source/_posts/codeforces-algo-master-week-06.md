@@ -94,7 +94,62 @@ void solve() {
 
 > **Problem:** [E. Bipartite graph](https://codeforces.com/group/jtU6D2hVEi/contest/533255/problem/E)
 >
-> **Solution:** [GitHub Code]()
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533255/E_Bipartite_graph.cpp)
+
+- 用 bfs 對每個點去跑，如果還沒走過就先設 1，接下來每層再反轉 1 或 2
+
+```cpp
+void solve() {
+    int n, m;
+    cin >> n >> m;
+
+    int u, v;
+    vector < vector < int > > G(n+1);
+    FOR(i, 0, m){
+        cin >> u >> v;
+        G[u].PB(v);
+        G[v].PB(u);
+    }
+
+    bool ans = true;
+    vector < int > color(n+1, 0);
+
+    FOR(i, 1, n+1){
+        if(color[i]!=0) continue;
+        queue < int > q;
+        color[i] = 1;
+        q.push(i);
+
+        while(!q.empty()){
+            int t = q.front();
+            q.pop();
+
+            for(int y: G[t]){
+                if(color[y]==0){
+                    color[y] = 3 - color[t];
+                    q.push(y);
+                }else if(color[y]==color[t]){
+                    ans = false;
+                    break;
+                }
+            }
+
+            if(!ans) break;
+        }
+
+        if(!ans) break;
+    }
+
+    if(ans){
+        cout << "YES" << endl;
+        FOR(i, 1, n+1){
+            cout << color[i] << ' ';
+        }
+    }else{
+        cout << "NO" << endl;
+    }
+}
+```
 
 ## J. Mafija
 
