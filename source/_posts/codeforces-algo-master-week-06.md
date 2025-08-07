@@ -17,7 +17,78 @@ tags:
 
 > **Problem:** [C. Looking for cycle](https://codeforces.com/group/jtU6D2hVEi/contest/533255/problem/C)
 >
-> **Solution:** [GitHub Code]()
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533255/C_Looking_for_cycle.cpp)
+
+- `visit` 陣列中， `0` 表示沒進去過，`1` 表示是當前的迴圈，`2` 表示之前已經走過發現沒有 cycle
+- 若 `visit` 僅為 `bool` ，會讓沒有 cycle 的路徑重複走很多遍
+- `1 → 2 → 3 → 4 → 2` 這樣的 cycle 是 `2 3 4`
+- 用 `parent` 陣列存 dfs 走的路徑
+
+```cpp
+void solve() {
+    int n, m;
+    cin >> n >> m;
+
+    vector < vector < int > > G(n);
+    int v, u;
+    FOR(i, 0, m){
+        cin >> v >> u;
+        G[v-1].PB(u);
+    }
+
+    bool ans = false;
+    int start = -1;
+    int end = -1;
+    vector < int > visit(n, 0);
+    vector < int > parent(n, -1);
+
+    auto dfs = [&](auto&& self, int x) -> bool {
+        visit[x-1] = 1;
+
+        for(int y: G[x-1]){
+            if(visit[y-1]==1){
+                start = y;
+                end = x;
+                return true;
+            }
+            if(visit[y-1]==0){
+                parent[y-1] = x;
+                if(self(self, y)){
+                    return true;
+                }
+            }
+        }
+
+        visit[x-1] = 2;
+        return false;
+    };
+
+    FOR(i, 1, n+1){
+        if(visit[i-1]==0){
+            if(dfs(dfs, i)){
+                ans = true;
+                break;
+            }
+        }
+    }
+
+    if(ans){
+        cout << "YES" << endl;
+
+        int x = end;
+        vector < int > cycle;
+        while(x!=start){
+            cycle.PB(x);
+            x = parent[x-1];
+        }
+        cycle.PB(x);
+        reverse(ALL(cycle));
+        print(cycle);
+    }else{
+        cout << "NO" << endl;
+    }
+}
+```
 
 ## E. Bipartite graph
 
