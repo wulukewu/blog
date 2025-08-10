@@ -155,7 +155,62 @@ void solve() {
 
 > **Problem:** [J. Mafija](https://codeforces.com/group/jtU6D2hVEi/contest/533255/problem/J)
 >
-> **Solution:** [GitHub Code]()
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533255/J_Mafija.cpp)
+
+- 如果 `A` → `B` 且 `A` 是暴徒，則 `B` 一定是平民
+- 如果 `A` → `B` 且 `B` 是暴徒，則 `A` 一定是平民
+- `TC3` 是錯的
+
+```cpp
+void solve() {
+    int n;
+    cin >> n;
+
+    vector < int > G(n+1);
+    FOR(i, 1, n+1){
+        cin >> G[i];
+    }
+
+    vector < int > state(n+1, 0);
+    vector < bool > mobster(n+1, false);
+    int ans = 0;
+
+    auto dfs = [&](auto&& self, int u) -> void {
+        state[u] = 1;
+        int v = G[u];
+        if(state[v]==0){
+            self(self, v);
+        }
+        else if(state[v]==1){
+            ans++;
+            while(true){
+                state[v] = 2;
+                mobster[v] = false;
+                if(v==u) break;
+                v = G[v];
+            }
+            return;
+        }
+
+        if(state[u]==2) return;
+
+        if(mobster[v]){
+            mobster[u] = false;
+        }else{
+            mobster[u] = true;
+            ans++;
+        }
+
+        state[u] = 2;
+    };
+
+    FOR(i, 1, n+1){
+        if(state[i]==0) dfs(dfs, i);
+    }
+
+    cout << ans << endl;
+}
+```
 
 # Contest 20. DSU
 
@@ -165,13 +220,117 @@ void solve() {
 
 > **Problem:** [A. Islands](https://codeforces.com/group/jtU6D2hVEi/contest/533282/problem/A)
 >
-> **Solution:** [GitHub Code]()
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533282/A_Islands.cpp)
+
+- 題目要求的是前幾座橋蓋完之後所有點都能相通
+- 用 `pieces` 來存共有幾個不相連的區塊，當 `pieces==1` 的時候就不用再繼續蓋了
+
+```cpp
+void solve() {
+    int n, m;
+    cin >> n >> m;
+
+    vector < int > boss(n);
+    FOR(i, 0, n) boss[i] = i;
+
+    int pieces = n;
+
+    auto find_root = [&](auto&& self, int x) -> int {
+        if(boss[x]==x) return x;
+
+        int root = self(self, boss[x]);
+        boss[x] = root;
+        return root;
+    };
+
+    auto connect = [&](int x, int y) -> void {
+        int root_x = find_root(find_root, x);
+        int root_y = find_root(find_root, y);
+        if(root_x != root_y){
+            boss[root_x] = boss[root_y];
+            pieces--;
+        }
+    };
+
+    int ans = m;
+    int u, v;
+    FOR(i, 0, m){
+        cin >> u >> v;
+        u--;
+        v--;
+        connect(u, v);
+
+        if(pieces==1){
+            ans = i+1;
+            break;
+        }
+    }
+
+    cout << ans << endl;
+}
+```
 
 ## F. Vessels
 
 > **Problem:** [F. Vessels](https://codeforces.com/group/jtU6D2hVEi/contest/533282/problem/F)
 >
-> **Solution:** [GitHub Code]()
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533282/F_Vessels.cpp)
+
+- `arr` 存 `n` 個容器的容量，`brr` 存 `n` 個容器了多少的水
+- 若第 `i` 個容器裝滿，那麼水會流進第 `i+1` 個容器裡，還是滿的話就再繼續往下找，所以這裡用 DSU 優化， `boss` 存還沒滿的那個容器 `idx`
+- 如果流到了 `idx` 為 `n` 時，代表流到了地上，就跳出迴圈不用管
+
+```cpp
+void solve() {
+    int n;
+    cin >> n;
+
+    vector < int > arr(n);
+    FOR(i, 0, n) cin >> arr[i];
+    vector < int > brr(n, 0);
+
+    vector < int > boss(n+1);
+    FOR(i, 0, n+1) boss[i] = i;
+
+    auto find_root = [&](auto&& self, int x) -> int {
+        if(boss[x]==x) return x;
+
+        int root = self(self, boss[x]);
+        boss[x] = root;
+        return root;
+    };
+
+    int m;
+    cin >> m;
+
+    int q, p, x, k;
+    FOR(i, 0, m){
+        cin >> q;
+        if(q==1){
+            cin >> p >> x;
+            p--;
+
+            while(x>0){
+                p = find_root(find_root, p);
+                if(p>=n) break;
+
+                int avil = arr[p]-brr[p];
+                if(avil>=x){
+                    brr[p] += x;
+                    x = 0;
+                }else{
+                    x -= avil;
+                    brr[p] = arr[p];
+                    boss[p] = find_root(find_root, p+1);
+                }
+            }
+        }else if(q==2){
+            cin >> k;
+            cout << brr[k-1] << endl;
+        }
+    }
+}
+```
 
 # Contest 22. Shortest Paths
 
