@@ -340,10 +340,163 @@ void solve() {
 
 > **Problem:** [C. Rain 2](https://codeforces.com/group/jtU6D2hVEi/contest/533284/problem/C)
 >
-> **Solution:** [GitHub Code]()
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533284/C_Rain_2.cpp)
+
+- BFS 從 `(0, 0)` 走到 `(n-1 ,m-1)` ，用 `priority_queue` 維護，距離越短的優先
+- 剪枝用 `dist` 存最短加權距離
+- 記得開 `long long` ，然後 `dist` 的值預設要開夠大（不然會 `WA`）
+
+```cpp
+void solve() {
+    int n, m;
+    cin >> n >> m;
+
+    vector < vector < int > > arr(n, vector < int > (m));
+    FOR(i, 0, n){
+        FOR(j, 0, m){
+            cin >> arr[i][j];
+        }
+    }
+
+    int offs[4][2] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+    vector < vector < int > > dist(n, vector < int > (m, 1e18));
+    priority_queue < pair < int, pair < int, int > >,
+                 vector < pair < int, pair < int, int > > >,
+                 greater < pair < int, pair < int, int > > > > pq;
+
+    dist[0][0] = 0;
+    pq.push({0, {0, 0}});
+
+    int ans = -1;
+    while(!pq.empty()){
+        auto t = pq.top();
+        pq.pop();
+
+        int cost = t.F;
+        int r = t.S.F;
+        int c = t.S.S;
+
+        if(r==n-1 and c==m-1){
+            ans = cost;
+            break;
+        }
+
+        if(cost > dist[r][c]) continue;
+
+        FOR(i, 0, 4){
+            int x = r + offs[i][0];
+            int y = c + offs[i][1];
+            if(!(x>=0 and x<n and y>=0 and y<m)) continue;
+            int cost_new = cost+arr[x][y];
+            if(cost_new < dist[x][y]){
+                dist[x][y] = cost_new;
+                pq.push({cost_new, {x, y}});
+            }
+        }
+    }
+
+    cout << ans << endl;
+
+}
+```
 
 ## D. Roadblock
 
 > **Problem:** [D. Roadblock](https://codeforces.com/group/jtU6D2hVEi/contest/533284/problem/D)
 >
-> **Solution:** [GitHub Code]()
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/codeforces/group/jtU6D2hVEi/533284/D_Roadblock.cpp)
+
+- 先用 Dijkstra 找到 `1` 到 `n` 的最短路徑
+- 最短路徑用 `parent` 存，後面再從 `n` 迴溯到 `1` 存到 `path` 陣列裡
+- 針對這條路徑的每段，都試著將其長度變成 `2` 倍，然後都再做一次 Dijkstra，找到最大的增加長度，最後記得把 `2` 倍的長度設定回來
+
+```cpp
+void solve() {
+    int n, m;
+    cin >> n >> m;
+
+    const int INF = 1e18;
+
+    vector < vector < int > > G(n+1);
+    vector < vector < int > > dist(n+1, vector < int > (n+1, INF));
+    FOR(i, 0, n+1) dist[i][i] = 0;
+    int u, v, l;
+    FOR(i, 0, m){
+        cin >> u >> v >> l;
+        G[u].PB(v);
+        G[v].PB(u);
+        dist[u][v] = min(dist[u][v], l);
+        dist[v][u] = min(dist[v][u], l);
+    }
+
+    vector < int > d1(n+1, INF);
+    vector < int > parent(n+1, -1);
+    priority_queue < pair<int,int>, vector <pair<int,int>>, greater <pair<int,int>> > pq;
+    pq.push({0, 1});
+    d1[1] = 0;
+
+    while(!pq.empty()){
+        auto t = pq.top();
+        pq.pop();
+
+        int l = t.F;
+        int u = t.S;
+
+        if(l!=d1[u]) continue;
+
+        for(int v: G[u]){
+            if(d1[v]>l+dist[u][v]){
+                d1[v] = l+dist[u][v];
+                parent[v] = u;
+                pq.push({d1[v], v});
+            }
+        }
+    }
+
+    int ori = d1[n];
+    vector < pair < int, int > > path;
+    int cur = n;
+    while(cur!=1  and parent[cur]!=-1){
+        path.EB(parent[cur], cur);
+        cur = parent[cur];
+    }
+
+    int ans = 0;
+    for(auto e: path){
+        int a = e.F;
+        int b = e.S;
+        int d = dist[a][b];
+
+        dist[a][b] = d * 2;
+        dist[b][a] = d * 2;
+
+        vector < int > d2(n+1, INF);
+        priority_queue < pair<int,int>, vector <pair<int,int>>, greater <pair<int,int>> > pq2;
+        pq2.push({0, 1});
+        d2[1] = 0;
+        while(!pq2.empty()){
+            auto t = pq2.top();
+            pq2.pop();
+
+            int l = t.F;
+            int u = t.S;
+
+            if(l!=d2[u]) continue;
+
+            for(int v: G[u]){
+                if(d2[v]>l+dist[u][v]){
+                    d2[v] = l+dist[u][v];
+                    pq2.push({d2[v], v});
+                }
+            }
+        }
+
+        ans = max(ans, d2[n]-ori);
+
+        dist[a][b] = d;
+        dist[b][a] = d;
+    }
+
+    cout << ans << endl;
+}
+```
