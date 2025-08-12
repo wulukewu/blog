@@ -159,7 +159,10 @@ void solve() {
 
 - 如果 `A` → `B` 且 `A` 是暴徒，則 `B` 一定是平民
 - 如果 `A` → `B` 且 `B` 是暴徒，則 `A` 一定是平民
-- `TC3` 是錯的
+- 相鄰的兩人不能同時是暴徒，所以最多只能有一半是暴徒（在一個環裡面也是）
+- 對於每一個環，先去針對環外面的每條樹，用 DP 最大化暴徒數量，所以要先找到沒有被指到的那些點，也就是 `indeg` 為 `0`
+  - **先處理樹**：對於每棵樹的根，在「根是平民」或「根是暴徒」兩種情況下，這棵樹能貢獻的最大暴徒數
+  - **再處理環**：利用樹 DP 的結果，算出每個環上節點的貢獻價值
 
 ```cpp
 void solve() {
@@ -171,41 +174,100 @@ void solve() {
         cin >> G[i];
     }
 
-    vector < int > state(n+1, 0);
-    vector < bool > mobster(n+1, false);
-    int ans = 0;
-
-    auto dfs = [&](auto&& self, int u) -> void {
-        state[u] = 1;
-        int v = G[u];
-        if(state[v]==0){
-            self(self, v);
-        }
-        else if(state[v]==1){
-            ans++;
-            while(true){
-                state[v] = 2;
-                mobster[v] = false;
-                if(v==u) break;
-                v = G[v];
-            }
-            return;
-        }
-
-        if(state[u]==2) return;
-
-        if(mobster[v]){
-            mobster[u] = false;
-        }else{
-            mobster[u] = true;
-            ans++;
-        }
-
-        state[u] = 2;
-    };
-
+    vector < vector < int > > rev(n+1);
+    vector < int > indeg(n+1, 0);
     FOR(i, 1, n+1){
-        if(state[i]==0) dfs(dfs, i);
+        indeg[G[i]]++;
+        rev[G[i]].PB(i);
+    }
+
+    queue < int > q;
+    FOR(i, 1, n+1){
+        if(indeg[i]==0){
+            q.push(i);
+        }
+    }
+    vector < bool > cycle(n+1, true);
+    vector < int > topo;
+    while(!q.empty()){
+        int u = q.front();
+        q.pop();
+
+        cycle[u] = false;
+        topo.PB(u);
+        int v = G[u];
+        indeg[v]--;
+        if(indeg[v]==0){
+            q.push(v);
+        }
+    }
+
+    vector < int > dp0(n+1, 0);
+    vector < int > dp1(n+1, 0);
+    for(int u: topo){
+        int c0 = 0;
+        int c1 = 1;
+        for(int c: rev[u]){
+            if(cycle[c]) continue;
+            c0 += max(dp0[c], dp1[c]);
+            c1 += dp0[c];
+        }
+        dp0[u] = c0;
+        dp1[u] = c1;
+    }
+
+    int ans = 0;
+    vector < bool > visit(n+1, false);
+    FOR(i, 1, n+1){
+        if(!cycle[i] or visit[i]) continue;
+        vector < int > cyc;
+        int u = i;
+        while(!visit[u]){
+            visit[u] = 1;
+            cyc.PB(u);
+            u = G[u];
+        }
+        int k = cyc.size();
+
+        vector < int > val0(k, 0);
+        vector < int > val1(k, 0);
+        FOR(j, 0, k){
+            int idx = cyc[j];
+            int sum0 = 0;
+            int sum1 = 1;
+            for(int c: rev[idx]){
+                if(cycle[c]) continue;
+                sum0 += max(dp0[c], dp1[c]);
+                sum1 += dp0[c];
+            }
+            val0[j] = sum0;
+            val1[j] = sum1;
+        }
+
+        int base = 0;
+        vector < int > gain(k);
+        FOR(j, 0, k){
+            base += val0[j];
+            gain[j] = val1[j] - val0[j];
+        }
+
+        auto sl = [&](int l, int r) -> int {
+            if(l>r) return 0;
+            int pn = 0;
+            int ps = -4e18;
+            FOR(j, l, r+1){
+                int cs = pn + gain[j];
+                int cn = max(pn, ps);
+                pn = cn;
+                ps = cs;
+            }
+            return max(pn, ps);
+        };
+
+        int ans1 = sl(1, k-1);
+        int ans2 = gain[0] + sl(2, k-2);
+        int best = max(ans1, ans2);
+        ans += base + best;
     }
 
     cout << ans << endl;
