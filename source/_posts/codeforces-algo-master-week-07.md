@@ -13,7 +13,7 @@ tags:
 
 > **Problem:** [河馬做區間操作!!!](https://ncuma-oj.math.ncu.edu.tw/problem/PG)
 >
-> **Solution:** [GitHub Code]()
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/ncuma-oj/PG_%E6%B2%B3%E9%A6%AC%E5%81%9A%E5%8D%80%E9%96%93%E6%93%8D%E4%BD%9C.cpp)
 
 - `x` 為區間和
 - `y` 為區間最大值，如果 `<=1` 的話就不用往下做
@@ -139,4 +139,70 @@ signed main() {
 
 > **Problem:** [逆序數量](https://ncuma-oj.math.ncu.edu.tw/problem/J003)
 >
-> **Solution:** [GitHub Code]()
+> **Solution:** [GitHub Code](https://github.com/wulukewu/cp-code/blob/main/ncuma-oj/J003_%E9%80%86%E5%BA%8F%E6%95%B8%E9%87%8F.cpp)
+
+- 對每個數字，需要知道在它前面已經有多少個數字比它大
+- 用 BIT (Binary Indexed Tree) 將 `O(n^2)` 降為 `O(n log n)`
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+#define endl '\n'
+#define int long long
+#define FOR(i, a, b) for(int i = a; i < b; i++)
+
+template <class T>
+struct BIT {
+    int n;
+    vector<T> a;
+    BIT(int n_ = 0) {
+        init(n_);
+    }
+
+    void init(int n_) {
+        n = n_;
+        a.assign(n, T{});
+    }
+
+    void add(int x, const T &v) {
+        for (int i = x + 1; i <= n; i += i & -i) {
+            a[i - 1] += v;
+        }
+    }
+
+    T sum(int x) {
+        T ans{};
+        for (int i = x; i > 0; i -= i & -i) {
+            ans += a[i - 1];
+        }
+        return ans;
+    }
+};
+
+void solve() {
+    int n;
+    cin >> n;
+
+    int INF = 1e6+5;
+    BIT < int > bit(INF);
+
+    int ans = 0;
+    int x;
+    FOR(i, 0, n){
+        cin >> x;
+        ans += bit.sum(INF) - bit.sum(x);
+        bit.add(x, 1);
+    }
+
+    cout << ans << endl;
+}
+
+signed main() {
+    ios::sync_with_stdio(false),cin.tie(0);
+    int t = 1;
+    //cin >> t;
+    while (t--) solve();
+    return 0;
+}
+```
