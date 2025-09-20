@@ -9,7 +9,7 @@ tags:
 
 # 2025 Taiwan Online Programming Contest
 
-- [Contest Problems](https://codeforces.com/gym/105383)
+- [Contest Problems (PDF)](https://github.com/wulukewu/cp-code/blob/main/icpc/topc/2025-09-20/2025%20Taiwan%20Online%20Programming%20Contest.pdf)
 
 ## A. Take It or Double It
 
