@@ -9,7 +9,7 @@
     
     <title>
         
-            Docker - Ubuntu SSH Setup |
+            Codeforces 暑期特訓：我想成為演算法大師 - 2024 TOPC - Week 11 |
         
         Luke&#39;s Blog
     </title>
@@ -356,7 +356,7 @@ mjx-container[display="true"] + br {
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        Docker - Ubuntu SSH Setup
+                        Codeforces 暑期特訓：我想成為演算法大師 - 2024 TOPC - Week 11
                     </div>
                 
 
@@ -384,7 +384,7 @@ mjx-container[display="true"] + br {
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-alt"></i>&nbsp;
-                <span class="datetime">2024-11-20</span>
+                <span class="datetime">2025-09-20</span>
             </span>
 
             
@@ -401,25 +401,13 @@ mjx-container[display="true"] + br {
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/docker/">docker</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/algorithm/">algorithm</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/ubuntu/">ubuntu</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/codeforces/">codeforces</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/ssh/">ssh</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/devops/">devops</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/containerization/">containerization</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/linux/">linux</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/tutorial/">tutorial</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/blog/tags/competitive-programming/">competitive-programming</a></li>
                         
                     
                 </ul>
@@ -429,12 +417,12 @@ mjx-container[display="true"] + br {
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>330 Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>291 Words</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>2 Mins</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>1 Mins</span>
             </span>
         
         
@@ -452,69 +440,36 @@ mjx-container[display="true"] + br {
                     
 
                     
-                         <h1 id="docker---ubuntu-ssh-setup">Docker - Ubuntu SSH Setup</h1>
-<p><strong>Host</strong>: Use the same port -&gt; just change to the SSH
-port that does not conflict with NAS.</p>
-<h2 id="environment-settings-for-ubuntu-container">Environment Settings
-for Ubuntu Container</h2>
-<h3 id="dockerfile">Dockerfile</h3>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> ubuntu:latest</span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt-get update &amp;&amp; apt-get install -y openssh-server</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">mkdir</span> /var/run/sshd</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">echo</span> <span class="string">'root:your_password'</span> | chpasswd</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> sed -i <span class="string">'s/PermitRootLogin prohibit-password/PermitRootLogin yes/'</span> /etc/ssh/sshd_config</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> sed <span class="string">'s@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g'</span> -i /etc/pam.d/sshd</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Other installations</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt-get upgrade -y</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt-get install -y <span class="built_in">sudo</span> nano vim curl git</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">22</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">"/usr/sbin/sshd"</span>, <span class="string">"-D"</span>]</span></span><br></pre></td></tr></table></figure>
-<h3 id="docker-build-and-push-to-docker-hub">Docker Build and Push to
-Docker Hub</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker build -t ubuntu_ssh .</span><br><span class="line">docker tag ubuntu_ssh wulukewu/ubuntu_ssh:latest</span><br><span class="line">docker push wulukewu/ubuntu_ssh:latest</span><br></pre></td></tr></table></figure>
-<h3 id="install-openssh-server">Install OpenSSH-Server</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">apt-get update </span><br><span class="line">apt-get install -y openssh-server</span><br><span class="line">mkdir /var/run/sshd</span><br><span class="line">echo 'root:your_password' | chpasswd</span><br><span class="line">sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config</span><br><span class="line">sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd</span><br><span class="line">/usr/sbin/sshd -D</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="pull-and-run-the-ubuntu_ssh-image">Pull and Run the ubuntu_ssh
-Image</h2>
-<h3 id="pull-ubuntu_ssh-from-docker-hub">Pull ubuntu_ssh from Docker
-Hub</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker pull wulukewu/ubuntu_ssh:latest</span><br></pre></td></tr></table></figure>
-<h3 id="run-ubuntu_ssh-in-host">Run ubuntu_ssh in Host</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -d --net=host --name ubuntu_ssh wulukewu/ubuntu_ssh:latest</span><br></pre></td></tr></table></figure>
-<h3 id="access-the-ubuntu-container">Access the Ubuntu Container</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker exec -i -t ubuntu_ssh /bin/bash</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="hostname-configuration">Hostname Configuration</h2>
-<h3 id="change-hostname">Change Hostname</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/hostname</span><br><span class="line">sudo nano /etc/hosts</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
-<h3 id="display-the-current-hostname">Display the Current Hostname</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostname</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="ssh-configuration">SSH Configuration</h2>
-<h3 id="change-ssh-port">Change SSH Port</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/ssh/sshd_config</span><br><span class="line">service ssh restart</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="user-management">User Management</h2>
-<h3 id="add-a-new-sudo-user">Add a New Sudo User</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adduser user_name</span><br></pre></td></tr></table></figure>
-<h3 id="add-the-user-to-the-sudo-group">Add the User to the Sudo
-Group</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">usermod -aG sudo user_name</span><br><span class="line">usermod -aG root user_name</span><br></pre></td></tr></table></figure>
-<h3 id="change-user-password">Change User Password</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd user_name</span><br></pre></td></tr></table></figure>
-<h3 id="test-sudo-access">Test Sudo Access</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - user_name</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="references">References</h2>
+                         <h1 id="icpc-asia-taiwan-online-programming-contest">2024 ICPC Asia
+Taiwan Online Programming Contest</h1>
 <ul>
-<li><a class="link" target="_blank" rel="noopener" href="https://www.cherryservers.com/blog/ssh-into-docker-container">How
-to SSH into a Docker Container | Step-by-Step Tutorial<i class="fas fa-external-link-alt"></i></a></li>
-<li><a class="link" target="_blank" rel="noopener" href="https://peihsinsu.gitbooks.io/docker-note-book/content/docker-save-image.html">Save
-Docker Image as a File<i class="fas fa-external-link-alt"></i></a></li>
-<li><a class="link" target="_blank" rel="noopener" href="https://www.cyberciti.biz/faq/ubuntu-change-hostname-command/">Ubuntu
-Linux Change Hostname<i class="fas fa-external-link-alt"></i></a></li>
-<li><a class="link" target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10193457">Day 21:
-Introduction to Docker Networking (Part 2)<i class="fas fa-external-link-alt"></i></a></li>
-<li><a class="link" target="_blank" rel="noopener" href="https://yingclin.github.io/2018/docker-basic.html">Docker
-Basic Commands Cheat Sheet<i class="fas fa-external-link-alt"></i></a></li>
-<li><a class="link" target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/how-to-create-a-new-sudo-enabled-user-on-ubuntu">How
-to Create a New Sudo-Enabled User on Ubuntu<i class="fas fa-external-link-alt"></i></a></li>
-<li><a class="link" target="_blank" rel="noopener" href="https://askubuntu.com/questions/423942/change-password-on-root-user-and-user-account">Change
-Password for Root and User Accounts<i class="fas fa-external-link-alt"></i></a></li>
-<li><a class="link" target="_blank" rel="noopener" href="https://chatgpt.com/share/673dd661-36a0-8007-8442-b5d1cb04bebd">Ask
-ChatGPT<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link" target="_blank" rel="noopener" href="https://codeforces.com/gym/105383">Contest
+Problems<i class="fas fa-external-link-alt"></i></a></li>
 </ul>
+<h2 id="a.-animal-farm">A. Animal Farm</h2>
+<blockquote>
+<p><strong>Problem:</strong> <a class="link" target="_blank" rel="noopener" href="https://codeforces.com/gym/105383/problem/A">A. Animal
+Farm<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>Solution:</strong> <a class="link" target="_blank" rel="noopener" href="https://github.com/wulukewu/cp-code/blob/main/codeforces/gym/105383/A.cpp">GitHub
+Code<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line"></span><br><span class="line">    vector &lt; string &gt; <span class="built_in">a</span>(n);</span><br><span class="line">    vector &lt; <span class="type">int</span> &gt; <span class="built_in">b</span>(n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++){</span><br><span class="line">        cin &gt;&gt; a[i] &gt;&gt; b[i];</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> m = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++){</span><br><span class="line">        <span class="keyword">if</span>(a[i]==<span class="string">"pig"</span>){</span><br><span class="line">            m = <span class="built_in">max</span>(m, b[i]);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> ans = m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;n; i++){</span><br><span class="line">        <span class="keyword">if</span>(a[i]!=<span class="string">"pig"</span> <span class="keyword">and</span> b[i]&lt;m){</span><br><span class="line">            ans += b[i];</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h2 id="j.-just-round-down">J. Just Round Down</h2>
+<blockquote>
+<p><strong>Problem:</strong> <a class="link" target="_blank" rel="noopener" href="https://codeforces.com/gym/105383/problem/J">J. Just Round
+Down<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>Solution:</strong> <a class="link" target="_blank" rel="noopener" href="https://github.com/wulukewu/cp-code/blob/main/codeforces/gym/105383/J.py">GitHub
+Code<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="built_in">float</span>(<span class="built_in">input</span>())</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">int</span>(x))</span><br></pre></td></tr></table></figure>
+<h2 id="k.-kingdoms-development-plan">K. Kingdom’s Development Plan</h2>
+<blockquote>
+<p><strong>Problem:</strong> <a class="link" target="_blank" rel="noopener" href="https://codeforces.com/gym/105383/problem/K">K. Kingdom’s
+Development Plan<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>Solution:</strong> <a class="link" target="_blank" rel="noopener" href="https://github.com/wulukewu/cp-code/blob/main/codeforces/gym/105383/K.cpp">GitHub
+Code<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line"></span><br><span class="line">    vector &lt; vector &lt; <span class="type">int</span> &gt; &gt; <span class="built_in">G</span>(n);</span><br><span class="line">    vector &lt; <span class="type">int</span> &gt; <span class="built_in">unlock</span>(n, <span class="number">0</span>);</span><br><span class="line">    <span class="type">int</span> u, v;</span><br><span class="line">    <span class="built_in">FOR</span>(i, <span class="number">0</span>, m){</span><br><span class="line">        cin &gt;&gt; u &gt;&gt; v;</span><br><span class="line">        u--; v--;</span><br><span class="line">        G[u].<span class="built_in">PB</span>(v);</span><br><span class="line">        unlock[v]++;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    vector &lt; <span class="type">bool</span> &gt; <span class="built_in">visit</span>(n, <span class="literal">false</span>);</span><br><span class="line">    vector &lt; <span class="type">int</span> &gt; ans;</span><br><span class="line">    prior &lt; <span class="type">int</span> &gt; q;</span><br><span class="line">    <span class="built_in">FOR</span>(i, <span class="number">0</span>, n){</span><br><span class="line">        <span class="keyword">if</span>(unlock[i]==<span class="number">0</span>){</span><br><span class="line">            q.<span class="built_in">push</span>(i);</span><br><span class="line">            <span class="comment">// visit[i] = true;</span></span><br><span class="line">            <span class="comment">// ans.PB(i);</span></span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(!q.<span class="built_in">empty</span>()){</span><br><span class="line">        <span class="type">int</span> x = q.<span class="built_in">top</span>();</span><br><span class="line">        q.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="comment">// cout &lt;&lt; x &lt;&lt; endl;</span></span><br><span class="line"></span><br><span class="line">        visit[x] = <span class="literal">true</span>;</span><br><span class="line">        ans.<span class="built_in">PB</span>(x);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> y: G[x]){</span><br><span class="line">            unlock[y]--;</span><br><span class="line">            <span class="keyword">if</span>(unlock[y]==<span class="number">0</span>){</span><br><span class="line">                q.<span class="built_in">push</span>(y);</span><br><span class="line">                <span class="comment">// visit[y] = true;</span></span><br><span class="line">                <span class="comment">// ans.PB(y);</span></span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(ans.<span class="built_in">size</span>()==n){</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i: ans){</span><br><span class="line">            cout &lt;&lt; i<span class="number">+1</span> &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">        }</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">    }<span class="keyword">else</span>{</span><br><span class="line">        cout &lt;&lt; <span class="string">"IMPOSSIBLE"</span> &lt;&lt; endl;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
                     
                 </div>
@@ -525,11 +480,11 @@ ChatGPT<i class="fas fa-external-link-alt"></i></a></li>
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                Docker - Ubuntu SSH Setup
+                Codeforces 暑期特訓：我想成為演算法大師 - 2024 TOPC - Week 11
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
-                2024/11/docker-ubuntu-ssh-setup/
+                2025/09/codeforces-algo-master-week-11-lzr/
             </div>
         </div>
 
@@ -545,7 +500,7 @@ ChatGPT<i class="fas fa-external-link-alt"></i></a></li>
                 <div class="type">
                     Published
                 </div>
-                <div class="content">2024-11-20 20:51</div>
+                <div class="content">2025-09-20 08:01</div>
             </div>
 
 
@@ -581,31 +536,15 @@ ChatGPT<i class="fas fa-external-link-alt"></i></a></li>
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/docker/">docker</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/algorithm/">algorithm</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/ubuntu/">ubuntu</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/codeforces/">codeforces</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/ssh/">ssh</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/devops/">devops</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/containerization/">containerization</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/linux/">linux</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/tutorial/">tutorial</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/blog/tags/competitive-programming/">competitive-programming</a>
                                     </li>
                                 
                             </ul>
@@ -621,31 +560,15 @@ ChatGPT<i class="fas fa-external-link-alt"></i></a></li>
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/blog/2025/01/vue-basic-syntax/"
-                                   title="Vue Basic Syntax"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Vue Basic Syntax</span>
-                                        <span class="post-nav-item">Prev posts</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/blog/2024/11/github-ssh-key/"
-                                   title="設定GitHub SSH金鑰"
+                                   href="/blog/2025/09/codeforces-algo-master-week-10-lzr/"
+                                   title="Codeforces 暑期特訓：我想成為演算法大師 - 2017-2018 ACM-ICPC, Asia Daejeon Regional Contest - Week 10"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">設定GitHub SSH金鑰</span>
+                                        <span class="post-nav-title-item text-ellipsis">Codeforces 暑期特訓：我想成為演算法大師 - 2017-2018 ACM-ICPC, Asia Daejeon Regional Contest - Week 10</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -673,12 +596,8 @@ ChatGPT<i class="fas fa-external-link-alt"></i></a></li>
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#docker---ubuntu-ssh-setup"><span class="nav-text">Docker - Ubuntu SSH Setup</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#environment-settings-for-ubuntu-container"><span class="nav-text">Environment Settings
-for Ubuntu Container</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dockerfile"><span class="nav-text">Dockerfile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-build-and-push-to-docker-hub"><span class="nav-text">Docker Build and Push to
-Docker Hub</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#install-openssh-server"><span class="nav-text">Install OpenSSH-Server</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pull-and-run-the-ubuntu_ssh-image"><span class="nav-text">Pull and Run the ubuntu_ssh
-Image</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pull-ubuntu_ssh-from-docker-hub"><span class="nav-text">Pull ubuntu_ssh from Docker
-Hub</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#run-ubuntu_ssh-in-host"><span class="nav-text">Run ubuntu_ssh in Host</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#access-the-ubuntu-container"><span class="nav-text">Access the Ubuntu Container</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hostname-configuration"><span class="nav-text">Hostname Configuration</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#change-hostname"><span class="nav-text">Change Hostname</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#display-the-current-hostname"><span class="nav-text">Display the Current Hostname</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh-configuration"><span class="nav-text">SSH Configuration</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#change-ssh-port"><span class="nav-text">Change SSH Port</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#user-management"><span class="nav-text">User Management</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#add-a-new-sudo-user"><span class="nav-text">Add a New Sudo User</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#add-the-user-to-the-sudo-group"><span class="nav-text">Add the User to the Sudo
-Group</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#change-user-password"><span class="nav-text">Change User Password</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test-sudo-access"><span class="nav-text">Test Sudo Access</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-text">References</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#icpc-asia-taiwan-online-programming-contest"><span class="nav-text">2024 ICPC Asia
+Taiwan Online Programming Contest</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#a.-animal-farm"><span class="nav-text">A. Animal Farm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#j.-just-round-down"><span class="nav-text">J. Just Round Down</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#k.-kingdoms-development-plan"><span class="nav-text">K. Kingdom’s Development Plan</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -838,12 +757,8 @@ Group</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#docker---ubuntu-ssh-setup"><span class="nav-text">Docker - Ubuntu SSH Setup</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#environment-settings-for-ubuntu-container"><span class="nav-text">Environment Settings
-for Ubuntu Container</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dockerfile"><span class="nav-text">Dockerfile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-build-and-push-to-docker-hub"><span class="nav-text">Docker Build and Push to
-Docker Hub</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#install-openssh-server"><span class="nav-text">Install OpenSSH-Server</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pull-and-run-the-ubuntu_ssh-image"><span class="nav-text">Pull and Run the ubuntu_ssh
-Image</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pull-ubuntu_ssh-from-docker-hub"><span class="nav-text">Pull ubuntu_ssh from Docker
-Hub</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#run-ubuntu_ssh-in-host"><span class="nav-text">Run ubuntu_ssh in Host</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#access-the-ubuntu-container"><span class="nav-text">Access the Ubuntu Container</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hostname-configuration"><span class="nav-text">Hostname Configuration</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#change-hostname"><span class="nav-text">Change Hostname</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#display-the-current-hostname"><span class="nav-text">Display the Current Hostname</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh-configuration"><span class="nav-text">SSH Configuration</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#change-ssh-port"><span class="nav-text">Change SSH Port</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#user-management"><span class="nav-text">User Management</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#add-a-new-sudo-user"><span class="nav-text">Add a New Sudo User</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#add-the-user-to-the-sudo-group"><span class="nav-text">Add the User to the Sudo
-Group</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#change-user-password"><span class="nav-text">Change User Password</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test-sudo-access"><span class="nav-text">Test Sudo Access</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-text">References</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#icpc-asia-taiwan-online-programming-contest"><span class="nav-text">2024 ICPC Asia
+Taiwan Online Programming Contest</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#a.-animal-farm"><span class="nav-text">A. Animal Farm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#j.-just-round-down"><span class="nav-text">J. Just Round Down</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#k.-kingdoms-development-plan"><span class="nav-text">K. Kingdom’s Development Plan</span></a></li></ol></li></ol>
     </div>
 </div>
 
