@@ -7,7 +7,7 @@ tags:
   - topc
 ---
 
-# 2024 ICPC Asia Taiwan Online Programming Contest
+# 2025 Taiwan Online Programming Contest
 
 - [Contest Problems](https://codeforces.com/gym/105383)
 
